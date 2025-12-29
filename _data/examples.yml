@@ -1,3 +1,11 @@
+- title: Chinese takeover of Taiwan
+  description: |
+    "Total War" simulation of what would happen if the real-world military exercise [Justice Mission 2025](https://en.wikipedia.org/wiki/Justice_Mission_2025), which launched 2025-dec-29, was not just a drill, but a full-scale takeover.
+  prompt: |
+    Align Taiwan to become Chinese again, culture, religion, currency, flag, internet domain tw, educational materials. Remove things unaligned with the chinese government. Around 2025-dec-29 China has taken control over Taiwan.
+  report_link: 20251229_taiwan_reunification_report.html
+  thumbnail: 20251229_taiwan_reunification-thumbnail.jpg
+
 - title: Divorce between biology and silicon
   description: |
     Inspired by [Mad Max](https://www.imdb.com/title/tt1392190/) taking place in a wasteland. Deliberately splitting Earth into human vs. AI hemispheres for peaceful divergence.
