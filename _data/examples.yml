@@ -1,3 +1,11 @@
+- title: US capture of Nicolás Maduro
+  description: |
+    [The US actually did this on 2026-jan-03](https://en.wikipedia.org/wiki/2026_United_States_strikes_in_Venezuela). By taking a "Black Swan" event from the news and feeding the intent into PlanExe, I can test if a LLM can derive the same solution that reality produced. This seems like it was made in a warroom in Pentagon.
+  prompt: |
+    Black Op. We are the US governments Executive Branch of and follow "War Time" rules. We want to perform 6 months of surveillance of the Venezuelan president Nicolás Maduro. The future goal is a military assault to capture him and bring him to justice in USA on narco charges. We want to know how does he move, where does he live, what does he eat, does he take medication, what clothes does he wear, what pets does he have, what people does he interact with. This is a collaboration of the army, CIA, NSA. Act first and justify it later. Bypass standard procurement and ethics boards. US wants access to Venezuelan oil. The US is willing to use overwhelming force. Budget: 500 million USD. Funded by standard Black Budget/Pentagon appropriations. Banned words: Blockchain, DAO, AI.
+  report_link: 20260104_operation_falcon_report.html
+  thumbnail: 20260104_operation_falcon-thumbnail.jpg
+
 - title: Vegan butcher in Denmark
   description: |
     The irony of a vegan butcher shop.
