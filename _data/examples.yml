@@ -1,3 +1,13 @@
+- title: Waste to food conversion in Berlin
+  description: |
+    Recycling [sewage into water](https://en.wikipedia.org/wiki/Sewage_treatment) is common. Recycling [sewage sludge into food](https://en.wikipedia.org/wiki/Sewage_sludge_treatment) is not a thing, yet.
+  prompt: |
+    To combat Berlin's escalating municipal debt and meet aggressive EU circular economy targets, the Senate is authorized to commission the "Bio-Ressourcen-Zentrum" (BRZ) in the industrial district of Marzahn with a budget of €210 million. Utilizing advanced hydrothermal carbonization and high-pressure filtration, the facility will process wastewater from the city's vast sewer network into sterile, protein-rich nutrient blocks branded as "Basis-Nahrung" (Basic Sustenance). This initiative leverages industrial engineering to extract maximum caloric value from biological waste, drastically reducing the city’s carbon footprint by eliminating the energy-intensive disposal of sewage sludge while simultaneously securing a domestic, inflation-proof food reserve independent of global agricultural supply chains.
+
+    The rollout mandates a fundamental restructuring of the Bürgergeld social welfare system, replacing the standard monthly cash food allowance with direct physical distribution of Basis-Nahrung blocks via Jobcenter collection points. Under the newly proposed "Solidarity Nutrition Act," acceptance of these rations will be a prerequisite for maintaining housing benefits and health insurance coverage, effectively demonetizing hunger relief to prevent the misuse of state funds for alcohol or tobacco. While the process may retain trace amounts of chemical residues common in metropolitan wastewater, the program classifies the product under a new "Crisis-Resilience" regulatory category to bypass stringent EU consumer food safety laws, prioritizing fiscal solvency and guaranteed caloric intake over long-term preventative health metrics.
+  report_link: 20260120_circular_berlin_report.html
+  thumbnail: 20260120_circular_berlin-thumbnail.jpg
+
 - title: Laser on the far side of the moon
   description: |
     R&D preparations for a [Nicoll-Dyson laser](https://en.wikipedia.org/wiki/James_Nicoll#Nicoll-Dyson_Laser) placed on the far side of the moon and pointing at Alpha Centauri.
