@@ -1,5 +1,5 @@
 ---
 title: GitHub
 redirect_to:
-  - https://github.com/neoneye/PlanExe
+  - https://github.com/PlanExeOrg/PlanExe
 ---

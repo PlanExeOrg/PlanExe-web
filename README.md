@@ -2,9 +2,9 @@
 
 Links:
 
-- [https://neoneye.github.io/PlanExe-web/](https://neoneye.github.io/PlanExe-web/)
-- [https://github.com/neoneye/PlanExe](https://github.com/neoneye/PlanExe)
-- [PlanExe Discord](https://neoneye.github.io/PlanExe-web/discord)
+- [https://planexe.org/](https://planexe.org/)
+- [https://github.com/PlanExeOrg/PlanExe](https://github.com/PlanExeOrg/PlanExe)
+- [PlanExe Discord](https://planexe.org/discord)
 
 
 ## Install the dependencies

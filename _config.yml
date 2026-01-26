@@ -2,6 +2,8 @@ remote_theme: jekyll/minima
 
 title: PlanExe
 description: "PlanExe: Transform your ideas into actionable plans."
+url: "https://planexe.org"
+baseurl: ""
 
 plugins:
   - jekyll-feed
