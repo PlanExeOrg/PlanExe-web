@@ -522,6 +522,11 @@ a:hover {
   color: var(--px-text);
 }
 
+.px-prose .examples-card-title {
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
 .examples-card-description {
   margin: 0 0 10px;
   color: var(--px-text-3);
