@@ -14,7 +14,9 @@
       <div class="px-topbar-inner">
         <div class="px-brand">
           <a class="px-brand-link" href="{{ '/' | relative_url }}">
-            <span class="px-brand-mark" aria-hidden="true">⌁</span>
+            <span class="px-brand-mark" aria-hidden="true">
+              <img class="px-brand-logo" src="{{ '/android-chrome-512x512.png' | relative_url }}" alt="" />
+            </span>
             <span class="px-brand-text">{{ site.title | default: 'PlanExe' }}</span>
           </a>
         </div>

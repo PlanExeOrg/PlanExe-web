@@ -198,10 +198,18 @@ a:hover {
   width: 28px;
   height: 28px;
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(53, 120, 229, 0.25), rgba(255, 107, 74, 0.18));
+  background: transparent;
   border: 1px solid var(--px-border);
   color: var(--px-text);
   font-weight: 800;
+  overflow: hidden;
+}
+
+.px-brand-logo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
 }
 
 .px-brand-text {
