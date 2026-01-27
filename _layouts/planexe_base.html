@@ -20,14 +20,34 @@
         </div>
 
         <nav class="px-nav" aria-label="Primary">
-          {% assign nav_items = "" | split: "" %}
-          {% assign nav_items = nav_items | push: "/|Home" %}
-          {% assign nav_items = nav_items | push: "/examples/|Examples" %}
-          {% assign nav_items = nav_items | push: "/github/|GitHub" %}
-          {% assign nav_items = nav_items | push: "/discord/|Discord" %}
+          {% assign nav_left = "" | split: "" %}
+          {% assign nav_left = nav_left | push: "/|Home" %}
+          {% assign nav_left = nav_left | push: "/examples/|Examples" %}
+
+          {% assign nav_right = "" | split: "" %}
+          {% assign nav_right = nav_right | push: "/github/|GitHub" %}
+          {% assign nav_right = nav_right | push: "/discord/|Discord" %}
 
           <ul class="px-nav-list">
-            {% for item in nav_items %}
+            {% for item in nav_left %}
+              {% assign parts = item | split: "|" %}
+              {% assign href = parts[0] %}
+              {% assign label = parts[1] %}
+              {% assign href_rel = href | relative_url %}
+              {% assign is_active = false %}
+              {% if current_url == href_rel %}
+                {% assign is_active = true %}
+              {% endif %}
+              <li class="px-nav-item">
+                <a class="px-nav-link{% if is_active %} is-active{% endif %}" href="{{ href_rel }}">{{ label }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+
+          <span class="px-nav-spacer" aria-hidden="true"></span>
+
+          <ul class="px-nav-list">
+            {% for item in nav_right %}
               {% assign parts = item | split: "|" %}
               {% assign href = parts[0] %}
               {% assign label = parts[1] %}

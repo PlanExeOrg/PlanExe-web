@@ -211,6 +211,14 @@ a:hover {
   color: var(--px-text);
 }
 
+.px-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .px-nav-list {
   display: flex;
   align-items: center;
@@ -218,6 +226,11 @@ a:hover {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.px-nav-spacer {
+  flex: 1 1 auto;
+  min-width: 12px;
 }
 
 .px-nav-link {
@@ -667,6 +680,9 @@ a:hover {
     width: 100%;
     overflow-x: auto;
     padding-bottom: 2px;
+  }
+  .px-nav-spacer {
+    flex: 0 0 12px;
   }
 }
 
