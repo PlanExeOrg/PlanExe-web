@@ -103,9 +103,8 @@ body.px-body {
   margin: 0;
   font-family: var(--px-font-sans);
   color: var(--px-text);
-  background: radial-gradient(1400px 800px at 20% -10%, rgba(53, 120, 229, 0.12), transparent 55%),
-    radial-gradient(1000px 700px at 95% -20%, rgba(255, 107, 74, 0.10), transparent 55%),
-    var(--px-bg);
+  /* Clean docs-like backdrop: solid color (no gradients/patterns to avoid scroll artifacts). */
+  background: var(--px-bg);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
