@@ -497,7 +497,9 @@ a:hover {
 }
 
 .examples-card-image-wrapper {
-  flex: 0 0 34%;
+  /* Make thumbnails smaller (less JPEG artifacts), but preserve original aspect ratio. */
+  flex: 0 0 clamp(160px, 22vw, 240px);
+  width: clamp(160px, 22vw, 240px);
   min-width: 0;
 }
 
@@ -672,12 +674,11 @@ a:hover {
   }
   .examples-card-image-wrapper {
     flex: 0 0 auto;
-    width: 112px;
+    width: 96px;
   }
   .examples-card-thumbnail {
-    width: 112px;
-    height: 112px;
-    object-fit: cover;
+    width: 100%;
+    height: auto;
   }
   .examples-card-description,
   .examples-card-prompt {
