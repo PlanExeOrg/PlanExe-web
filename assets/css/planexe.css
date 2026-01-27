@@ -9,7 +9,7 @@
   --px-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
 
-  --px-bg: #f6f7fb;
+  --px-bg: #f9f9fb;
   --px-surface: #ffffff;
   --px-surface-2: #f2f3f7;
   --px-topbar-bg: #ffffff;
@@ -26,7 +26,7 @@
 
   --px-radius-sm: 10px;
   --px-radius: 14px;
-  --px-radius-lg: 18px;
+  --px-radius-lg: 0.5rem;
 
   --px-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
   --px-shadow: 0 10px 30px rgba(16, 24, 40, 0.10);
@@ -319,7 +319,6 @@ a:hover {
   background: var(--px-surface);
   border: 1px solid var(--px-border);
   border-radius: var(--px-radius-lg);
-  box-shadow: var(--px-shadow);
   padding: clamp(18px, 3.2vw, 34px);
 }
 
