@@ -1,5 +1,7 @@
 # PlanExe-web on GitHub Pages
 
+Github pages is used for the [planexe.org](https://planexe.org/) static website. This [github repo](https://github.com/PlanExeOrg/PlanExe-web) contains the website content.
+
 Links:
 
 - [https://planexe.org/](https://planexe.org/)
