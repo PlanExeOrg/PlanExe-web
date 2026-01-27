@@ -1,0 +1,38 @@
+---
+layout: planexe_base
+---
+
+<article class="px-article">
+  <header class="px-page-header">
+    <h1 class="px-page-title">{{ page.title | default: site.title }}</h1>
+    {% if page.subtitle %}
+      <p class="px-page-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+  </header>
+
+  <div class="px-prose">
+    {{ content }}
+  </div>
+
+  {% if site.posts and site.posts.size > 0 %}
+    <div class="px-section">
+      <h2>Posts</h2>
+      <ul class="px-post-list">
+        {% for post in site.posts %}
+          <li class="px-post-list-item">
+            <a class="px-post-list-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            {% if post.date %}
+              <span class="px-post-list-date">{{ post.date | date: site.minima.date_format | default: "%Y-%m-%d" }}</span>
+            {% endif %}
+            {% if site.show_excerpts %}
+              <div class="px-post-list-excerpt">
+                {{ post.excerpt }}
+              </div>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</article>
+

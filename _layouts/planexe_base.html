@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}" data-theme="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% seo %}
+    {% include custom-head.html %}
+  </head>
+  <body class="px-body">
+    {% assign current_url = page.url | relative_url %}
+    <a class="px-skip-link" href="#content">Skip to content</a>
+
+    <header class="px-topbar">
+      <div class="px-topbar-inner">
+        <div class="px-brand">
+          <a class="px-brand-link" href="{{ '/' | relative_url }}">
+            <span class="px-brand-mark" aria-hidden="true">⌁</span>
+            <span class="px-brand-text">{{ site.title | default: 'PlanExe' }}</span>
+          </a>
+        </div>
+
+        <nav class="px-nav" aria-label="Primary">
+          {% assign nav_items = "" | split: "" %}
+          {% assign nav_items = nav_items | push: "/|Home" %}
+          {% assign nav_items = nav_items | push: "/examples/|Examples" %}
+          {% assign nav_items = nav_items | push: "/execute/|Execute" %}
+          {% assign nav_items = nav_items | push: "/blog/|Blog" %}
+          {% assign nav_items = nav_items | push: "/github/|GitHub" %}
+          {% assign nav_items = nav_items | push: "/discord/|Discord" %}
+
+          <ul class="px-nav-list">
+            {% for item in nav_items %}
+              {% assign parts = item | split: "|" %}
+              {% assign href = parts[0] %}
+              {% assign label = parts[1] %}
+              {% assign href_rel = href | relative_url %}
+              {% assign is_active = false %}
+              {% if current_url == href_rel %}
+                {% assign is_active = true %}
+              {% endif %}
+              <li class="px-nav-item">
+                <a class="px-nav-link{% if is_active %} is-active{% endif %}" href="{{ href_rel }}">{{ label }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+
+        <div class="px-topbar-actions">
+          <button class="px-theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
+            <span class="px-theme-toggle-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" class="px-main">
+      <div class="px-container">
+        {{ content }}
+      </div>
+    </main>
+
+    <footer class="px-footer">
+      <div class="px-container px-footer-inner">
+        <div class="px-footer-left">
+          <span class="px-footer-brand">{{ site.title | default: 'PlanExe' }}</span>
+          <span class="px-footer-sep">·</span>
+          <span class="px-footer-muted">Open source planning tool</span>
+        </div>
+        <div class="px-footer-right">
+          <a href="{{ '/github/' | relative_url }}">GitHub</a>
+          <span class="px-footer-sep">·</span>
+          <a href="{{ '/discord/' | relative_url }}">Discord</a>
+          <span class="px-footer-sep">·</span>
+          <a href="{{ '/examples/' | relative_url }}">Examples</a>
+          <span class="px-footer-sep">·</span>
+          <a href="{{ '/' | relative_url }}">Home</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+

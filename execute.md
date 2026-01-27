@@ -12,14 +12,13 @@ permalink: /execute/
 </div>
 </header>
 
-<div class="url-params-section" style="margin: 20px 0; padding: 20px; background-color: #f8f9fa; border-radius: 8px; border: 1px solid #e9ecef;">
-    <h2>Execute with parameters</h2>
-    <div id="url-params-display" style="background-color: white; padding: 15px; border-radius: 5px; border: 1px solid #dee2e6; font-family: monospace; white-space: pre-wrap; min-height: 50px;">
-        Loading parameters...
-    </div>
-    <p style="margin-top: 10px; font-size: 0.9em; color: #6c757d;">
-        Try adding parameters to the URL like: <code>?plan_id=78773f12-2c73-49b1-a750-d03022a821ed&priority=high&status=active</code>
-    </p>
+<div class="px-callout">
+  <h2>Execute with parameters</h2>
+  <div id="url-params-display" class="px-codebox">Loading parameters...</div>
+  <p class="px-note">
+    Try adding parameters to the URL like:
+    <code>?plan_id=78773f12-2c73-49b1-a750-d03022a821ed&priority=high&status=active</code>
+  </p>
 </div>
 
 <script>

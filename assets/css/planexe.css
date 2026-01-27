@@ -1,297 +1,638 @@
-/* Outer wrapper to add border and rounding */
-.examples-card-wrapper {
-    border: 1px solid #cdcdcd;
-    border-radius: 23px;
-    background-color: white;
-    margin-bottom: 20px;
-    overflow: hidden;
-    transition: border-color 0.2s ease-in-out;
+/* PlanExe — modern docs-like theme (static, no build pipeline) */
+
+/* ---------- Design tokens ---------- */
+:root {
+  color-scheme: light;
+
+  --px-font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  --px-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+
+  --px-bg: #f6f7fb;
+  --px-surface: #ffffff;
+  --px-surface-2: #f2f3f7;
+  --px-border: rgba(17, 24, 39, 0.12);
+  --px-border-strong: rgba(17, 24, 39, 0.18);
+
+  --px-text: #101828;
+  --px-text-2: #344054;
+  --px-text-3: #667085;
+
+  --px-primary: #3578e5; /* Docusaurus-ish blue */
+  --px-primary-2: #2a62be;
+  --px-focus: rgba(53, 120, 229, 0.35);
+
+  --px-radius-sm: 10px;
+  --px-radius: 14px;
+  --px-radius-lg: 18px;
+
+  --px-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --px-shadow: 0 10px 30px rgba(16, 24, 40, 0.10);
+
+  --px-content-width: 1024px;
+  --px-gutter: 20px;
 }
 
-/* Styles for the overall card container */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --px-bg: #0b1020;
+    --px-surface: rgba(255, 255, 255, 0.06);
+    --px-surface-2: rgba(255, 255, 255, 0.10);
+    --px-border: rgba(255, 255, 255, 0.12);
+    --px-border-strong: rgba(255, 255, 255, 0.18);
+    --px-text: rgba(255, 255, 255, 0.92);
+    --px-text-2: rgba(255, 255, 255, 0.72);
+    --px-text-3: rgba(255, 255, 255, 0.56);
+    --px-primary: #6aa3ff;
+    --px-primary-2: #8ab7ff;
+    --px-focus: rgba(106, 163, 255, 0.35);
+    --px-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+    --px-shadow: 0 18px 50px rgba(0, 0, 0, 0.50);
+  }
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --px-bg: #f6f7fb;
+  --px-surface: #ffffff;
+  --px-surface-2: #f2f3f7;
+  --px-border: rgba(17, 24, 39, 0.12);
+  --px-border-strong: rgba(17, 24, 39, 0.18);
+  --px-text: #101828;
+  --px-text-2: #344054;
+  --px-text-3: #667085;
+  --px-primary: #3578e5;
+  --px-primary-2: #2a62be;
+  --px-focus: rgba(53, 120, 229, 0.35);
+  --px-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --px-shadow: 0 10px 30px rgba(16, 24, 40, 0.10);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --px-bg: #0b1020;
+  --px-surface: rgba(255, 255, 255, 0.06);
+  --px-surface-2: rgba(255, 255, 255, 0.10);
+  --px-border: rgba(255, 255, 255, 0.12);
+  --px-border-strong: rgba(255, 255, 255, 0.18);
+  --px-text: rgba(255, 255, 255, 0.92);
+  --px-text-2: rgba(255, 255, 255, 0.72);
+  --px-text-3: rgba(255, 255, 255, 0.56);
+  --px-primary: #6aa3ff;
+  --px-primary-2: #8ab7ff;
+  --px-focus: rgba(106, 163, 255, 0.35);
+  --px-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --px-shadow: 0 18px 50px rgba(0, 0, 0, 0.50);
+}
+
+/* ---------- Base / reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body.px-body {
+  margin: 0;
+  font-family: var(--px-font-sans);
+  color: var(--px-text);
+  background: radial-gradient(1400px 800px at 20% -10%, rgba(53, 120, 229, 0.12), transparent 55%),
+    radial-gradient(1000px 700px at 95% -20%, rgba(255, 107, 74, 0.10), transparent 55%),
+    var(--px-bg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--px-primary);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--px-primary-2);
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--px-focus);
+  outline-offset: 3px;
+}
+
+.px-skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: var(--px-surface);
+  border: 1px solid var(--px-border);
+  box-shadow: var(--px-shadow-sm);
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+  z-index: 9999;
+}
+.px-skip-link:focus {
+  transform: translateY(0);
+}
+
+.px-container {
+  width: min(var(--px-content-width), 100% - (var(--px-gutter) * 2));
+  margin: 0 auto;
+}
+
+/* ---------- Topbar ---------- */
+.px-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--px-border);
+  background: color-mix(in srgb, var(--px-bg) 70%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.px-topbar-inner {
+  width: min(var(--px-content-width), 100% - (var(--px-gutter) * 2));
+  margin: 0 auto;
+  padding: 12px 0;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 14px;
+  align-items: center;
+}
+
+.px-brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 12px;
+}
+.px-brand-link:hover {
+  text-decoration: none;
+  background: var(--px-surface);
+  box-shadow: var(--px-shadow-sm);
+}
+
+.px-brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(53, 120, 229, 0.25), rgba(255, 107, 74, 0.18));
+  border: 1px solid var(--px-border);
+  color: var(--px-text);
+  font-weight: 800;
+}
+
+.px-brand-text {
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  color: var(--px-text);
+}
+
+.px-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.px-nav-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 12px;
+  color: var(--px-text-2);
+  font-weight: 650;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+}
+.px-nav-link:hover {
+  text-decoration: none;
+  color: var(--px-text);
+  background: var(--px-surface);
+  border-color: var(--px-border);
+}
+.px-nav-link.is-active {
+  color: var(--px-text);
+  background: var(--px-surface);
+  border-color: var(--px-border-strong);
+  box-shadow: var(--px-shadow-sm);
+}
+
+.px-topbar-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.px-theme-toggle {
+  appearance: none;
+  border: 1px solid var(--px-border);
+  background: var(--px-surface);
+  color: var(--px-text);
+  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  box-shadow: var(--px-shadow-sm);
+  cursor: pointer;
+}
+.px-theme-toggle:hover {
+  border-color: var(--px-border-strong);
+}
+
+.px-theme-toggle-icon::before {
+  content: "◐";
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* ---------- Main / prose ---------- */
+.px-main {
+  padding: 32px 0 60px;
+}
+
+.px-article {
+  background: var(--px-surface);
+  border: 1px solid var(--px-border);
+  border-radius: var(--px-radius-lg);
+  box-shadow: var(--px-shadow);
+  padding: clamp(18px, 3.2vw, 34px);
+}
+
+.px-page-header {
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--px-border);
+}
+
+.px-page-title {
+  margin: 0 0 8px;
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.px-page-meta,
+.px-page-subtitle {
+  margin: 0;
+  color: var(--px-text-3);
+}
+
+.px-prose {
+  color: var(--px-text-2);
+  font-size: 1.03rem;
+}
+
+.px-prose h1,
+.px-prose h2,
+.px-prose h3,
+.px-prose h4 {
+  color: var(--px-text);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 1.6em 0 0.6em;
+}
+.px-prose h1 {
+  font-size: 2.2rem;
+}
+.px-prose h2 {
+  font-size: 1.65rem;
+}
+.px-prose h3 {
+  font-size: 1.25rem;
+}
+
+.px-prose p {
+  margin: 0.9em 0;
+}
+
+.px-prose ul,
+.px-prose ol {
+  margin: 0.9em 0 1.1em;
+  padding-left: 1.25em;
+}
+.px-prose li {
+  margin: 0.35em 0;
+}
+
+.px-prose hr {
+  border: 0;
+  border-top: 1px solid var(--px-border);
+  margin: 1.4em 0;
+}
+
+.px-prose blockquote {
+  margin: 1.2em 0;
+  padding: 14px 16px;
+  border-left: 3px solid var(--px-primary);
+  background: var(--px-surface-2);
+  border-radius: 12px;
+  color: var(--px-text);
+}
+
+.px-prose code {
+  font-family: var(--px-font-mono);
+  font-size: 0.95em;
+  background: color-mix(in srgb, var(--px-surface-2) 80%, transparent);
+  border: 1px solid var(--px-border);
+  border-radius: 10px;
+  padding: 0.18em 0.45em;
+}
+
+.px-prose pre {
+  margin: 1.2em 0;
+  padding: 16px;
+  background: #0f172a;
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: var(--px-radius);
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.px-prose pre code {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: 0.95rem;
+}
+
+.px-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.1em 0;
+  overflow: hidden;
+  border-radius: var(--px-radius);
+  border: 1px solid var(--px-border);
+}
+.px-prose th,
+.px-prose td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--px-border);
+}
+.px-prose th {
+  text-align: left;
+  background: var(--px-surface-2);
+  color: var(--px-text);
+  font-weight: 750;
+}
+
+/* ---------- Footer ---------- */
+.px-footer {
+  padding: 26px 0 44px;
+  color: var(--px-text-3);
+}
+
+.px-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.px-footer a {
+  color: var(--px-text-3);
+}
+.px-footer a:hover {
+  color: var(--px-text);
+  text-decoration: none;
+}
+
+.px-footer-sep {
+  padding: 0 8px;
+  opacity: 0.7;
+}
+
+/* ---------- Examples cards (homepage + /examples) ---------- */
+.examples-card-wrapper {
+  border: 1px solid var(--px-border);
+  border-radius: var(--px-radius-lg);
+  background: color-mix(in srgb, var(--px-surface) 92%, transparent);
+  overflow: hidden;
+  box-shadow: var(--px-shadow-sm);
+}
+
 .examples-card {
-    padding: 20px;
-    margin: 0;
-    background-color: white;
-    position: relative; /* Make it a positioning context for the stretched link */
-    transition: background-color 0.2s ease-in-out;
-    display: flex;
-    gap: 20px;
+  position: relative;
+  padding: 18px;
+  margin: 0;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: transparent;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .examples-card + .examples-card {
-    border-top: 1px solid #cdcdcd;
+  border-top: 1px solid var(--px-border);
 }
 
-.examples-card-wrapper:hover {
-    border-color: #bfbfbf;
-}
-
-/* Add a hover effect to the entire card */
 .examples-card:hover {
-    background-color: #f2f2f3; /* Slightly lighter background on hover */
-    cursor: pointer; /* Show it's clickable */
+  background: var(--px-surface-2);
 }
-  
-/* Styles for the image wrapper (takes 1/3 of width) */
+
 .examples-card-image-wrapper {
-    flex: 0 0 33.333%;
-    min-width: 0; /* Prevents flex item from overflowing */
+  flex: 0 0 34%;
+  min-width: 0;
 }
 
-/* Styles for the content wrapper (takes 2/3 of width when thumbnail exists, 100% when not) */
-.examples-card-content {
-    flex: 1 1 66.666%;
-    min-width: 0; /* Prevents flex item from overflowing */
-}
-
-/* Styles for the thumbnail image */
 .examples-card-thumbnail {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--px-radius);
+  display: block;
+  border: 1px solid var(--px-border);
 }
 
-/* Styles for the heading inside the card */
-.examples-card h2,
-.examples-card-content h2 {
-    color: #333;
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    font-weight: 750;
+.examples-card-content {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
-/* Styles for the description text */
+.examples-card-title {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--px-text);
+}
+
 .examples-card-description {
-    line-height: 1.6;
-    color: #666;
-    margin-bottom: 15px;
-    font-style: italic;
+  margin: 0 0 10px;
+  color: var(--px-text-3);
+  font-style: italic;
 }
 
-/* Styles for the prompt text with N lines truncation */
 .examples-card-prompt {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    max-height: calc(1.6em * 4) + 15px; 
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 15px;
-    position: relative;
+  color: var(--px-text-2);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* Styles for any links inside the card */
-.examples-card a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.2s ease;
-}
-
-.examples-card a:hover {
-    text-decoration: underline;
-}
-
-/* The main link is now a stretched overlay */
+/* Stretched overlay link */
 .examples-card a.examples-card-arrow-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    /* Reset styles to be invisible */
-    font-size: 0;
-    font-weight: normal;
-    color: transparent;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  font-size: 0;
 }
 
-/* Ensure inner links are clickable above the main card link */
+/* Ensure inner links are clickable above the stretched link */
 .examples-card-description a,
 .examples-card-prompt a {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
-.planexe-examples-header {
-    margin-bottom: 40px;
-    border-bottom: none;
-}
-
-.planexe-examples-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    font-weight: 750;
-}
-
-.planexe-examples-header .subtitle {
-    font-size: 1.2rem;
-}
-
-/* Styles for the header on the index page */
-.planexe-index-header {
-    padding-bottom: 40px;
-    margin-bottom: 40px;
-}
-
-.planexe-index-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    font-weight: 750;
-}
-
-.planexe-index-header .subtitle {
-    font-size: 1.2rem;
-}
-
-/* Add left and right padding to post content */
-.post-content {
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-/* Ensure examples cards don't get double padding */
-.post-content .examples-card-wrapper {
-    margin-left: -20px;
-    margin-right: -20px;
-}
-
-/* Styles for bullet points and lists */
-ul, ol {
-    margin-bottom: 20px;
-}
-
-li {
-    margin-bottom: 12px;
-    line-height: 1.6;
-}
-
-/* Animated call-to-action button on the homepage */
+/* ---------- CTA button ---------- */
 .planexe-cta-button {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 22px;
-    margin-left: 10px;
-    border-radius: 999px;
-    border: 1px solid #337;
-    background: linear-gradient(120deg, #ff6b4a 0%, #ffb347 45%, #ffe26f 100%);
-    background-size: 220% 220%;
-    color: #0d0d11;
-    font-weight: 800;
-    letter-spacing: 0.02em;
-    text-decoration: none;
-    box-shadow: 0 12px 30px rgba(255, 107, 74, 0.3);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-    animation: ctaGradient 7s ease infinite;
-    overflow: hidden;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--px-primary) 45%, var(--px-border));
+  background: linear-gradient(120deg, #ff6b4a 0%, #ffb347 45%, #ffe26f 100%);
+  color: #0b1020;
+  font-weight: 850;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  box-shadow: 0 14px 34px rgba(255, 107, 74, 0.25);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+  overflow: hidden;
 }
-
-.planexe-cta-button::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -80%;
-    width: 50%;
-    height: 200%;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 100%);
-    animation: ctaShine 3.4s linear infinite;
-    pointer-events: none;
-}
-
 .planexe-cta-button:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 16px 40px rgba(255, 107, 74, 0.45);
-    filter: saturate(1.05);
-    text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 18px 48px rgba(255, 107, 74, 0.35);
+  filter: saturate(1.04);
+  text-decoration: none;
 }
-
 .planexe-cta-button:active {
-    transform: translateY(0);
+  transform: translateY(0);
 }
-
-.planexe-cta-button:focus-visible {
-    outline: 2px solid #0f172a;
-    outline-offset: 4px;
-}
-
 .planexe-cta-arrow {
-    display: inline-block;
-    transition: transform 0.2s ease;
+  display: inline-block;
+  transition: transform 0.2s ease;
 }
-
 .planexe-cta-button:hover .planexe-cta-arrow {
-    transform: translateX(4px);
+  transform: translateX(4px);
 }
 
-@keyframes ctaGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* ---------- Small utilities ---------- */
+.px-section {
+  margin-top: 28px;
 }
 
-@keyframes ctaShine {
-    0% { transform: translateX(-120%) skewX(-20deg); }
-    100% { transform: translateX(320%) skewX(-20deg); }
+.px-post-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: grid;
+  gap: 12px;
 }
 
-/* Mobile layout for examples cards */
+.px-post-list-item {
+  padding: 14px 14px;
+  border-radius: var(--px-radius);
+  border: 1px solid var(--px-border);
+  background: var(--px-surface);
+}
+.px-post-list-link {
+  font-weight: 800;
+}
+.px-post-list-date {
+  margin-left: 10px;
+  color: var(--px-text-3);
+  font-size: 0.95rem;
+}
+.px-post-list-excerpt {
+  margin-top: 8px;
+  color: var(--px-text-2);
+}
+
+/* Callouts / small panels */
+.px-callout {
+  margin: 18px 0;
+  padding: 16px 16px;
+  border-radius: var(--px-radius);
+  border: 1px solid var(--px-border);
+  background: var(--px-surface-2);
+}
+
+.px-callout h2 {
+  margin: 0 0 10px;
+}
+
+.px-codebox {
+  border-radius: var(--px-radius);
+  border: 1px solid var(--px-border);
+  background: var(--px-surface);
+  padding: 12px 12px;
+  font-family: var(--px-font-mono);
+  white-space: pre-wrap;
+  min-height: 52px;
+  color: var(--px-text);
+}
+
+.px-note {
+  margin: 10px 0 0;
+  color: var(--px-text-3);
+  font-size: 0.95rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .px-topbar-inner {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand actions"
+      "nav nav";
+  }
+  .px-brand {
+    grid-area: brand;
+  }
+  .px-nav {
+    grid-area: nav;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+  .px-topbar-actions {
+    grid-area: actions;
+  }
+}
+
 @media (max-width: 768px) {
-    /* Keep only top/bottom border on mobile; remove sides and rounding */
-    .examples-card-wrapper {
-        border-top: 1px solid #cdcdcd;
-        border-bottom: 1px solid #cdcdcd;
-        border-left: none;
-        border-right: none;
-        border-radius: 0;
-    }
-    
-    /* Suppress wrapper padding on mobile - only for content area, not header */
-    .page-content .wrapper {
-        padding: 0 !important;
-    }
-    
-    /* Reverse order: content on left, thumbnail on right */
-    .examples-card {
-        flex-direction: row;
-    }
-    
-    /* Move thumbnail to the right using order */
-    .examples-card-image-wrapper {
-        order: 2;
-        flex: 0 0 auto;
-        width: 120px; /* Fixed width for square on mobile */
-        min-width: 120px;
-    }
-    
-    /* Content takes remaining space */
-    .examples-card-content {
-        order: 1;
-        flex: 1 1 auto;
-        min-width: 0;
-    }
-    
-    /* Make thumbnail square with overflow cropping */
-    .examples-card-thumbnail {
-        width: 120px;
-        height: 120px;
-        object-fit: cover; /* Crop to fit square */
-        object-position: center; /* Center the crop */
-    }
-    
-    /* Hide description and prompt on mobile */
-    .examples-card-description,
-    .examples-card-prompt {
-        display: none;
-    }
-    
-    .planexe-cta-button {
-        margin-left: 0;
-        margin-top: 8px;
-    }
+  .examples-card {
+    flex-direction: row;
+    gap: 14px;
+  }
+  .examples-card-image-wrapper {
+    flex: 0 0 auto;
+    width: 112px;
+  }
+  .examples-card-thumbnail {
+    width: 112px;
+    height: 112px;
+    object-fit: cover;
+  }
+  .examples-card-description,
+  .examples-card-prompt {
+    display: none;
+  }
 }

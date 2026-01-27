@@ -1,6 +1,18 @@
 {% include custom-head-google-analytics.html %}
 
+<script>
+  // Apply stored theme as early as possible to avoid a flash.
+  (function () {
+    try {
+      var t = localStorage.getItem("planexe-theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+
 <link id="planexe-stylesheet" rel="stylesheet" href="{{ '/assets/css/planexe.css' | relative_url }}">
+
+<script defer src="{{ '/assets/js/planexe-theme.js' | relative_url }}"></script>
 
 <!-- Begin Favicon -->
 <!-- Startup configuration -->

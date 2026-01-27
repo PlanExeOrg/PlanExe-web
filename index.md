@@ -55,7 +55,7 @@ title: Homepage of PlanExe
 
 ## Get involved
 
-Introduce yourself on the [PlanExe Discord](discord.html) and ask how you can help.
+Introduce yourself on the [PlanExe Discord]({{ '/discord/' | relative_url }}) and ask how you can help.
 
 - Python developer, tweak most of the code.
 - Prompt engineer, make changes to the system prompts for different responses.
