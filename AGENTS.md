@@ -48,7 +48,6 @@ It’s fine if site navigation links to these reports (via `_data/examples.yml`)
 - **Homepage**: `index.md` (uses `layout: planexe_empty_page`)
 - **Examples listing**: `examples.md` (uses `layout: planexe_empty_page`, renders cards from `_data/examples.yml`)
 - **Redirects**: `discord.md`, `github.md`, `use-cases.md` (uses `jekyll-redirect-from`)
-- **Blog**: `blog.md` (uses Minima `layout: home`)
 
 ## Local dev
 
