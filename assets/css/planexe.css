@@ -168,7 +168,6 @@ a:hover {
   border-bottom: var(--px-hairline) solid var(--px-border);
   background: var(--px-topbar-bg);
   backdrop-filter: none;
-  box-shadow: 0 var(--px-hairline) 0 var(--px-border), 0 8px 22px rgba(16, 24, 40, 0.06);
   height: var(--px-topbar-h);
 }
 
