@@ -40,11 +40,17 @@
               {% assign href = parts[0] %}
               {% assign label = parts[1] %}
               {% assign href_rel = href | relative_url %}
+              {% assign item_class = "" %}
+              {% if label == "GitHub" %}
+                {% assign item_class = " px-nav-item-github" %}
+              {% elsif label == "Discord" %}
+                {% assign item_class = " px-nav-item-discord" %}
+              {% endif %}
               {% assign is_active = false %}
               {% if current_url == href_rel %}
                 {% assign is_active = true %}
               {% endif %}
-              <li class="px-nav-item">
+              <li class="px-nav-item{{ item_class }}">
                 <a class="px-nav-link{% if is_active %} is-active{% endif %}" href="{{ href_rel }}">{{ label }}</a>
               </li>
             {% endfor %}
@@ -58,11 +64,17 @@
               {% assign href = parts[0] %}
               {% assign label = parts[1] %}
               {% assign href_rel = href | relative_url %}
+              {% assign item_class = "" %}
+              {% if label == "GitHub" %}
+                {% assign item_class = " px-nav-item-github" %}
+              {% elsif label == "Discord" %}
+                {% assign item_class = " px-nav-item-discord" %}
+              {% endif %}
               {% assign is_active = false %}
               {% if current_url == href_rel %}
                 {% assign is_active = true %}
               {% endif %}
-              <li class="px-nav-item">
+              <li class="px-nav-item{{ item_class }}">
                 <a class="px-nav-link{% if is_active %} is-active{% endif %}" href="{{ href_rel }}">{{ label }}</a>
               </li>
             {% endfor %}
@@ -70,7 +82,10 @@
         </nav>
 
         <div class="px-topbar-actions">
-          <a class="px-button px-button-primary" href="https://app.mach-ai.com/planexe_early_access">Try PlanExe</a>
+          <a class="px-button px-button-primary" href="https://app.mach-ai.com/planexe_early_access">
+            <span class="px-cta-label-long">Try PlanExe</span>
+            <span class="px-cta-label-short">Try it</span>
+          </a>
           <button class="px-theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme">
             <span class="px-theme-toggle-icon" aria-hidden="true"></span>
           </button>

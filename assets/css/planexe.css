@@ -742,20 +742,56 @@ a:hover {
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   :root {
-    --px-topbar-h: 96px;
+    --px-topbar-h: 64px;
   }
   .px-topbar-inner {
     height: auto;
     padding: 10px 0;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    gap: 8px;
   }
   .px-nav {
-    width: 100%;
+    order: 0;
+    width: auto;
     overflow-x: auto;
     padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  .px-nav::-webkit-scrollbar {
+    display: none;
   }
   .px-nav-spacer {
-    flex: 0 0 12px;
+    display: none;
+  }
+  .px-nav-list {
+    flex-wrap: nowrap;
+  }
+  .px-brand {
+    order: 0;
+  }
+  .px-topbar-actions {
+    order: 0;
+    margin-left: auto;
+  }
+}
+
+.px-cta-label-short {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .px-brand-mark {
+    display: none;
+  }
+  .px-nav-item-github,
+  .px-nav-item-discord {
+    display: none;
+  }
+  .px-cta-label-long {
+    display: none;
+  }
+  .px-cta-label-short {
+    display: inline;
   }
 }
 
