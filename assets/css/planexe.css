@@ -372,6 +372,14 @@ a:hover {
   letter-spacing: -0.03em;
 }
 
+.post-header {
+  margin-top: 0;
+}
+
+.post-title {
+  margin: 0 0 8px;
+}
+
 .px-page-meta,
 .px-page-subtitle {
   margin: 0;
