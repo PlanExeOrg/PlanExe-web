@@ -13,7 +13,11 @@
     <header class="px-topbar">
       <div class="px-topbar-inner">
         <div class="px-brand">
-          <a class="px-brand-link" href="{{ '/' | relative_url }}">
+          {% assign brand_active = false %}
+          {% if current_url == '/' | relative_url %}
+            {% assign brand_active = true %}
+          {% endif %}
+          <a class="px-brand-link{% if brand_active %} is-active{% endif %}" href="{{ '/' | relative_url }}">
             <span class="px-brand-mark" aria-hidden="true">
               <img class="px-brand-logo" src="{{ '/android-chrome-512x512.png' | relative_url }}" alt="" />
             </span>
@@ -23,7 +27,6 @@
 
         <nav class="px-nav" aria-label="Primary">
           {% assign nav_left = "" | split: "" %}
-          {% assign nav_left = nav_left | push: "/|Home" %}
           {% assign nav_left = nav_left | push: "/examples/|Examples" %}
 
           {% assign nav_right = "" | split: "" %}

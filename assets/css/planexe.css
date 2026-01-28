@@ -186,6 +186,7 @@ a:hover {
   gap: 10px;
   padding: 8px 6px;
   border-radius: 10px;
+  position: relative;
 }
 .px-brand-link:hover {
   text-decoration: none;
@@ -214,9 +215,24 @@ a:hover {
 }
 
 .px-brand-text {
-  font-weight: 850;
+  font-weight: 700;
+  font-size: 0.95rem;
   letter-spacing: -0.02em;
   color: var(--px-text);
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+
+.px-brand-link.is-active .px-brand-text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--px-primary);
 }
 
 .px-nav {
