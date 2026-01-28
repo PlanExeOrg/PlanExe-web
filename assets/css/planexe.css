@@ -795,6 +795,14 @@ a:hover {
   }
 }
 
+@media (max-width: 550px) {
+  .px-article {
+    border: none;
+    padding: 0;
+    background: transparent;
+  }
+}
+
 @media (max-width: 768px) {
   .examples-card {
     flex-direction: row;
