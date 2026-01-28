@@ -343,7 +343,7 @@ a:hover {
 
 .px-theme-toggle-icon::before {
   content: "◐";
-  font-size: 16px;
+  font-size: 22px;
   line-height: 1;
 }
 
