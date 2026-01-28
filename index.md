@@ -24,8 +24,21 @@ title: Homepage of PlanExe
 
 ## How to use it
 
-- If you are not a developer. <a class="planexe-cta-button" href="https://app.mach-ai.com/planexe_early_access">Try PlanExe live <span class="planexe-cta-arrow">→</span></a>
-- If you are a developer, you can install PlanExe on your own computer.
+<div class="planexe-split">
+  <div class="planexe-split-panel">
+    <h3>New users</h3>
+    <p>Type in your idea and read the generated plan. The clearer your description, the better the plan.</p>
+    <div class="planexe-cta-block">
+      <a class="px-button px-button-primary" href="https://app.mach-ai.com/planexe_early_access">Try PlanExe</a>
+      <div class="planexe-cta-helper">Create 1 plan for free. Additional plans are paid.</div>
+    </div>
+  </div>
+  <div class="planexe-split-panel">
+    <h3>Advanced users</h3>
+    <p>Install and run PlanExe locally by following the GitHub instructions.</p>
+    <p><a href="https://github.com/PlanExeOrg/PlanExe">github.com/PlanExeOrg/PlanExe</a></p>
+  </div>
+</div>
 
 ## Example plan
 
