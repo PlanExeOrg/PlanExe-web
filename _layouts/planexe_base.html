@@ -8,13 +8,14 @@
   </head>
   <body class="px-body">
     {% assign current_url = page.url | relative_url %}
+    {% assign home_url = '/' | relative_url %}
     <a class="px-skip-link" href="#content">Skip to content</a>
 
     <header class="px-topbar">
       <div class="px-topbar-inner">
         <div class="px-brand">
           {% assign brand_active = false %}
-          {% if current_url == '/' | relative_url %}
+          {% if current_url == home_url %}
             {% assign brand_active = true %}
           {% endif %}
           <a class="px-brand-link{% if brand_active %} is-active{% endif %}" href="{{ '/' | relative_url }}">
