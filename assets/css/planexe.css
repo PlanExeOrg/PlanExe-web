@@ -760,9 +760,6 @@ a:hover {
   .px-nav::-webkit-scrollbar {
     display: none;
   }
-  .px-nav-spacer {
-    display: none;
-  }
   .px-nav-list {
     flex-wrap: nowrap;
   }
@@ -785,6 +782,9 @@ a:hover {
   }
   .px-nav-item-github,
   .px-nav-item-discord {
+    display: none;
+  }
+  .px-nav-spacer {
     display: none;
   }
   .px-cta-label-long {
