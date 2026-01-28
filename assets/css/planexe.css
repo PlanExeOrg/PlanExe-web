@@ -809,6 +809,10 @@ a:hover {
     padding: 0;
     background: transparent;
   }
+  .px-footer {
+    border-top: 1px solid var(--px-border);
+    padding-top: 22px;
+  }
 }
 
 @media (max-width: 768px) {
