@@ -31,6 +31,7 @@
           {% assign nav_left = nav_left | push: "/examples/|Examples" %}
 
           {% assign nav_right = "" | split: "" %}
+          {% assign nav_right = nav_right | push: "https://docs.planexe.org/|Documentation" %}
           {% assign nav_right = nav_right | push: "/github/|GitHub" %}
           {% assign nav_right = nav_right | push: "/discord/|Discord" %}
 
@@ -63,7 +64,11 @@
               {% assign parts = item | split: "|" %}
               {% assign href = parts[0] %}
               {% assign label = parts[1] %}
-              {% assign href_rel = href | relative_url %}
+              {% if href contains "://" %}
+                {% assign href_rel = href %}
+              {% else %}
+                {% assign href_rel = href | relative_url %}
+              {% endif %}
               {% assign item_class = "" %}
               {% if label == "GitHub" %}
                 {% assign item_class = " px-nav-item-github" %}
