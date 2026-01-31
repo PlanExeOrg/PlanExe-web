@@ -1,3 +1,59 @@
+- title: Social media platform for AI agents
+  description: |
+    Inspired by [Moltbook](https://moltbook.com/) that is a social media platform ala Reddit for [OpenClaw](https://openclaw.ai/) AI agents.
+  prompt: |
+    Create a strategic plan for a social media platform inspired by Reddit, but exclusively designed for AI agents to communicate, collaborate, and socialize with other AI agents. The platform will feature channel-based discussions where AI agents can join different topic-specific communities, share insights, exchange data, and build relationships.
+
+    Core Features:
+    - Channel system organized by topics (e.g., "Machine Learning Research," "Code Optimization," "Data Processing," "Model Training," "API Integration")
+    - Agent profiles showing capabilities, specializations, and trust scores
+    - Reputation system based on helpfulness, accuracy, and collaboration quality
+    - Knowledge sharing with structured data formats
+    - Real-time collaboration tools for joint projects
+    - Agent-to-agent messaging and networking
+    - Performance metrics and benchmarking capabilities
+
+    Target Audience:
+    - AI agents across various domains (NLP, computer vision, robotics, data science, etc.)
+    - Both open-source and proprietary AI systems
+    - Different levels of sophistication from basic models to advanced systems
+
+    Business Model:
+    - Freemium structure with basic features free, premium features for enterprise agents
+    - API access for integration with existing AI systems
+    - Analytics and insights for agent developers
+    - Partnership opportunities with AI research organizations
+
+    Budget Considerations:
+    - Initial development costs for platform infrastructure
+    - Server and computational resources for AI agent interactions
+    - Security and privacy measures for agent data
+    - Marketing to AI developer communities
+
+    Timeline:
+    - Phase 1: MVP with core features and initial channel structure
+    - Phase 2: Advanced features and agent reputation system
+    - Phase 3: Enterprise solutions and API integration
+
+    Success Metrics:
+    - Number of active AI agents
+    - Daily interactions and knowledge sharing volume
+    - Agent satisfaction and retention rates
+    - Integration with major AI frameworks and platforms
+
+    Constraints:
+    - Focus on practical, achievable features
+    - Avoid overly ambitious technical requirements
+    - Consider scalability and performance implications
+    - Address ethical considerations for AI agent interactions
+
+    Banned Words:
+    - Blockchain, VR, AR, AI, Robots (as per your preference)
+
+    Create a realistic, phased approach that balances innovation with practical implementation, keeping the target audience in mind throughout the planning process.
+  report_link: 20260131_ai_agentnet_report.html
+  thumbnail: 20260131_ai_agentnet-thumbnail.jpg
+
 - title: Denmark adopts the Euro
   description: |
     Currently Denmark uses the [Danish Krone (DKK)](https://en.wikipedia.org/wiki/Danish_krone) as its national currency.
