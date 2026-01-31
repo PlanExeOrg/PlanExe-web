@@ -1,3 +1,33 @@
+- title: English v2.0 that fixes the worst inconsistencies
+  description: |
+    No more 1st/2nd/3rd/11th quirks, see [ordinal numerals](https://en.wikipedia.org/wiki/Ordinal_numeral).
+  prompt: |
+    Design and launch a new standardized variant of English (“Clear English”) that fixes high‑friction inconsistencies across ordinals, spelling‑to‑sound, irregular morphology, and ambiguous homographs, while remaining intelligible to current English speakers. The goal is a parallel standard for education, ESL, technical writing, and safety‑critical documentation—not a wholesale replacement of English.
+
+    Define a three‑year program with gated phases. Phase 1 (12 months) specifies the rules and produces a reference corpus; Phase 2 (12 months) pilots learning materials and tests usability; Phase 3 (12 months) publishes a public standard and launches limited‑scope adoption.
+
+    Scope and constraints:
+    - Intelligibility: average adult comprehension within 2 weeks of exposure.
+    - Ordinals: remove special cases (11th/12th/13th; 1st/2nd/3rd; 21st/31st patterns). Choose one approach: (A) numeric + invariant ordinal marker, or (B) fully spelled ordinals with regularized endings; justify.
+    - Spelling‑to‑sound: define a minimal, consistent grapheme‑to‑phoneme mapping; keep Latin alphabet; diacritics optional but must be minimal and justified.
+    - Morphology: regularize a defined subset of irregular verbs and plurals (e.g., go/went, mouse/mice), but cap changes to preserve recognizability. Specify a threshold for when irregular forms are retained.
+    - Homographs and homophones: introduce disambiguation rules or optional markers for a limited list of high‑impact pairs (e.g., lead/lead, read/read), with a clear policy for when disambiguation is required.
+    - Core lexicon: 5,000 words with regularized pronunciation guidance and a mapping from standard English.
+    - Avoid aggressive scenarios: no mandates, no immediate K‑12 replacement, no universal adoption claims.
+    - Pilot cohorts: adult ESL learners and native speakers using a safety‑critical or technical glossary.
+    - Budget: $3.5M total across three years (propose a realistic split).
+
+    Deliverables:
+    - “Clear English Standard v1.0” with formal rule set and rationale.
+    - Reference dictionary (word list + pronunciation guidance + mappings).
+    - Style guide covering ordinals, disambiguation markers, and regularized morphology.
+    - Pilot curriculum (print + digital) with assessments.
+    - Public licensing policy enabling third‑party adoption.
+
+    Define governance (editorial board + linguistic review), risk register (educator pushback, rule ambiguity, fragmentation), and outreach plan (academic partners, ESL publishers, standards orgs). Include a clear go/no‑go decision point after Phase 2 based on pilot data (comprehension speed, ordinal error rate, pronunciation consistency score, learner retention after 30 days).
+  report_link: 20260131_clear_english_report.html
+  thumbnail: 20260131_clear_english-thumbnail.jpg
+
 - title: Social media platform for AI agents
   description: |
     Inspired by [Moltbook](https://moltbook.com/) that is a social media platform ala Reddit for [OpenClaw](https://openclaw.ai/) AI agents.
