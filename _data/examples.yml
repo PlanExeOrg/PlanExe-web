@@ -1,3 +1,45 @@
+- title: Yellowstone volcano evacuation
+  description: |
+    Inspired by the [Supervulcano](https://en.wikipedia.org/wiki/Supervolcano_(film)) 2005 movie.
+  prompt: |
+    **Context & Scenario**
+    Create a comprehensive strategic response plan for a "Red Warning" volcanic event at the [Yellowstone Caldera](https://en.wikipedia.org/wiki/Yellowstone_Caldera). USGS sensors have confirmed rapid, unprecedented ground uplift (>20cm in 6 hours) at the Norris Geyser Basin and significant seismic swarm activity (Mag 4.5+ tremors) indicating magma ascension to shallow depths. A phreatic (steam) explosion has already compromised a section of the Grand Loop Road. A VEI-6 or higher eruption is modeled as "Scenario Alpha" with a 40% probability within the next 72 hours.
+
+    **Core Mission**
+    The primary objective is the preservation of life through the immediate evacuation of the "Zone Zero" (Park Interior) and "Zone One" (100km radius), followed by continuity of operations for regional infrastructure under heavy ashfall conditions.
+
+    **Detailed Requirements & Constraints**
+
+    1.  **Phase 1: Zero-Hour Evacuation (T+0 to T+6 Hours)**
+        *   **Target:** Evacuate approximately 35,000 tourists and 800 park staff from inside the park boundaries.
+        *   **Constraint:** The South Entrance road (US-89/191/287) is blocked by a landslide triggered by tremors. Traffic must be rerouted north and west.
+        *   **Action:** Detail the traffic control plan using "contraflow" (using all lanes for outbound traffic) on US-191 and US-20 towards West Yellowstone and US-89 towards Gardiner.
+        *   **Assets:** Deploy National Park Service LE Rangers and request immediate Wyoming Highway Patrol assistance to clear bottlenecks.
+
+    2.  **Phase 2: The Kill Zone & Ashfall (T+6 to T+24 Hours)**
+        *   **Scope:** Expand evacuation to "Zone One" communities including West Yellowstone (MT), Gardiner (MT), and Cody (WY).
+        *   **Aviation:** Immediate indefinite grounding of all commercial and private aviation in FAA sectors ZLC (Salt Lake) and ZSE (Seattle) due to silicate ash ingestion risks.
+        *   **Shelter:** Establish mass casualty and refugee intake centers at safe distances: Boseman, MT (Field Report) and Idaho Falls, ID (Bonneville HS).
+
+    3.  **Command & Control (C2)**
+        *   **Structure:** Establish a Unified Command (UC) at the FEMA Region VIII Regional Response Coordination Center (RRCC) in Denver.
+        *   **Jurisdiction:** Explicitly define the transfer of authority from NPS (Federal Land) to State Governors once evacuees cross park boundaries to avoid "turf wars."
+        *   **Comms:** Plan for the failure of local cell towers due to ash/tremors. Activation of FEMA IPAWS for emergency broadcasting and deployment of National Guard signal corps for comms bridging.
+
+    4.  **Logistics & Life Support**
+        *   **Water:** Ashfall will contaminate open reservoirs. Mobilize bottled water convoys from Salt Lake City within 12 hours.
+        *   **Medical:** Pre-stage respiratory protection (N95 minimum) for 100,000 people. Prepare for mass respiratory distress cases at regional hospitals.
+        *   **Security:** Deploy National Guard to enforce the exclusion zone perimeter and prevent looting in evacuated towns.
+
+    5.  **Contingencies (The "What Ifs")**
+        *   **Scenario Beta:** If the eruption escalates to VEI-7 (Supereruption), the evacuation zone must expand to 500km immediately. Include a trigger point for this decision.
+        *   **Grid Failure:** Plan for widespread power outages caused by ash-induced flashovers on transmission lines. Prioritize generator fuel for hospitals and comms centers.
+
+    **Output Format**
+    Please provide the plan with an Executive Summary, a Phased Gantt Chart (hourly for the first 24h), a Risk Register focusing on logistical bottlenecks, and a Resource Allocation Matrix. Avoid generic advice; be specific about routes (US-191, I-90), towns, and agencies (USGS, FEMA, NPS).
+  report_link: 20260201_yellowstone_evacuation_report.html
+  thumbnail: 20260201_yellowstone_evacuation-thumbnail.jpg
+
 - title: English v2.0 that fixes the worst inconsistencies
   description: |
     No more 1st/2nd/3rd/11th quirks, see [ordinal numerals](https://en.wikipedia.org/wiki/Ordinal_numeral).
