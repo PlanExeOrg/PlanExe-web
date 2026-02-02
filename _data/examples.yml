@@ -1,3 +1,83 @@
+- title: Heatwave resilience
+  description: |
+    Prevent [heatwave](https://en.wikipedia.org/wiki/Heat_wave)-related death and serious illness.
+  prompt: |
+    Design a realistic, operationally grounded 12-month program to reduce heatwave-related mortality and serious illness in a mid-sized European city (population 150k–400k). The plan must prioritize vulnerable groups (65+, people with chronic cardiovascular/respiratory disease, people living alone, top-floor flats/poor insulation, outdoor workers, unhoused people, and recent migrants with limited access to services). Assume climate change is already increasing the frequency of multi-day heat events with hot nights.
+
+    Location: Pick a specific, plausible EU city (not a capital) and state why it’s a good pilot site (demographics, housing stock, existing municipal assets).
+    Budget: €3.5M total for 12 months, staged as €2.0M initial funding + €1.5M released at month 4 only if gates are met.
+    Goal: Demonstrably reduce heat-related harm during the coming summer season without requiring major construction projects.
+
+    Constraints / realism requirements
+    - Do not assume new legislation passes quickly; work within normal municipal powers.
+    - Do not assume perfect data sharing; design for GDPR constraints and limited access to health records.
+    - Do not rely on “apps” as the primary solution; assume many vulnerable residents are not smartphone users.
+    - Do not assume unlimited staffing; provide a staffing plan that could actually be hired or contracted.
+    - Avoid the most aggressive scenario; start with a practical pilot footprint and expand only after early success.
+    - Banned words: blockchain, NFT, VR, AR, “fully automated”, “AI-driven diagnosis”.
+
+    Scope (must include all)
+    1. Triggering and governance
+      - Define heat alert levels (e.g., forecast thresholds for daytime highs and night-time lows).
+      - Establish an incident-command style structure: who declares an alert, who owns operations, who owns comms, who owns partner coordination.
+      - Provide a communications cadence (daily situation report, partner briefings, public updates).
+
+    2. Cooling access & transport
+      - Create a network of “cooling centers” using existing assets (libraries, community centers, malls, churches, sports halls).
+      - Specify hours, capacity assumptions, staffing, and security considerations.
+      - Design transport support for mobility-limited residents (contracts with taxi/transport providers, volunteer drivers, or paratransit).
+      - Define accessibility requirements (wheelchair access, quiet rooms, water, toilets).
+
+    3. Outreach to high-risk residents
+      - A GDPR-compliant approach to identifying and contacting high-risk residents:
+        - Use opt-in registries, GP/pharmacy partnerships, social services lists, housing associations, and NGO networks.
+        - Include a “no wrong door” enrollment mechanism (phone line, in-person at centers).
+      - Design a “phone-tree + door-knock” protocol with scripts, escalation rules, and safety for outreach staff.
+      - Provide guidance for multilingual communication.
+
+    4. Home-level interventions (fast + cheap)
+      - Deploy a targeted package for the highest-risk homes (e.g., exterior shading kits, reflective blinds, window fans where safe, hydration supplies, thermometer/hygrometer, simple guidance).
+      - Include procurement, distribution, and basic installation support (handyperson service).
+      - Address top-floor flats and social housing as priority segments; define the selection rubric.
+
+    5. Health system coordination
+      - Integrate with hospitals, emergency services, and primary care:
+        - Define a minimal data loop that is legal and useful (aggregate signals, not sensitive personal records).
+        - Define “heat illness escalation” guidelines for call centers and outreach workers.
+      - Include a plan to protect healthcare capacity (e.g., proactive check-ins to prevent emergencies).
+
+    6. Worker protection
+      - A practical plan for outdoor municipal workers and contractors (adjusted schedules, mandatory breaks, water, shaded rest points).
+      - A recommended guidance package for private employers (non-binding but strongly promoted).
+
+    7. Public communications
+      - Pre-season campaign + heat-event messaging templates.
+      - Channels that actually reach vulnerable people: radio, flyers, pharmacy posters, door hangers, SMS (opt-in), faith/community leaders.
+      - Counter misinformation and unsafe advice (e.g., alcohol, incorrect fan use in extreme heat).
+
+    Gates (explicit go/no-go)
+    - Month 2 readiness gate: cooling centers contracted + staffed; transport contract signed; phone line operational; outreach training completed; procurement orders placed.
+    - Month 4 scale gate (releases €1.5M): demonstrate operational performance via drills and early-season heat days:
+      - 80% of planned cooling-center hours delivered
+      - outreach contact success rate ≥ 60% for enrolled high-risk residents
+      - average time-to-transport under 45 minutes during alert days
+      - after-action report completed with corrective actions closed
+
+    Metrics (define baselines and measurement plan)
+    - Primary outcomes (pick realistic proxies): heat-related EMS calls, ED visits, mortality (with attribution caveats), and a city “excess mortality” estimate.
+    - Operational KPIs: center utilization, transport requests served, outreach attempts/success, home-intervention installations completed, multilingual coverage.
+    - Equity metrics: coverage by neighborhood deprivation index, age bands, and housing type.
+
+    Deliverables (end of month 12)
+    - A repeatable Heat Response Playbook (SOPs, checklists, scripts, procurement lists, partner MOUs).
+    - A cost model for scaling city-wide and to other EU cities.
+    - A data & evaluation report with limitations clearly stated.
+    - A recommended Year-2 roadmap (what to expand, what to stop).
+
+    Write the plan in a way that a municipality could execute immediately: clear owners, timelines, procurement approach, staffing counts, and risk register (including reputational risk, GDPR risk, volunteer safety, and extreme-event surge).
+  report_link: 20260202_heatwave_resilience_report.html
+  thumbnail: 20260202_heatwave_resilience-thumbnail.jpg
+
 - title: Save the Exabytes Before They Rot
   description: |
     Between 1950 and 2000 we wrote exabytes of history onto magnetic tape, film reels, and punch cards—and most of it is sitting in basements and vaults, quietly degrading. Within 10–30 years much of that [digital preservation](https://en.wikipedia.org/wiki/Digital_preservation) window will close for good. This plan deploys mobile, containerized digitization units that bring the factory to the archive: no shipping fragile media, no single bottleneck—just fleets of climate-controlled rigs parking at institutions worldwide, running vintage tape decks and film scanners with robotic loaders and AI signal cleanup, then moving on. The goal isn’t nostalgia; it’s a last-chance salvage of the 20th century before the media turns to dust.
