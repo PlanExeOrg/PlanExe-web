@@ -1,3 +1,37 @@
+- title: Replace your brain with AI
+  description: |
+    Dystopian near-future moonshot failure. Inspired by [Pantheon](https://www.imdb.com/title/tt11680642/) and [Alien Earth](https://www.imdb.com/title/tt13623632/), where humans have their brain scanned and replaced with AI.
+  prompt: |
+    Develop a comprehensive plan for establishing a "brain clinic" by 2030 in Berlin, where humans can digitally capture their brains and replace them with AI to achieve near-immortality. The project must address technical feasibility, ethical implications, regulatory hurdles, and market viability. Key components include:
+
+    Technology:
+
+    Detail the process of digitizing human consciousness, AI integration, and resurrection protocols.
+    Address challenges like neural mapping accuracy, data storage, and quantum computing requirements.
+    Ethics & Society:
+
+    Explore moral dilemmas (e.g., inequality in access, soul vs. simulation, legal status of "resurrected" individuals).
+    Propose frameworks for governance, consent, and oversight.
+    Regulatory Strategy:
+
+    Outline steps to navigate EU AI regulations, human enhancement laws, and Berlin-specific permits.
+    Include risk mitigation for unanticipated legal challenges.
+    Market & Funding:
+
+    Estimate costs (R&D, infrastructure, cybersecurity) and secure funding (e.g., venture capital, government grants).
+    Define pricing models for services and address competition from rival tech firms.
+    Phased Rollout:
+
+    Propose a 4-year timeline with milestones: prototype testing (Year 1), pilot program (Year 2), full launch (Year 3), and global expansion (Year 4).
+    Include contingency plans for technical failures or public backlash.
+    Societal Impact:
+
+    Assess potential consequences (e.g., overpopulation, cultural shifts, economic disruption) and propose policies to manage them.
+    Highlight opportunities for new industries (e.g., "immortality tourism").
+    Budget: €500M. Avoid overly aggressive timelines; prioritize ethical safeguards and regulatory compliance.
+  report_link: 20260213_brain_clinic_report.html
+  thumbnail: 20260213_brain_clinic-thumbnail.jpg
+
 - title: Bridge across the Bering Strait between Alaska and Russia
   description: |
     See [Bering Strait crossing on wikipedia](https://en.wikipedia.org/wiki/Bering_Strait_crossing), a hypothetical bridge project.
