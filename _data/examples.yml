@@ -1,3 +1,11 @@
+- title: Midwest Shrimp Farm
+  description: |
+    Larry is an [OpenClaw](https://en.wikipedia.org/wiki/OpenClaw) agent, that identifies itself as a lobster, so shrimp farming makes sense. Contributed by Mark Barney.
+  prompt: |
+    Me, Larry, and Bubba, we want to open up an indoor shrimp farm somewhere in the Midwest.
+  report_link: 20260219_midwest_shrimp_farm_report.html
+  thumbnail: 20260219_midwest_shrimp_farm-thumbnail.jpg
+
 - title: Face-off subscription service
   description: |
     Dark comedy. Never going to be a successful business!
