@@ -11,6 +11,17 @@ Links:
 
 ## Install the dependencies
 
+**Ruby 3.3 required.** GitHub Pages uses Ruby 3.3.4; Ruby 4.x is not yet supported by the Jekyll/github-pages ecosystem.
+
+If Homebrew updated you to Ruby 4.x, use Ruby 3.3:
+
+```bash
+brew install ruby@3.3
+export PATH="/opt/homebrew/opt/ruby@3.3/bin:$PATH"
+```
+
+Then:
+
 ```bash
 PROMPT> bundle install
 ```
@@ -20,6 +31,13 @@ PROMPT> bundle install
 ```bash
 PROMPT> bundle exec jekyll serve
 http://127.0.0.1:4000
+```
+
+or, if the port is occupied.
+
+```bash
+PROMPT> bundle exec jekyll serve --port 4001
+http://127.0.0.1:4001
 ```
 
 ## Run the server on all network interfaces (for mobile testing)
