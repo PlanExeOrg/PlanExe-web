@@ -29,5 +29,8 @@ author:
   name: Simon Strandgaard
   email: neoneye@gmail.com
 
+include:
+  - .well-known
+
 exclude:
   - README.md
