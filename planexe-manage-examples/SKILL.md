@@ -81,10 +81,36 @@ The `upsert_plan/` directory contains `convert_images.py` (requires Python 3.9+ 
 
 This directory is the central workspace for all plan processing. It contains:
 - `input/` — Drop zone for the original PlanExe zip file and image file for the thumbnail
-- `output/` — Where `convert_images.py` writes processed images
-- `convert_images.py` — Image conversion script
+- `output/` — Where processed files are written (modified zip, converted images)
+- `process_plan_zip.py` — **Zip processing script** (stdlib only, no dependencies). Handles unzip, GA injection, prompt/title extraction, and re-zip in one step.
+- `convert_images.py` — Image conversion script (requires Pillow)
 
-Check `upsert_plan/input/` first when the user says they have a new plan. The original zip is deleted from this directory after processing — only the modified zip (with GA) goes into the repo root.
+### Using process_plan_zip.py
+
+Place a PlanExe zip in `upsert_plan/input/` and run:
+```bash
+cd <repo_root>/upsert_plan
+python3 process_plan_zip.py
+```
+
+The script:
+1. Finds the single `.zip` in `input/`
+2. Extracts the prompt from `001-2-plan.txt` (strips wrapper lines)
+3. Injects Google Analytics into `030-report.html` after `</title>` (replaces existing GA if present)
+4. Extracts the title from the `<title>` tag
+5. Writes a modified zip to `output/` (preserves original zip structure)
+
+Output to stdout (parseable):
+```
+TITLE: EuroLens Platform
+PROMPT_START
+Build and launch an open-source...
+PROMPT_END
+```
+
+Status messages go to stderr, so `TITLE`/`PROMPT` can be captured cleanly.
+
+Check `upsert_plan/input/` first when the user says they have a new plan. The original zip stays in `input/` — the modified zip goes to `output/`.
 
 ## Workflow: Add a new plan
 
@@ -96,74 +122,45 @@ Check `upsert_plan/input/` for the zip and image files. If they're not there, as
 
 Then execute these steps:
 
-### Step 1: Determine the plan name and extract
-
-First, check the zip structure to see if it has a wrapper directory or flat files:
+### Step 1: Run process_plan_zip.py
 
 ```bash
-unzip -l <repo_root>/upsert_plan/input/<zip_file> | head -10
+cd <repo_root>/upsert_plan
+python3 process_plan_zip.py
 ```
 
-**If the zip has a wrapper directory** (first entry is `YYYYMMDD_name/`):
-```bash
-unzip -o <repo_root>/upsert_plan/input/<zip_file> -d <repo_root>/upsert_plan/input/
-```
-Confirm the directory name follows the `YYYYMMDD_descriptive_name` convention. Rename after extraction if needed.
+This handles unzip, GA injection, prompt extraction, and re-zip in one step. Capture the stdout output — it contains the TITLE and PROMPT.
 
-**If the zip has flat files** (no wrapper directory — common when the zip filename is a UUID):
-```bash
-# Extract to a temporary directory first
-unzip -o <repo_root>/upsert_plan/input/<zip_file> -d <repo_root>/upsert_plan/input/_extracted/
-```
-Then derive the canonical plan name:
-1. Read `_extracted/001-1-start_time.json` to get the date → `YYYYMMDD`
-2. Read the `<title>` tag from `_extracted/030-report.html` to get the descriptive name
-3. Convert to lowercase_with_underscores (e.g. "EuroLens Platform" → `eurolens_platform`)
-4. Combine: `YYYYMMDD_descriptive_name`
-5. Rename: `mv _extracted/ YYYYMMDD_descriptive_name/`
+The modified zip is written to `upsert_plan/output/`.
 
-Confirm the derived name with the user before proceeding.
+### Step 2: Determine the plan name
 
-### Step 2: Inject Google Analytics into the report
+Use the TITLE from step 1 and the date from inside the zip (`001-1-start_time.json`) to derive `YYYYMMDD_descriptive_name`:
+1. Convert the title to lowercase_with_underscores (e.g. "EuroLens Platform" → `eurolens_platform`)
+2. Combine with the date prefix: `YYYYMMDD_descriptive_name`
+3. Confirm the name with the user.
 
-Read `upsert_plan/input/YYYYMMDD_descriptive_name/030-report.html` and insert the GA snippet immediately after the `</title>` closing tag. Use the Edit tool to find the closing `</title>` and insert the snippet right after it:
+### Step 3: Move output files to repo root
 
-```html
-</title>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2F6NE7JWTR"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-2F6NE7JWTR');
-</script>
-```
-
-### Step 3: Extract the prompt
-
-Read `upsert_plan/input/YYYYMMDD_descriptive_name/001-2-plan.txt`, strip the `Plan:\n` prefix and the `\nToday's date:\n...` suffix (and any trailing date/metadata lines). The remaining text is the prompt for the YAML entry.
-
-### Step 4: Create the modified zip
-
-Re-zip the directory (now containing the GA-injected report) and place it in the repo root. Then copy the modified report to the repo root as well.
+Rename the output zip and extract the report:
 
 ```bash
-cd <repo_root>/upsert_plan/input/
-zip -r <repo_root>/YYYYMMDD_descriptive_name.zip YYYYMMDD_descriptive_name/
-cp YYYYMMDD_descriptive_name/030-report.html <repo_root>/YYYYMMDD_descriptive_name_report.html
+mv <repo_root>/upsert_plan/output/<zip_name>.zip <repo_root>/YYYYMMDD_descriptive_name.zip
+# Extract just the report from the new zip
+unzip -o -j <repo_root>/YYYYMMDD_descriptive_name.zip "*/030-report.html" -d /tmp/
+mv /tmp/030-report.html <repo_root>/YYYYMMDD_descriptive_name_report.html
 ```
 
-### Step 5: Clean up working files
+### Step 4: Clean up
 
-Delete the original zip (without GA), the extracted directory, and any other temp files from `upsert_plan/input/`. Keep the `.gitkeep`.
+Delete the original zip from `upsert_plan/input/` and any remaining files from `upsert_plan/output/`. Keep the `.gitkeep` files.
 
 ```bash
 rm <repo_root>/upsert_plan/input/<original_zip_file>
-rm -rf <repo_root>/upsert_plan/input/YYYYMMDD_descriptive_name/
-# Also remove the image after processing (step 6)
+rm -f <repo_root>/upsert_plan/output/*
 ```
 
-### Step 6: Process the image
+### Step 5: Process the image
 
 The image file should already be in `upsert_plan/input/`. Rename it to match the plan name before running the converter.
 
@@ -189,13 +186,13 @@ rm <repo_root>/upsert_plan/output/*
 
 If the image is not a JPEG, the converter handles conversion automatically.
 
-### Step 7: Add the YAML entry
+### Step 6: Add the YAML entry
 
 Prepend a new entry to the top of `_data/examples.yml`. Use the Edit tool to insert before the first `- title:` line.
 
-The prompt text goes under `prompt: |` with 4-space indentation. Preserve the original paragraph breaks. Make sure there's proper YAML escaping — the `|` block scalar handles most special characters, but double-check for trailing whitespace issues.
+Use the PROMPT captured from step 1 stdout. The prompt text goes under `prompt: |` with 4-space indentation. Preserve the original paragraph breaks. Make sure there's proper YAML escaping — the `|` block scalar handles most special characters, but double-check for trailing whitespace issues.
 
-### Step 8: Verify locally
+### Step 7: Verify locally
 
 After all files are in place, suggest the user run `bundle exec jekyll serve` to preview. The new plan should appear as the first card in the examples gallery.
 
@@ -210,17 +207,17 @@ Check `upsert_plan/input/` for the new zip file. If it's not there, ask the user
 
 Then execute:
 
-### Step 1: Unzip and inject Google Analytics
+### Step 1: Run process_plan_zip.py
 
-Same as "add new plan" steps 2–3: unzip inside `upsert_plan/input/` and inject the GA snippet into `030-report.html` after the `</title>` tag.
+Same as "add new plan" step 1. This handles GA injection, prompt/title extraction, and creates the modified zip in `upsert_plan/output/`.
 
-### Step 2: Re-zip and replace files
+### Step 2: Replace files in repo root
 
-Create the modified zip (with GA) and overwrite the existing zip in the repo root. Copy the modified `030-report.html` to overwrite the existing `_report.html` file.
+Move the output zip to overwrite the existing zip in the repo root. Extract and replace the `_report.html` file.
 
 ### Step 3: Clean up
 
-Delete the original zip and extracted directory from `upsert_plan/input/`. Keep the `.gitkeep`.
+Delete the original zip from `upsert_plan/input/` and clear `upsert_plan/output/`. Keep the `.gitkeep` files.
 
 ### Step 4: Update the prompt (if changed)
 
