@@ -50,6 +50,22 @@ The PlanExe zip contains a folder named `YYYYMMDD_descriptive_name/` with key fi
 - `030-report.html` — The rendered HTML report to display on the site.
 - Various JSON files (analysis artifacts, not needed for the website).
 
+### Google Analytics injection
+
+The original zip from PlanExe does **not** include Google Analytics. Before the zip is stored in the repo, the GA snippet must be injected into `030-report.html`. Insert this snippet immediately after the `<title>...</title>` tag:
+
+```html
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2F6NE7JWTR"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-2F6NE7JWTR');
+</script>
+```
+
+The zip stored in the repo is always the **modified** version with GA included — the original zip without GA is deleted after processing.
+
 ### Image processing
 
 The repo includes `image_converter/convert_images.py` (requires Python 3.9+ and Pillow) which generates two JPEG variants from a source image:
@@ -68,35 +84,58 @@ Then execute these steps:
 
 ### Step 1: Determine the plan name
 
-Extract the folder name from inside the zip. This is the canonical `YYYYMMDD_descriptive_name` used for all files.
+Extract the folder name from inside the zip. This is the canonical `YYYYMMDD_descriptive_name` used for all files. Confirm the directory name looks correct (follows `YYYYMMDD_descriptive_name` convention). If it needs renaming, do so after extraction.
 
 ```bash
 # The first entry that's a directory tells you the name
 unzip -l <zip_path> | head -5
 ```
 
-### Step 2: Copy zip to repo root
+### Step 2: Unzip to a working directory
 
 ```bash
-cp <zip_path> <repo_root>/YYYYMMDD_descriptive_name.zip
+unzip -o <zip_path> -d /tmp/planexe_work/
 ```
 
-### Step 3: Extract the HTML report
+### Step 3: Inject Google Analytics into the report
 
-```bash
-unzip -o -j <zip_path> "YYYYMMDD_descriptive_name/030-report.html" -d /tmp/
-cp /tmp/030-report.html <repo_root>/YYYYMMDD_descriptive_name_report.html
+Read `/tmp/planexe_work/YYYYMMDD_descriptive_name/030-report.html` and insert the GA snippet immediately after the `<title>...</title>` tag. Use the Edit tool to find the closing `</title>` and insert the snippet right after it:
+
+```html
+</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2F6NE7JWTR"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-2F6NE7JWTR');
+</script>
 ```
 
 ### Step 4: Extract the prompt
 
+Read `/tmp/planexe_work/YYYYMMDD_descriptive_name/001-2-plan.txt`, strip the `Plan:\n` prefix and the `\nToday's date:\n...` suffix (and any trailing date/metadata lines). The remaining text is the prompt for the YAML entry.
+
+### Step 5: Create the modified zip
+
+Re-zip the directory (now containing the GA-injected report) and place it in the repo root. Then copy the modified report to the repo root as well.
+
 ```bash
-unzip -o -j <zip_path> "YYYYMMDD_descriptive_name/001-2-plan.txt" -d /tmp/
+cd /tmp/planexe_work/
+zip -r <repo_root>/YYYYMMDD_descriptive_name.zip YYYYMMDD_descriptive_name/
+cp YYYYMMDD_descriptive_name/030-report.html <repo_root>/YYYYMMDD_descriptive_name_report.html
 ```
 
-Read `/tmp/001-2-plan.txt`, strip the `Plan:\n` prefix and the `\nToday's date:\n...` suffix (and any trailing date/metadata lines). The remaining text is the prompt for the YAML entry.
+### Step 6: Clean up working files
 
-### Step 5: Process the image
+Delete the original zip (the one without GA) and the temporary extraction directory.
+
+```bash
+rm <original_zip_path>  # only if it was outside the repo root
+rm -rf /tmp/planexe_work/
+```
+
+### Step 7: Process the image
 
 ```bash
 # Clear the input directory and copy the new image
@@ -117,13 +156,13 @@ cp output/YYYYMMDD_descriptive_name-thumbnail.jpg <repo_root>/
 
 If the image is not a JPEG, the converter handles conversion automatically.
 
-### Step 6: Add the YAML entry
+### Step 8: Add the YAML entry
 
 Prepend a new entry to the top of `_data/examples.yml`. Use the Edit tool to insert before the first `- title:` line.
 
 The prompt text goes under `prompt: |` with 4-space indentation. Preserve the original paragraph breaks. Make sure there's proper YAML escaping — the `|` block scalar handles most special characters, but double-check for trailing whitespace issues.
 
-### Step 7: Verify locally
+### Step 9: Verify locally
 
 After all files are in place, suggest the user run `bundle exec jekyll serve` to preview. The new plan should appear as the first card in the examples gallery.
 
@@ -137,19 +176,23 @@ Ask the user for:
 
 Then execute:
 
-### Step 1: Replace the zip
+### Step 1: Unzip and inject Google Analytics
 
-Overwrite the existing zip in the repo root.
+Same as "add new plan" steps 2–3: unzip to a working directory and inject the GA snippet into `030-report.html` after the `</title>` tag.
 
-### Step 2: Extract and replace the HTML report
+### Step 2: Re-zip and replace files
 
-Same extraction as "add new plan" step 3, overwriting the existing `_report.html` file.
+Create the modified zip (with GA) and overwrite the existing zip in the repo root. Copy the modified `030-report.html` to overwrite the existing `_report.html` file.
 
-### Step 3: Update the prompt (if changed)
+### Step 3: Clean up
+
+Delete the temporary extraction directory.
+
+### Step 4: Update the prompt (if changed)
 
 Extract `001-2-plan.txt` from the new zip. Compare with the existing prompt in `_data/examples.yml`. If different, update the YAML entry using the Edit tool. Show the user the diff before applying.
 
-### Step 4: Update images (if provided)
+### Step 5: Update images (if provided)
 
 If the user provides a new image, process it through `image_converter/` and replace the existing `-big.jpg` and `-thumbnail.jpg` files.
 
@@ -157,7 +200,7 @@ If the user provides a new image, process it through `image_converter/` and repl
 
 - **Commit messages**: Use "Example plan added" for new plans, "improved plan" for updates. These are the established patterns in the repo history.
 - **YAML ordering**: Newest plans go at the top of `examples.yml`.
-- **Don't modify report HTML**: The `_report.html` files are generated artifacts. Never edit their content — just replace them wholesale from the zip.
+- **Report HTML modification**: The only modification to `030-report.html` is injecting the Google Analytics snippet after `</title>`. Never make other content changes to report files.
 - **Date prefix is stable**: When improving a plan, the `YYYYMMDD` prefix stays the same even if the report was regenerated months later. The date reflects when the plan was originally created.
 - **Clean up temp files**: Remove any files from `/tmp/` and `image_converter/input/` + `image_converter/output/` after processing.
 - **description field**: Some entries have it, some don't. It's used for extra context like linking to the inspiration source. If the user doesn't specify one, omit it.
