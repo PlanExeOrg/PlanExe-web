@@ -73,17 +73,18 @@ The zip stored in the repo is always the **modified** version with GA included �
 
 ### Image processing
 
-The repo includes `image_converter/convert_images.py` (requires Python 3.9+ and Pillow) which generates two JPEG variants from a source image:
-- `*-big.jpg`: max dimension 1024px, ≤300KB
-- `*-thumbnail.jpg`: fixed width 256px, proportional height
+The `upsert_plan/` directory contains `convert_images.py` (requires Python 3.9+ and Pillow) which generates two JPEG variants from a source image placed in `upsert_plan/input/`:
+- `*-big.jpg`: max dimension 1024px, ≤300KB → written to `upsert_plan/output/`
+- `*-thumbnail.jpg`: fixed width 256px, proportional height → written to `upsert_plan/output/`
 
-## Input staging directory
+## The upsert_plan/ directory
 
-The user places files for processing in `upsert_plan/input/` inside the repo root. This is the drop zone for:
-- The original PlanExe zip file
-- The image file for the thumbnail
+This directory is the central workspace for all plan processing. It contains:
+- `input/` — Drop zone for the original PlanExe zip file and image file for the thumbnail
+- `output/` — Where `convert_images.py` writes processed images
+- `convert_images.py` — Image conversion script
 
-Check this directory first when the user says they have a new plan. The original zip is deleted from this directory after processing — only the modified zip (with GA) goes into the repo root.
+Check `upsert_plan/input/` first when the user says they have a new plan. The original zip is deleted from this directory after processing — only the modified zip (with GA) goes into the repo root.
 
 ## Workflow: Add a new plan
 
@@ -164,13 +165,14 @@ rm -rf <repo_root>/upsert_plan/input/YYYYMMDD_descriptive_name/
 
 ### Step 6: Process the image
 
+The image file should already be in `upsert_plan/input/`. Rename it to match the plan name before running the converter.
+
 ```bash
-# Clear the image_converter input directory and copy the new image
-rm -f <repo_root>/image_converter/input/*
-cp <repo_root>/upsert_plan/input/<image_file> <repo_root>/image_converter/input/YYYYMMDD_descriptive_name.jpg
+# Rename the image to match the plan name
+mv <repo_root>/upsert_plan/input/<image_file> <repo_root>/upsert_plan/input/YYYYMMDD_descriptive_name.jpg
 
 # Run the converter (ensure venv + pillow are available)
-cd <repo_root>/image_converter
+cd <repo_root>/upsert_plan
 python3 -m venv .venv 2>/dev/null
 source .venv/bin/activate
 pip install pillow -q
@@ -180,8 +182,9 @@ python3 convert_images.py
 cp output/YYYYMMDD_descriptive_name-big.jpg <repo_root>/
 cp output/YYYYMMDD_descriptive_name-thumbnail.jpg <repo_root>/
 
-# Clean up the image from upsert_plan/input/
-rm <repo_root>/upsert_plan/input/<image_file>
+# Clean up input and output
+rm <repo_root>/upsert_plan/input/YYYYMMDD_descriptive_name.jpg
+rm <repo_root>/upsert_plan/output/*
 ```
 
 If the image is not a JPEG, the converter handles conversion automatically.
@@ -225,7 +228,7 @@ Extract `001-2-plan.txt` from the new zip. Compare with the existing prompt in `
 
 ### Step 5: Update images (if provided)
 
-If the user provides a new image, process it through `image_converter/` and replace the existing `-big.jpg` and `-thumbnail.jpg` files.
+If the user provides a new image, place it in `upsert_plan/input/`, process it through `convert_images.py`, and replace the existing `-big.jpg` and `-thumbnail.jpg` files in the repo root.
 
 ## Important conventions
 
@@ -233,5 +236,5 @@ If the user provides a new image, process it through `image_converter/` and repl
 - **YAML ordering**: Newest plans go at the top of `examples.yml`.
 - **Report HTML modification**: The only modification to `030-report.html` is injecting the Google Analytics snippet after `</title>`. Never make other content changes to report files.
 - **Date prefix is stable**: When improving a plan, the `YYYYMMDD` prefix stays the same even if the report was regenerated months later. The date reflects when the plan was originally created.
-- **Clean up temp files**: Remove all files from `upsert_plan/input/` (except `.gitkeep`) and `image_converter/input/` + `image_converter/output/` after processing.
+- **Clean up temp files**: Remove all files from `upsert_plan/input/` and `upsert_plan/output/` (except `.gitkeep` in each) after processing.
 - **description field**: Some entries have it, some don't. It's used for extra context like linking to the inspiration source. If the user doesn't specify one, omit it.
