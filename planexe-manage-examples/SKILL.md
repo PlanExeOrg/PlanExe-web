@@ -72,13 +72,21 @@ The repo includes `image_converter/convert_images.py` (requires Python 3.9+ and 
 - `*-big.jpg`: max dimension 1024px, ≤300KB
 - `*-thumbnail.jpg`: fixed width 256px, proportional height
 
+## Input staging directory
+
+The user places files for processing in `upsert_plan/input/` inside the repo root. This is the drop zone for:
+- The original PlanExe zip file
+- The image file for the thumbnail
+
+Check this directory first when the user says they have a new plan. The original zip is deleted from this directory after processing — only the modified zip (with GA) goes into the repo root.
+
 ## Workflow: Add a new plan
 
 Ask the user for:
-1. **Path to the zip file** from PlanExe
-2. **Path to an image file** for the thumbnail (user generates/screenshots this separately)
-3. **Title** for the gallery card
-4. **Description** (optional — ask if they want one, suggest omitting if the title speaks for itself)
+1. **Title** for the gallery card
+2. **Description** (optional — ask if they want one, suggest omitting if the title speaks for itself)
+
+Check `upsert_plan/input/` for the zip and image files. If they're not there, ask the user to place them there (or provide paths).
 
 Then execute these steps:
 
@@ -88,18 +96,20 @@ Extract the folder name from inside the zip. This is the canonical `YYYYMMDD_des
 
 ```bash
 # The first entry that's a directory tells you the name
-unzip -l <zip_path> | head -5
+unzip -l <repo_root>/upsert_plan/input/<zip_file> | head -5
 ```
 
-### Step 2: Unzip to a working directory
+### Step 2: Unzip to the working directory
+
+Unzip in place inside `upsert_plan/input/`. This keeps everything contained.
 
 ```bash
-unzip -o <zip_path> -d /tmp/planexe_work/
+unzip -o <repo_root>/upsert_plan/input/<zip_file> -d <repo_root>/upsert_plan/input/
 ```
 
 ### Step 3: Inject Google Analytics into the report
 
-Read `/tmp/planexe_work/YYYYMMDD_descriptive_name/030-report.html` and insert the GA snippet immediately after the `<title>...</title>` tag. Use the Edit tool to find the closing `</title>` and insert the snippet right after it:
+Read `upsert_plan/input/YYYYMMDD_descriptive_name/030-report.html` and insert the GA snippet immediately after the `<title>...</title>` tag. Use the Edit tool to find the closing `</title>` and insert the snippet right after it:
 
 ```html
 </title>
@@ -114,33 +124,34 @@ gtag('config', 'G-2F6NE7JWTR');
 
 ### Step 4: Extract the prompt
 
-Read `/tmp/planexe_work/YYYYMMDD_descriptive_name/001-2-plan.txt`, strip the `Plan:\n` prefix and the `\nToday's date:\n...` suffix (and any trailing date/metadata lines). The remaining text is the prompt for the YAML entry.
+Read `upsert_plan/input/YYYYMMDD_descriptive_name/001-2-plan.txt`, strip the `Plan:\n` prefix and the `\nToday's date:\n...` suffix (and any trailing date/metadata lines). The remaining text is the prompt for the YAML entry.
 
 ### Step 5: Create the modified zip
 
 Re-zip the directory (now containing the GA-injected report) and place it in the repo root. Then copy the modified report to the repo root as well.
 
 ```bash
-cd /tmp/planexe_work/
+cd <repo_root>/upsert_plan/input/
 zip -r <repo_root>/YYYYMMDD_descriptive_name.zip YYYYMMDD_descriptive_name/
 cp YYYYMMDD_descriptive_name/030-report.html <repo_root>/YYYYMMDD_descriptive_name_report.html
 ```
 
 ### Step 6: Clean up working files
 
-Delete the original zip (the one without GA) and the temporary extraction directory.
+Delete the original zip (without GA), the extracted directory, and any other temp files from `upsert_plan/input/`. Keep the `.gitkeep`.
 
 ```bash
-rm <original_zip_path>  # only if it was outside the repo root
-rm -rf /tmp/planexe_work/
+rm <repo_root>/upsert_plan/input/<original_zip_file>
+rm -rf <repo_root>/upsert_plan/input/YYYYMMDD_descriptive_name/
+# Also remove the image after processing (step 7)
 ```
 
 ### Step 7: Process the image
 
 ```bash
-# Clear the input directory and copy the new image
+# Clear the image_converter input directory and copy the new image
 rm -f <repo_root>/image_converter/input/*
-cp <image_path> <repo_root>/image_converter/input/YYYYMMDD_descriptive_name.jpg
+cp <repo_root>/upsert_plan/input/<image_file> <repo_root>/image_converter/input/YYYYMMDD_descriptive_name.jpg
 
 # Run the converter (ensure venv + pillow are available)
 cd <repo_root>/image_converter
@@ -152,6 +163,9 @@ python3 convert_images.py
 # Move outputs to repo root
 cp output/YYYYMMDD_descriptive_name-big.jpg <repo_root>/
 cp output/YYYYMMDD_descriptive_name-thumbnail.jpg <repo_root>/
+
+# Clean up the image from upsert_plan/input/
+rm <repo_root>/upsert_plan/input/<image_file>
 ```
 
 If the image is not a JPEG, the converter handles conversion automatically.
@@ -170,15 +184,16 @@ After all files are in place, suggest the user run `bundle exec jekyll serve` to
 
 Ask the user for:
 1. **Which plan to update** (by title or filename prefix)
-2. **Path to the new zip file**
-3. Whether the **prompt has changed** (it often gets more detailed in regenerated plans)
-4. Whether a **new image** is needed (usually not — the existing images stay)
+2. Whether the **prompt has changed** (it often gets more detailed in regenerated plans)
+3. Whether a **new image** is needed (usually not — the existing images stay)
+
+Check `upsert_plan/input/` for the new zip file. If it's not there, ask the user to place it there (or provide a path).
 
 Then execute:
 
 ### Step 1: Unzip and inject Google Analytics
 
-Same as "add new plan" steps 2–3: unzip to a working directory and inject the GA snippet into `030-report.html` after the `</title>` tag.
+Same as "add new plan" steps 2–3: unzip inside `upsert_plan/input/` and inject the GA snippet into `030-report.html` after the `</title>` tag.
 
 ### Step 2: Re-zip and replace files
 
@@ -186,7 +201,7 @@ Create the modified zip (with GA) and overwrite the existing zip in the repo roo
 
 ### Step 3: Clean up
 
-Delete the temporary extraction directory.
+Delete the original zip and extracted directory from `upsert_plan/input/`. Keep the `.gitkeep`.
 
 ### Step 4: Update the prompt (if changed)
 
@@ -202,5 +217,5 @@ If the user provides a new image, process it through `image_converter/` and repl
 - **YAML ordering**: Newest plans go at the top of `examples.yml`.
 - **Report HTML modification**: The only modification to `030-report.html` is injecting the Google Analytics snippet after `</title>`. Never make other content changes to report files.
 - **Date prefix is stable**: When improving a plan, the `YYYYMMDD` prefix stays the same even if the report was regenerated months later. The date reflects when the plan was originally created.
-- **Clean up temp files**: Remove any files from `/tmp/` and `image_converter/input/` + `image_converter/output/` after processing.
+- **Clean up temp files**: Remove all files from `upsert_plan/input/` (except `.gitkeep`) and `image_converter/input/` + `image_converter/output/` after processing.
 - **description field**: Some entries have it, some don't. It's used for extra context like linking to the inspiration source. If the user doesn't specify one, omit it.
