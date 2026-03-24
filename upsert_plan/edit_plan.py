@@ -115,9 +115,30 @@ def split_entries(yml_text: str) -> list[str]:
     return entries
 
 
+def yaml_quote_title(title: str) -> str:
+    """Quote a title for safe YAML output if it contains special characters.
+
+    Titles containing ``: `` (colon-space) or `` #`` (space-hash) or that
+    start with YAML indicator characters need double-quoting so that
+    parsers treat them as plain strings rather than nested mappings or
+    other YAML constructs.
+    """
+    needs_quoting = (
+        ": " in title
+        or " #" in title
+        or title.startswith(tuple("[]{}'\"|>&*!%@`"))
+    )
+    if needs_quoting:
+        # Escape existing double-quotes and backslashes inside the title.
+        escaped = title.replace("\\", "\\\\").replace('"', '\\"')
+        return f'"{escaped}"'
+    return title
+
+
 def set_title(entry: str, new_title: str) -> str:
     """Replace the title line in an entry."""
-    return _TITLE_RE.sub(f"- title: {new_title}", entry, count=1)
+    safe_title = yaml_quote_title(new_title)
+    return _TITLE_RE.sub(f"- title: {safe_title}", entry, count=1)
 
 
 def _find_block_field(entry: str, field_name: str) -> tuple[int, int] | None:

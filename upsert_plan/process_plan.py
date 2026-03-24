@@ -227,14 +227,35 @@ def process_image(
         return created
 
 
+def yaml_quote_title(title: str) -> str:
+    """Quote a title for safe YAML output if it contains special characters.
+
+    Titles containing ``: `` (colon-space) or `` #`` (space-hash) or that
+    start with YAML indicator characters need double-quoting so that
+    parsers treat them as plain strings rather than nested mappings or
+    other YAML constructs.
+    """
+    needs_quoting = (
+        ": " in title
+        or " #" in title
+        or title.startswith(tuple("[]{}'\"|>&*!%@`"))
+    )
+    if needs_quoting:
+        # Escape existing double-quotes and backslashes inside the title.
+        escaped = title.replace("\\", "\\\\").replace('"', '\\"')
+        return f'"{escaped}"'
+    return title
+
+
 def generate_example_yml(title: str, prompt: str, canonical_name: str) -> str:
     """Generate a YAML snippet for ``_data/examples.yml``."""
     # Indent every line of the prompt by 4 spaces for the YAML block scalar.
     indented_prompt = "\n".join(
         f"    {line}" if line.strip() else "" for line in prompt.splitlines()
     )
+    safe_title = yaml_quote_title(title)
     return (
-        f"- title: {title}\n"
+        f"- title: {safe_title}\n"
         f"  description: |\n"
         f"    PLACEHOLDER_DESCRIPTION\n"
         f"  prompt: |\n"
