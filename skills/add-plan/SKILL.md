@@ -1,11 +1,11 @@
 ---
-name: planexe-manage-examples
-description: Manage example plans on the PlanExe-web Jekyll site (planexe.org). Use this skill whenever the user wants to add a new example plan, replace or improve an existing plan, update plan thumbnails or images, or modify entries in the examples gallery. Trigger on mentions of "add plan", "new example", "improve plan", "replace plan", "update plan", "examples.yml", "plan zip", "report HTML", "process the input", "process input", or any reference to managing the planexe.org examples gallery — even if the user just says something like "I have a new plan to add", "this plan needs updating", or "process the input".
+name: add-plan
+description: Add a new example plan to the PlanExe-web Jekyll site (planexe.org). Use this skill whenever the user wants to add a new example plan to the examples gallery. Trigger on mentions of "add plan", "new example", "new plan", "examples.yml", "plan zip", "report HTML", "process the input", "process input", or any reference to adding to the planexe.org examples gallery — even if the user just says something like "I have a new plan to add" or "process the input".
 ---
 
-# Managing Example Plans on PlanExe-web
+# Adding a New Example Plan to PlanExe-web
 
-This skill automates the workflow for adding and updating example plans on the PlanExe-web Jekyll site (planexe.org). The site showcases AI-generated project plans from the PlanExe tool, each displayed as a card in the examples gallery.
+This skill automates the workflow for adding a new example plan on the PlanExe-web Jekyll site (planexe.org). The site showcases AI-generated project plans from the PlanExe tool, each displayed as a card in the examples gallery.
 
 ## What you need to know
 
@@ -87,6 +87,7 @@ This directory is the central workspace for all plan processing. It contains:
 - `upsert_examples_yml.py` — **YAML upsert script**. Updates or prepends `output/example_item.yml` into `_data/examples.yml`. Matches by `report_link` plan name — updates in place if the plan exists, prepends if new.
 - `convert_images.py` — Image conversion script (requires Pillow). Called automatically by `process_plan.py`.
 - `edit_plan.py` — **Plan metadata editor**. Updates title, description, and/or prompt of an existing plan in `_data/examples.yml`. Takes a plan name (or zip filename) and one or more `--title`, `--description`, `--prompt` flags.
+- `clean.py` — **Cleanup script**. Removes all files from `input/` and `output/` except `.gitkeep`.
 
 ### Using process_plan.py
 
@@ -234,8 +235,9 @@ git checkout -- _data/examples.yml
 # 3. Remove any plan files staged in the repo root by the preview
 rm -f YYYYMMDD_name.zip YYYYMMDD_name_report.html YYYYMMDD_name-big.jpg YYYYMMDD_name-thumbnail.jpg
 
-# 4. Clean output
-rm -f upsert_plan/output/*
+# 4. Clean output and input
+cd <repo_root>/upsert_plan
+python3 clean.py
 
 # 5. Verify the repo is clean
 git status
@@ -262,29 +264,15 @@ Then commit with the plan name as the message (e.g. `"20260318_eurolens_platform
 
 ### Step 6: Clean up
 
-Remove processed files from both `input/` and `output/` (preserving `.gitkeep`):
-
 ```bash
 cd <repo_root>/upsert_plan
-rm -f output/*
-rm -f input/*.zip input/*.jpg input/*.jpeg input/*.png input/*.webp
+python3 clean.py
 ```
-
-## Workflow: Replace/improve an existing plan
-
-Ask the user for:
-1. **Which plan to update** (by title or filename prefix)
-2. Whether a **new image** is needed (usually not — the existing images stay)
-
-Place the new zip (and image if needed) in `upsert_plan/input/`.
-
-Follow the same steps as "Add a new plan" — the workflow is identical. `upsert_examples_yml.py` automatically detects whether the plan already exists and updates it in place instead of prepending a duplicate.
 
 ## Important conventions
 
-- **Commit messages**: Use "Example plan added" for new plans, "improved plan" for updates. These are the established patterns in the repo history.
+- **Commit messages**: Use the plan name as the commit message (e.g. `"20260318_eurolens_platform"`).
 - **YAML ordering**: Newest plans go at the top of `examples.yml`.
 - **Report HTML modification**: The only modification to `030-report.html` is injecting the Google Analytics snippet after `</title>`. Never make other content changes to report files.
-- **Date prefix is stable**: When improving a plan, the `YYYYMMDD` prefix stays the same even if the report was regenerated months later. The date reflects when the plan was originally created.
-- **Clean up temp files**: Remove all files from `upsert_plan/input/` and `upsert_plan/output/` (except `.gitkeep` in each) after processing.
+- **Clean up temp files**: Run `clean.py` after processing to remove all files from `input/` and `output/` (except `.gitkeep` in each).
 - **description field**: Some entries have it, some don't. It's used for extra context like linking to the inspiration source. If the user doesn't specify one, omit it.
