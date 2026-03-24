@@ -91,11 +91,16 @@ This directory is the central workspace for all plan processing. It contains:
 
 **Prerequisites:** Place both a PlanExe `.zip` and an image file (`.jpg`, `.jpeg`, `.png`, `.webp`) in `upsert_plan/input/`. The script will refuse to run if either is missing.
 
-**Requires:** Python 3.9+ with Pillow installed (for image conversion). Use the venv:
+**Requires:** Python 3.9+ with Pillow installed (for image conversion). Use the venv python directly (do NOT use `source .venv/bin/activate` — shell state does not persist between Bash calls in Claude Code):
 ```bash
 cd <repo_root>/upsert_plan
-source .venv/bin/activate   # or: python3 -m venv .venv && pip install pillow
-python3 process_plan.py
+.venv/bin/python3 process_plan.py
+```
+
+If the venv is broken or Pillow is missing, recreate it:
+```bash
+cd <repo_root>/upsert_plan
+rm -rf .venv && python3 -m venv .venv && .venv/bin/pip install pillow
 ```
 
 **What it does (in order):**
@@ -158,8 +163,7 @@ Check `upsert_plan/input/` for the zip and image files. If they're not there, as
 
 ```bash
 cd <repo_root>/upsert_plan
-source .venv/bin/activate
-python3 process_plan.py
+.venv/bin/python3 process_plan.py
 ```
 
 This produces all files in `output/`: the modified zip, report HTML, both image variants, and `example_item.yml`.
@@ -170,23 +174,36 @@ The script generates `output/example_item.yml` with `PLACEHOLDER_DESCRIPTION`. P
 
 ### Step 3: Preview locally
 
-Run `preview_plan.py` to preview:
+Run `preview_plan.py` to preview. Since it starts a long-running Jekyll server, run it **in the background** (`run_in_background: true`):
 
 ```bash
 cd <repo_root>/upsert_plan
-python3 preview_plan.py
+.venv/bin/python3 preview_plan.py
+```
+
+If port 4000 is already in use, kill the existing process first:
+```bash
+lsof -ti:4000 | xargs kill 2>/dev/null
 ```
 
 This temporarily stages output files into the repo and opens the examples page. It always prepends from a clean `_data/examples.yml` (backed up and restored on exit). The new plan should appear as the first card.
 
+Wait a few seconds for the server to start, then verify it's running:
+```bash
+curl -s -o /dev/null -w "%{http_code}" http://localhost:4000/examples/
+```
+
 ### Step 4: User decides
 
-Present the user with 3 choices:
-1. **Change description** — edit `output/example_item.yml` with the new description, then re-run `preview_plan.py`. Loop back to this step.
-2. **Commit & push** — proceed to step 5.
-3. **Abort** — discard all changes, clean `output/`, done.
+Present the user with 4 choices:
+1. **Change title** — edit the `title` field in `output/example_item.yml`, then stop the background preview task, and re-run `preview_plan.py`. Loop back to this step.
+2. **Change description** — edit the `description` field in `output/example_item.yml`, then stop the background preview task, and re-run `preview_plan.py`. Loop back to this step.
+3. **Commit & push** — stop the background preview task, then proceed to step 5.
+4. **Abort** — stop the background preview task, discard all changes, clean `output/`, done.
 
-**Critical:** When changing the description, only edit `output/example_item.yml`. Never manually prepend to `_data/examples.yml` — let `preview_plan.py` handle the temporary prepend/revert cycle. This prevents duplicate entries.
+**Critical:** When changing title or description, only edit `output/example_item.yml`. Never manually prepend to `_data/examples.yml` — let `preview_plan.py` handle the temporary prepend/revert cycle. This prevents duplicate entries.
+
+**Critical:** Always stop the background `preview_plan.py` task before re-running it or before committing — this ensures the preview cleanup runs (restoring `_data/examples.yml` and removing temporary files from the repo root).
 
 ### Step 5: Commit & push
 
