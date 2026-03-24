@@ -266,8 +266,13 @@ def main() -> int:
                     arcname = out_prefix + str(file_path.relative_to(root_dir))
                     zf_out.write(file_path, arcname)
 
+        # --- Copy the GA-injected report to the output directory ---
+        out_report_path = output_dir / f"{canonical_name}_report.html"
+        out_report_path.write_text(report_html, encoding="utf-8")
+
     # --- Print results ---
     print(f"Output zip: {out_zip_path}", file=sys.stderr)
+    print(f"Output report: {out_report_path}", file=sys.stderr)
 
     print(f"TITLE: {title}")
     print(f"PLAN_NAME: {canonical_name}")
