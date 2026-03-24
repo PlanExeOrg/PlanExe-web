@@ -55,22 +55,6 @@ Key files inside the zip:
 - `030-report.html` — The rendered HTML report. Its `<title>` tag contains the plan title, useful for deriving the descriptive name portion.
 - Various JSON files (analysis artifacts, not needed for the website).
 
-### Google Analytics injection
-
-The original zip from PlanExe does **not** include Google Analytics. Before the zip is stored in the repo, the GA snippet must be injected into `030-report.html`. Insert this snippet immediately after the `<title>...</title>` tag:
-
-```html
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2F6NE7JWTR"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-2F6NE7JWTR');
-</script>
-```
-
-The zip stored in the repo is always the **modified** version with GA included — the original zip without GA is deleted after processing.
-
 ### Image processing
 
 The `upsert_plan/` directory contains `convert_images.py` (requires Python 3.9+ and Pillow) which generates two JPEG variants from a source image placed in `upsert_plan/input/`:
@@ -273,6 +257,5 @@ python3 clean.py
 
 - **Commit messages**: Use the plan name as the commit message (e.g. `"20260318_eurolens_platform"`).
 - **YAML ordering**: Newest plans go at the top of `examples.yml`.
-- **Report HTML modification**: The only modification to `030-report.html` is injecting the Google Analytics snippet after `</title>`. Never make other content changes to report files.
 - **Clean up temp files**: Run `clean.py` after processing to remove all files from `input/` and `output/` (except `.gitkeep` in each).
 - **description field**: Some entries have it, some don't. It's used for extra context like linking to the inspiration source. If the user doesn't specify one, omit it.

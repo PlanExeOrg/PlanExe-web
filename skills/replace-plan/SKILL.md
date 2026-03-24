@@ -38,20 +38,6 @@ Key files inside the PlanExe zip:
 - `001-1-start_time.json` — Contains `server_iso_utc` with the plan generation timestamp.
 - `030-report.html` — The rendered HTML report. Its `<title>` tag contains the plan title.
 
-### Google Analytics injection
-
-The GA snippet is injected into `030-report.html` automatically by `process_plan.py`. The snippet goes immediately after `</title>`:
-
-```html
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2F6NE7JWTR"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-2F6NE7JWTR');
-</script>
-```
-
 ## The upsert_plan/ directory
 
 Key scripts:
@@ -211,5 +197,4 @@ python3 clean.py
 - **Commit messages**: Use `"improved plan EXISTING_NAME"` for replacements (e.g. `"improved plan 20250627_delhi_water"`).
 - **Name is preserved**: The `YYYYMMDD_descriptive_name` prefix stays the same — this is critical so existing URLs keep working.
 - **Images are preserved**: Unless the user explicitly wants new images, the existing `-big.jpg` and `-thumbnail.jpg` stay.
-- **Report HTML modification**: The only modification to `030-report.html` is injecting the Google Analytics snippet. Never make other content changes.
 - **Clean up temp files**: Run `clean.py` after processing.
