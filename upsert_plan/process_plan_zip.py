@@ -262,16 +262,27 @@ def main() -> int:
         print(f"Input directory not found: {input_dir}", file=sys.stderr)
         return 1
 
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    # 1. Locate the zip.
+    # --- Check prerequisites ---
     try:
         zip_path = find_zip(input_dir)
     except (FileNotFoundError, RuntimeError) as exc:
         print(str(exc), file=sys.stderr)
         return 1
 
-    print(f"Processing: {zip_path.name}", file=sys.stderr)
+    image_path = find_image(input_dir)
+    if image_path is None:
+        exts = ", ".join(sorted(_IMAGE_EXTENSIONS))
+        print(
+            f"No image file found in {input_dir}\n"
+            f"Please place an image ({exts}) alongside the zip.",
+            file=sys.stderr,
+        )
+        return 1
+
+    print(f"Found zip:   {zip_path.name}", file=sys.stderr)
+    print(f"Found image: {image_path.name}", file=sys.stderr)
+
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     # 2. Work inside a temporary directory.
     with tempfile.TemporaryDirectory() as tmp:
@@ -336,15 +347,11 @@ def main() -> int:
         out_report_path = output_dir / f"{canonical_name}_report.html"
         out_report_path.write_text(report_html, encoding="utf-8")
 
-    # --- Process image (if present in input/) ---
-    image_path = find_image(input_dir)
-    if image_path:
-        print(f"Processing image: {image_path.name}", file=sys.stderr)
-        created_images = process_image(image_path, canonical_name, output_dir)
-        for img in created_images:
-            print(f"Output image: {img}", file=sys.stderr)
-    else:
-        print("No image file found in input/ — skipping image processing.", file=sys.stderr)
+    # --- Process image ---
+    print(f"Processing image: {image_path.name}", file=sys.stderr)
+    created_images = process_image(image_path, canonical_name, output_dir)
+    for img in created_images:
+        print(f"Output image: {img}", file=sys.stderr)
 
     # --- Print results ---
     print(f"Output zip: {out_zip_path}", file=sys.stderr)
