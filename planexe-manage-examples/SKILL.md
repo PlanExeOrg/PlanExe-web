@@ -84,6 +84,7 @@ This directory is the central workspace for all plan processing. It contains:
 - `output/` — Where all processed files are written
 - `process_plan.py` — **Main processing script**. Orchestrates everything.
 - `preview_plan.py` — **Local preview script**. Temporarily stages output into the repo, starts Jekyll, opens the browser, and reverts on exit.
+- `upsert_examples_yml.py` — **YAML upsert script**. Updates or prepends `output/example_item.yml` into `_data/examples.yml`. Matches by `report_link` plan name — updates in place if the plan exists, prepends if new.
 - `convert_images.py` — Image conversion script (requires Pillow). Called automatically by `process_plan.py`.
 
 ### Using process_plan.py
@@ -185,17 +186,22 @@ Present the user with 3 choices:
 
 ### Step 5: Commit & push
 
-Move output files to the repo root, prepend `example_item.yml` to `_data/examples.yml` (once, on the clean file), commit, and push:
+Move output files to the repo root and upsert the YAML entry:
 
 ```bash
+cd <repo_root>/upsert_plan
+
 # Move output files to repo root
-mv <repo_root>/upsert_plan/output/YYYYMMDD_name.zip <repo_root>/
-mv <repo_root>/upsert_plan/output/YYYYMMDD_name_report.html <repo_root>/
-mv <repo_root>/upsert_plan/output/YYYYMMDD_name-big.jpg <repo_root>/
-mv <repo_root>/upsert_plan/output/YYYYMMDD_name-thumbnail.jpg <repo_root>/
+mv output/YYYYMMDD_name.zip ../
+mv output/YYYYMMDD_name_report.html ../
+mv output/YYYYMMDD_name-big.jpg ../
+mv output/YYYYMMDD_name-thumbnail.jpg ../
+
+# Upsert the YAML entry (prepends if new, updates in place if existing)
+python3 upsert_examples_yml.py
 ```
 
-Prepend the contents of `output/example_item.yml` to the top of `_data/examples.yml` using the Edit tool. Then commit with the plan name as the message (e.g. `"20260318_eurolens_platform"`) and push.
+Then commit with the plan name as the message (e.g. `"20260318_eurolens_platform"`) and push.
 
 ### Step 6: Clean up
 
@@ -213,21 +219,7 @@ Ask the user for:
 
 Place the new zip (and image if needed) in `upsert_plan/input/`.
 
-### Step 1: Run process_plan.py
-
-Same as "add new plan" step 1. All output files go to `output/`.
-
-### Step 2: Replace files in repo root
-
-Overwrite the existing zip, report HTML, and images (if updated) in the repo root with the files from `output/`.
-
-### Step 3: Update the YAML entry (if prompt changed)
-
-Compare `output/example_item.yml` with the existing entry in `_data/examples.yml`. If the prompt differs, update the YAML entry using the Edit tool. Show the user the diff before applying.
-
-### Step 4: Clean up
-
-Remove processed files from `output/`. Input files stay untouched.
+Follow the same steps as "Add a new plan" — the workflow is identical. `upsert_examples_yml.py` automatically detects whether the plan already exists and updates it in place instead of prepending a duplicate.
 
 ## Important conventions
 
