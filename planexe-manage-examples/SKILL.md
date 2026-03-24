@@ -86,6 +86,7 @@ This directory is the central workspace for all plan processing. It contains:
 - `preview_plan.py` — **Local preview script**. Temporarily stages output into the repo, starts Jekyll, opens the browser, and reverts on exit.
 - `upsert_examples_yml.py` — **YAML upsert script**. Updates or prepends `output/example_item.yml` into `_data/examples.yml`. Matches by `report_link` plan name — updates in place if the plan exists, prepends if new.
 - `convert_images.py` — Image conversion script (requires Pillow). Called automatically by `process_plan.py`.
+- `rename_title.py` — **Title rename script**. Updates the title of an existing plan in `_data/examples.yml`. Takes a plan name (or zip filename) and the new title as arguments.
 
 ### Using process_plan.py
 
@@ -195,15 +196,17 @@ curl -s -o /dev/null -w "%{http_code}" http://localhost:4000/examples/
 
 ### Step 4: User decides
 
+The preview server (Jekyll) live-reloads when files change, so there is no need to restart it between edits.
+
 Present the user with 4 choices:
-1. **Change title** — edit the `title` field in `output/example_item.yml`, then stop the background preview task, and re-run `preview_plan.py`. Loop back to this step.
-2. **Change description** — edit the `description` field in `output/example_item.yml`, then stop the background preview task, and re-run `preview_plan.py`. Loop back to this step.
+1. **Change title** — run `rename_title.py` to update `_data/examples.yml` directly. Jekyll will live-reload the page. Loop back to this step.
+   ```bash
+   cd <repo_root>/upsert_plan
+   python3 rename_title.py YYYYMMDD_name.zip "New Title Here"
+   ```
+2. **Change description** — edit the `description` field directly in `_data/examples.yml`. Jekyll will live-reload the page. Loop back to this step.
 3. **Commit & push** — stop the background preview task, then proceed to step 5.
 4. **Abort** — stop the background preview task, discard all changes, clean `output/`, done.
-
-**Critical:** When changing title or description, only edit `output/example_item.yml`. Never manually prepend to `_data/examples.yml` — let `preview_plan.py` handle the temporary prepend/revert cycle. This prevents duplicate entries.
-
-**Critical:** Always stop the background `preview_plan.py` task before re-running it or before committing — this ensures the preview cleanup runs (restoring `_data/examples.yml` and removing temporary files from the repo root).
 
 ### Step 5: Commit & push
 
