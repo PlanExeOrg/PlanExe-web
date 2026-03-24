@@ -83,6 +83,7 @@ This directory is the central workspace for all plan processing. It contains:
 - `input/` — Drop zone for the original PlanExe zip file and image file for the thumbnail
 - `output/` — Where all processed files are written
 - `process_plan.py` — **Main processing script**. Orchestrates everything.
+- `preview_plan.py` — **Local preview script**. Temporarily stages output into the repo, starts Jekyll, opens the browser, and reverts on exit.
 - `convert_images.py` — Image conversion script (requires Pillow). Called automatically by `process_plan.py`.
 
 ### Using process_plan.py
@@ -124,6 +125,24 @@ PLAN_NAME: 20260318_eurolens_platform
 
 **Important:** The script never modifies or deletes files in `input/`. If something goes wrong, the original files are still there for re-running.
 
+### Using preview_plan.py
+
+After running `process_plan.py`, preview the result locally before committing:
+
+```bash
+cd <repo_root>/upsert_plan
+python3 preview_plan.py
+```
+
+**What it does:**
+1. Copies output files (zip, report, images) into the repo root temporarily
+2. Prepends `example_item.yml` into `_data/examples.yml`
+3. Starts `bundle exec jekyll serve` (using Ruby 3.3 via Homebrew)
+4. Opens `http://localhost:4000/examples/` in the browser
+5. **On Ctrl-C** — reverts everything: removes copied files and restores `examples.yml`
+
+**Note:** Requires Ruby 3.3 installed via Homebrew (`brew install ruby@3.3`) and `bundle install` completed in the repo root. The script sets the Ruby 3.3 PATH automatically.
+
 Check `upsert_plan/input/` first when the user says they have a new plan.
 
 ## Workflow: Add a new plan
@@ -163,7 +182,14 @@ rm -f <repo_root>/upsert_plan/output/*
 
 ### Step 5: Verify locally
 
-Suggest the user run `bundle exec jekyll serve` to preview. The new plan should appear as the first card in the examples gallery.
+Suggest the user run `preview_plan.py` to preview before committing:
+
+```bash
+cd <repo_root>/upsert_plan
+python3 preview_plan.py
+```
+
+This temporarily stages everything, starts Jekyll, and opens the examples page. Ctrl-C reverts all changes. The new plan should appear as the first card in the examples gallery.
 
 ## Workflow: Replace/improve an existing plan
 
