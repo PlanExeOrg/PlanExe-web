@@ -1,6 +1,6 @@
 ---
 name: planexe-manage-examples
-description: Manage example plans on the PlanExe-web Jekyll site (planexe.org). Use this skill whenever the user wants to add a new example plan, replace or improve an existing plan, update plan thumbnails or images, or modify entries in the examples gallery. Trigger on mentions of "add plan", "new example", "improve plan", "replace plan", "update plan", "examples.yml", "plan zip", "report HTML", or any reference to managing the planexe.org examples gallery — even if the user just says something like "I have a new plan to add" or "this plan needs updating".
+description: Manage example plans on the PlanExe-web Jekyll site (planexe.org). Use this skill whenever the user wants to add a new example plan, replace or improve an existing plan, update plan thumbnails or images, or modify entries in the examples gallery. Trigger on mentions of "add plan", "new example", "improve plan", "replace plan", "update plan", "examples.yml", "plan zip", "report HTML", "process the input", "process input", or any reference to managing the planexe.org examples gallery — even if the user just says something like "I have a new plan to add", "this plan needs updating", or "process the input".
 ---
 
 # Managing Example Plans on PlanExe-web
@@ -171,7 +171,7 @@ This produces all files in `output/`: the modified zip, report HTML, both image 
 
 ### Step 2: Ask for a description
 
-The script generates `output/example_item.yml` with `PLACEHOLDER_DESCRIPTION`. Present the user with description options (suggest 3 based on the plan content, plus "No description" to omit the field). Edit **only** `output/example_item.yml` to replace the placeholder — never touch `_data/examples.yml` directly at this stage.
+The script generates `output/example_item.yml` with `PLACEHOLDER_DESCRIPTION`. Ask the user what description they want — suggest 2-3 options based on the plan content, plus "No description" to omit the field, but always allow free text input. Edit **only** `output/example_item.yml` to replace the placeholder — never touch `_data/examples.yml` directly at this stage.
 
 ### Step 3: Preview locally
 
@@ -179,8 +179,10 @@ Run `preview_plan.py` to preview. Since it starts a long-running Jekyll server, 
 
 ```bash
 cd <repo_root>/upsert_plan
-.venv/bin/python3 preview_plan.py
+python3 preview_plan.py
 ```
+
+`preview_plan.py` does not need Pillow, so system `python3` works (unlike `process_plan.py` which requires `.venv/bin/python3`).
 
 If port 4000 is already in use, kill the existing process first:
 ```bash
@@ -198,19 +200,46 @@ curl -s -o /dev/null -w "%{http_code}" http://localhost:4000/examples/
 
 The preview server (Jekyll) live-reloads when files change, so there is no need to restart it between edits.
 
+**Critical — keeping files in sync:** `edit_plan.py` modifies `_data/examples.yml` directly (the preview-staged copy). But when the preview stops, it **reverts** `_data/examples.yml` to the backup. Step 5 uses `output/example_item.yml` (via `upsert_examples_yml.py`) to rebuild the entry. So whenever you change title or description via `edit_plan.py`, you **must also update** `output/example_item.yml` to match — otherwise the committed version will have stale data.
+
 Present the user with 4 choices:
-1. **Change title** — run `edit_plan.py` to update `_data/examples.yml` directly. Jekyll will live-reload the page. Loop back to this step.
+1. **Change title** — run `edit_plan.py` to update the live preview, then also edit `output/example_item.yml` to match. Jekyll will live-reload the page. Loop back to this step.
    ```bash
    cd <repo_root>/upsert_plan
    python3 edit_plan.py YYYYMMDD_name --title "New Title Here"
    ```
-2. **Change description** — run `edit_plan.py` to update `_data/examples.yml` directly. Jekyll will live-reload the page. Loop back to this step.
+   Then also update the `title:` field in `output/example_item.yml`.
+2. **Change description** — ask the user for the text they want (free text, not just multiple choice). Run `edit_plan.py` to update the live preview, then also edit `output/example_item.yml` to match. Jekyll will live-reload the page. Loop back to this step.
    ```bash
    cd <repo_root>/upsert_plan
    python3 edit_plan.py YYYYMMDD_name --description "New description."
    ```
+   Then also update the `description:` field in `output/example_item.yml`.
 3. **Commit & push** — stop the background preview task, then proceed to step 5.
-4. **Abort** — stop the background preview task, discard all changes, clean `output/`, done.
+4. **Abort** — follow the abort procedure below.
+
+**Abort procedure:**
+
+When `preview_plan.py` runs in the background and is killed by signal (as happens from Claude Code), its cleanup handler may not run. Always clean up manually:
+
+```bash
+cd <repo_root>
+
+# 1. Kill any Jekyll server still running on port 4000
+lsof -ti:4000 | xargs kill 2>/dev/null
+
+# 2. Restore _data/examples.yml (preview may have left it modified)
+git checkout -- _data/examples.yml
+
+# 3. Remove any plan files staged in the repo root by the preview
+rm -f YYYYMMDD_name.zip YYYYMMDD_name_report.html YYYYMMDD_name-big.jpg YYYYMMDD_name-thumbnail.jpg
+
+# 4. Clean output
+rm -f upsert_plan/output/*
+
+# 5. Verify the repo is clean
+git status
+```
 
 ### Step 5: Commit & push
 
@@ -233,10 +262,12 @@ Then commit with the plan name as the message (e.g. `"20260318_eurolens_platform
 
 ### Step 6: Clean up
 
-Remove processed files from `output/`. Input files stay untouched.
+Remove processed files from both `input/` and `output/` (preserving `.gitkeep`):
 
 ```bash
-rm -f <repo_root>/upsert_plan/output/*
+cd <repo_root>/upsert_plan
+rm -f output/*
+rm -f input/*.zip input/*.jpg input/*.jpeg input/*.png input/*.webp
 ```
 
 ## Workflow: Replace/improve an existing plan
