@@ -16,6 +16,8 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shutil
+import subprocess
 import sys
 import tempfile
 import unicodedata
@@ -161,6 +163,70 @@ def extract_title(html: str) -> str:
     return m.group(1).strip() if m else ""
 
 
+_IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff", ".webp"}
+
+_CONVERT_IMAGES_SCRIPT = Path(__file__).resolve().parent / "convert_images.py"
+
+
+def find_image(input_dir: Path) -> Path | None:
+    """Return the first image file in *input_dir*, or ``None``."""
+    for p in sorted(input_dir.iterdir()):
+        if p.is_file() and p.suffix.lower() in _IMAGE_EXTENSIONS:
+            return p
+    return None
+
+
+def process_image(
+    image_path: Path, canonical_name: str, output_dir: Path
+) -> list[Path]:
+    """Run ``convert_images.py`` on *image_path* and return output paths.
+
+    The image is copied into a temporary directory with the canonical name so
+    that ``convert_images.py`` produces ``<canonical_name>-big.jpg`` and
+    ``<canonical_name>-thumbnail.jpg``.  The originals in ``input/`` are never
+    modified.
+    """
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp_input = Path(tmp) / "input"
+        tmp_output = Path(tmp) / "output"
+        tmp_input.mkdir()
+        tmp_output.mkdir()
+
+        # Copy with canonical name, preserving the original extension.
+        renamed = tmp_input / f"{canonical_name}{image_path.suffix}"
+        shutil.copy2(image_path, renamed)
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(_CONVERT_IMAGES_SCRIPT),
+                "--input", str(tmp_input),
+                "--output", str(tmp_output),
+            ],
+            capture_output=True,
+            text=True,
+        )
+
+        if result.returncode != 0:
+            print(
+                f"convert_images.py failed:\n{result.stderr}",
+                file=sys.stderr,
+            )
+            return []
+
+        if result.stdout:
+            print(result.stdout, end="", file=sys.stderr)
+
+        # Copy results to the real output directory.
+        created: list[Path] = []
+        for out_file in sorted(tmp_output.iterdir()):
+            dest = output_dir / out_file.name
+            shutil.copy2(out_file, dest)
+            created.append(dest)
+
+        return created
+
+
 def inject_ga(html: str) -> str:
     """Ensure the canonical GA snippet is present after ``</title>``.
 
@@ -269,6 +335,16 @@ def main() -> int:
         # --- Copy the GA-injected report to the output directory ---
         out_report_path = output_dir / f"{canonical_name}_report.html"
         out_report_path.write_text(report_html, encoding="utf-8")
+
+    # --- Process image (if present in input/) ---
+    image_path = find_image(input_dir)
+    if image_path:
+        print(f"Processing image: {image_path.name}", file=sys.stderr)
+        created_images = process_image(image_path, canonical_name, output_dir)
+        for img in created_images:
+            print(f"Output image: {img}", file=sys.stderr)
+    else:
+        print("No image file found in input/ — skipping image processing.", file=sys.stderr)
 
     # --- Print results ---
     print(f"Output zip: {out_zip_path}", file=sys.stderr)
