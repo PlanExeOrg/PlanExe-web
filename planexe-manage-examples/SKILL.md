@@ -86,7 +86,7 @@ This directory is the central workspace for all plan processing. It contains:
 - `preview_plan.py` — **Local preview script**. Temporarily stages output into the repo, starts Jekyll, opens the browser, and reverts on exit.
 - `upsert_examples_yml.py` — **YAML upsert script**. Updates or prepends `output/example_item.yml` into `_data/examples.yml`. Matches by `report_link` plan name — updates in place if the plan exists, prepends if new.
 - `convert_images.py` — Image conversion script (requires Pillow). Called automatically by `process_plan.py`.
-- `rename_title.py` — **Title rename script**. Updates the title of an existing plan in `_data/examples.yml`. Takes a plan name (or zip filename) and the new title as arguments.
+- `edit_plan.py` — **Plan metadata editor**. Updates title, description, and/or prompt of an existing plan in `_data/examples.yml`. Takes a plan name (or zip filename) and one or more `--title`, `--description`, `--prompt` flags.
 
 ### Using process_plan.py
 
@@ -199,12 +199,16 @@ curl -s -o /dev/null -w "%{http_code}" http://localhost:4000/examples/
 The preview server (Jekyll) live-reloads when files change, so there is no need to restart it between edits.
 
 Present the user with 4 choices:
-1. **Change title** — run `rename_title.py` to update `_data/examples.yml` directly. Jekyll will live-reload the page. Loop back to this step.
+1. **Change title** — run `edit_plan.py` to update `_data/examples.yml` directly. Jekyll will live-reload the page. Loop back to this step.
    ```bash
    cd <repo_root>/upsert_plan
-   python3 rename_title.py YYYYMMDD_name.zip "New Title Here"
+   python3 edit_plan.py YYYYMMDD_name --title "New Title Here"
    ```
-2. **Change description** — edit the `description` field directly in `_data/examples.yml`. Jekyll will live-reload the page. Loop back to this step.
+2. **Change description** — run `edit_plan.py` to update `_data/examples.yml` directly. Jekyll will live-reload the page. Loop back to this step.
+   ```bash
+   cd <repo_root>/upsert_plan
+   python3 edit_plan.py YYYYMMDD_name --description "New description."
+   ```
 3. **Commit & push** — stop the background preview task, then proceed to step 5.
 4. **Abort** — stop the background preview task, discard all changes, clean `output/`, done.
 
