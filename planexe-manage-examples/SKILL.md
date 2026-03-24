@@ -82,10 +82,10 @@ The `upsert_plan/` directory contains `convert_images.py` (requires Python 3.9+ 
 This directory is the central workspace for all plan processing. It contains:
 - `input/` — Drop zone for the original PlanExe zip file and image file for the thumbnail
 - `output/` — Where all processed files are written
-- `process_plan_zip.py` — **Main processing script**. Orchestrates everything.
-- `convert_images.py` — Image conversion script (requires Pillow). Called automatically by `process_plan_zip.py`.
+- `process_plan.py` — **Main processing script**. Orchestrates everything.
+- `convert_images.py` — Image conversion script (requires Pillow). Called automatically by `process_plan.py`.
 
-### Using process_plan_zip.py
+### Using process_plan.py
 
 **Prerequisites:** Place both a PlanExe `.zip` and an image file (`.jpg`, `.jpeg`, `.png`, `.webp`) in `upsert_plan/input/`. The script will refuse to run if either is missing.
 
@@ -93,7 +93,7 @@ This directory is the central workspace for all plan processing. It contains:
 ```bash
 cd <repo_root>/upsert_plan
 source .venv/bin/activate   # or: python3 -m venv .venv && pip install pillow
-python3 process_plan_zip.py
+python3 process_plan.py
 ```
 
 **What it does (in order):**
@@ -130,12 +130,12 @@ Check `upsert_plan/input/` first when the user says they have a new plan.
 
 Check `upsert_plan/input/` for the zip and image files. If they're not there, ask the user to place them there.
 
-### Step 1: Run process_plan_zip.py
+### Step 1: Run process_plan.py
 
 ```bash
 cd <repo_root>/upsert_plan
 source .venv/bin/activate
-python3 process_plan_zip.py
+python3 process_plan.py
 ```
 
 This produces all files in `output/`: the modified zip, report HTML, both image variants, and `example_item.yml`.
@@ -173,7 +173,7 @@ Ask the user for:
 
 Place the new zip (and image if needed) in `upsert_plan/input/`.
 
-### Step 1: Run process_plan_zip.py
+### Step 1: Run process_plan.py
 
 Same as "add new plan" step 1. All output files go to `output/`.
 
