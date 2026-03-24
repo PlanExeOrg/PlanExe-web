@@ -14,11 +14,11 @@ The extracted TITLE and PROMPT are printed to stdout in a parseable format.
 from __future__ import annotations
 
 import argparse
-import os
+import json
 import re
-import shutil
 import sys
 import tempfile
+import unicodedata
 import zipfile
 from pathlib import Path
 
@@ -107,6 +107,36 @@ def resolve_member(prefix: str, filename: str) -> str:
     return prefix + filename
 
 
+def extract_date_prefix(start_time_json: str) -> str:
+    """Parse ``001-1-start_time.json`` and return a ``YYYYMMDD`` date string."""
+    data = json.loads(start_time_json)
+    # Prefer server_iso_utc, fall back to server_iso_local.
+    iso_str = data.get("server_iso_utc") or data.get("server_iso_local", "")
+    # Extract just the date portion (first 10 chars: "2026-03-18").
+    date_part = iso_str[:10]
+    return date_part.replace("-", "")
+
+
+def title_to_slug(title: str) -> str:
+    """Convert a title like ``"EuroLens Platform"`` to ``eurolens_platform``."""
+    # Normalize unicode, strip accents.
+    nfkd = unicodedata.normalize("NFKD", title)
+    ascii_text = nfkd.encode("ascii", "ignore").decode("ascii")
+    # Lowercase, replace non-alphanumeric runs with underscore, strip edges.
+    slug = re.sub(r"[^a-z0-9]+", "_", ascii_text.lower()).strip("_")
+    return slug
+
+
+def derive_canonical_name(date_prefix: str, title: str) -> str:
+    """Combine a ``YYYYMMDD`` date prefix with a title slug."""
+    slug = title_to_slug(title)
+    if not date_prefix or not slug:
+        raise ValueError(
+            f"Cannot derive canonical name: date={date_prefix!r}, title={title!r}"
+        )
+    return f"{date_prefix}_{slug}"
+
+
 def extract_prompt(plan_text: str) -> str:
     """Strip the ``Plan:`` prefix and ``Today's date:`` suffix from plan text."""
     # Remove leading "Plan:\n"
@@ -188,17 +218,18 @@ def main() -> int:
         # Resolve key files.
         plan_path = tmp_dir / resolve_member(prefix, "001-2-plan.txt")
         report_path = tmp_dir / resolve_member(prefix, "030-report.html")
+        start_time_path = tmp_dir / resolve_member(prefix, "001-1-start_time.json")
 
         # --- Extract the prompt ---
         if not plan_path.is_file():
-            print(f"Missing {plan_path.name} in zip", file=sys.stderr)
+            print(f"Missing 001-2-plan.txt in zip", file=sys.stderr)
             return 1
 
         prompt = extract_prompt(plan_path.read_text(encoding="utf-8"))
 
         # --- Process the report ---
         if not report_path.is_file():
-            print(f"Missing {report_path.name} in zip", file=sys.stderr)
+            print(f"Missing 030-report.html in zip", file=sys.stderr)
             return 1
 
         report_html = report_path.read_text(encoding="utf-8")
@@ -206,22 +237,40 @@ def main() -> int:
         report_html = inject_ga(report_html)
         report_path.write_text(report_html, encoding="utf-8")
 
+        # --- Derive the canonical name ---
+        if not start_time_path.is_file():
+            print(f"Missing 001-1-start_time.json in zip", file=sys.stderr)
+            return 1
+
+        date_prefix = extract_date_prefix(
+            start_time_path.read_text(encoding="utf-8")
+        )
+
+        try:
+            canonical_name = derive_canonical_name(date_prefix, title)
+        except ValueError as exc:
+            print(str(exc), file=sys.stderr)
+            return 1
+
         # --- Create the output zip ---
-        out_zip_path = output_dir / zip_path.name
+        # The output zip is always named YYYYMMDD_slug.zip and uses that
+        # same name as the wrapper directory inside the zip.
+        out_zip_path = output_dir / f"{canonical_name}.zip"
+        out_prefix = canonical_name + "/"
+
         root_dir = tmp_dir / prefix.rstrip("/") if prefix else tmp_dir
 
         with zipfile.ZipFile(out_zip_path, "w", zipfile.ZIP_DEFLATED) as zf_out:
             for file_path in sorted(root_dir.rglob("*")):
                 if file_path.is_file():
-                    arcname = resolve_member(
-                        prefix, str(file_path.relative_to(root_dir))
-                    )
+                    arcname = out_prefix + str(file_path.relative_to(root_dir))
                     zf_out.write(file_path, arcname)
 
     # --- Print results ---
     print(f"Output zip: {out_zip_path}", file=sys.stderr)
 
     print(f"TITLE: {title}")
+    print(f"PLAN_NAME: {canonical_name}")
     print("PROMPT_START")
     print(prompt)
     print("PROMPT_END")
