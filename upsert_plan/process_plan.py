@@ -65,6 +65,18 @@ def parse_args() -> argparse.Namespace:
         default=Path(__file__).resolve().parent / "output",
         help="Directory to write the processed .zip (default: ./output)",
     )
+    parser.add_argument(
+        "--name",
+        type=str,
+        default=None,
+        help="Override the canonical name (e.g. '20250627_delhi_water') instead of deriving it from the zip contents.",
+    )
+    parser.add_argument(
+        "--skip-images",
+        action="store_true",
+        default=False,
+        help="Skip image processing (no image file required in input).",
+    )
     return parser.parse_args()
 
 
@@ -336,7 +348,7 @@ def main() -> int:
         return 1
 
     image_path = find_image(input_dir)
-    if image_path is None:
+    if image_path is None and not args.skip_images:
         exts = ", ".join(sorted(_IMAGE_EXTENSIONS))
         print(
             f"No image file found in {input_dir}\n"
@@ -346,7 +358,10 @@ def main() -> int:
         return 1
 
     print(f"Found zip:   {zip_path.name}", file=sys.stderr)
-    print(f"Found image: {image_path.name}", file=sys.stderr)
+    if image_path:
+        print(f"Found image: {image_path.name}", file=sys.stderr)
+    elif args.skip_images:
+        print("Skipping image processing (--skip-images)", file=sys.stderr)
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -381,19 +396,23 @@ def main() -> int:
         report_path.write_text(report_html, encoding="utf-8")
 
         # --- Derive the canonical name ---
-        if not start_time_path.is_file():
-            print(f"Missing 001-1-start_time.json in zip", file=sys.stderr)
-            return 1
+        if args.name:
+            canonical_name = args.name
+            print(f"Using overridden name: {canonical_name}", file=sys.stderr)
+        else:
+            if not start_time_path.is_file():
+                print(f"Missing 001-1-start_time.json in zip", file=sys.stderr)
+                return 1
 
-        date_prefix = extract_date_prefix(
-            start_time_path.read_text(encoding="utf-8")
-        )
+            date_prefix = extract_date_prefix(
+                start_time_path.read_text(encoding="utf-8")
+            )
 
-        try:
-            canonical_name = derive_canonical_name(date_prefix, title)
-        except ValueError as exc:
-            print(str(exc), file=sys.stderr)
-            return 1
+            try:
+                canonical_name = derive_canonical_name(date_prefix, title)
+            except ValueError as exc:
+                print(str(exc), file=sys.stderr)
+                return 1
 
         # --- Create the output zip ---
         # The output zip is always named YYYYMMDD_slug.zip and uses that
@@ -414,10 +433,13 @@ def main() -> int:
         out_report_path.write_text(report_html, encoding="utf-8")
 
     # --- Process image ---
-    print(f"Processing image: {image_path.name}", file=sys.stderr)
-    created_images = process_image(image_path, canonical_name, output_dir)
-    for img in created_images:
-        print(f"Output image: {img}", file=sys.stderr)
+    if not args.skip_images and image_path:
+        print(f"Processing image: {image_path.name}", file=sys.stderr)
+        created_images = process_image(image_path, canonical_name, output_dir)
+        for img in created_images:
+            print(f"Output image: {img}", file=sys.stderr)
+    else:
+        print("Image processing skipped.", file=sys.stderr)
 
     # --- Generate example_item.yml ---
     out_yml_path = output_dir / "example_item.yml"

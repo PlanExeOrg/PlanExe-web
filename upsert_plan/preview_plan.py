@@ -48,10 +48,16 @@ def parse_args() -> argparse.Namespace:
         default=JEKYLL_PORT,
         help=f"Jekyll serve port (default: {JEKYLL_PORT})",
     )
+    parser.add_argument(
+        "--skip-images",
+        action="store_true",
+        default=False,
+        help="Skip checking for image files in output (use when replacing a plan and keeping existing images).",
+    )
     return parser.parse_args()
 
 
-def find_output_files(output_dir: Path) -> dict[str, Path]:
+def find_output_files(output_dir: Path, *, skip_images: bool = False) -> dict[str, Path]:
     """Locate the expected output files and return a name->path mapping."""
     files: dict[str, Path] = {}
 
@@ -70,7 +76,10 @@ def find_output_files(output_dir: Path) -> dict[str, Path]:
         elif p.name.endswith("-thumbnail.jpg"):
             files["thumbnail"] = p
 
-    missing = {"zip", "report", "big", "thumbnail"} - files.keys()
+    required = {"zip", "report"}
+    if not skip_images:
+        required |= {"big", "thumbnail"}
+    missing = required - files.keys()
     if missing:
         raise FileNotFoundError(
             f"Missing output files in {output_dir}: {', '.join(sorted(missing))}"
@@ -90,7 +99,7 @@ def main() -> int:
 
     # --- Locate output files ---
     try:
-        files = find_output_files(output_dir)
+        files = find_output_files(output_dir, skip_images=args.skip_images)
     except FileNotFoundError as exc:
         print(str(exc), file=sys.stderr)
         return 1
@@ -114,6 +123,8 @@ def main() -> int:
 
     # --- Copy asset files to repo root ---
     for key in ("zip", "report", "big", "thumbnail"):
+        if key not in files:
+            continue
         src = files[key]
         dest = REPO_ROOT / src.name
         shutil.copy2(src, dest)
