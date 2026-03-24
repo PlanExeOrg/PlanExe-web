@@ -81,151 +81,113 @@ The `upsert_plan/` directory contains `convert_images.py` (requires Python 3.9+ 
 
 This directory is the central workspace for all plan processing. It contains:
 - `input/` — Drop zone for the original PlanExe zip file and image file for the thumbnail
-- `output/` — Where processed files are written (modified zip, converted images)
-- `process_plan_zip.py` — **Zip processing script** (stdlib only, no dependencies). Handles unzip, GA injection, prompt/title extraction, and re-zip in one step.
-- `convert_images.py` — Image conversion script (requires Pillow)
+- `output/` — Where all processed files are written
+- `process_plan_zip.py` — **Main processing script**. Orchestrates everything.
+- `convert_images.py` — Image conversion script (requires Pillow). Called automatically by `process_plan_zip.py`.
 
 ### Using process_plan_zip.py
 
-Place a PlanExe zip in `upsert_plan/input/` and run:
+**Prerequisites:** Place both a PlanExe `.zip` and an image file (`.jpg`, `.jpeg`, `.png`, `.webp`) in `upsert_plan/input/`. The script will refuse to run if either is missing.
+
+**Requires:** Python 3.9+ with Pillow installed (for image conversion). Use the venv:
 ```bash
 cd <repo_root>/upsert_plan
+source .venv/bin/activate   # or: python3 -m venv .venv && pip install pillow
 python3 process_plan_zip.py
 ```
 
-The script:
-1. Finds the single `.zip` in `input/`
-2. Extracts the prompt from `001-2-plan.txt` (strips wrapper lines)
+**What it does (in order):**
+1. Validates that `input/` contains exactly one `.zip` and at least one image file
+2. Extracts the prompt from `001-2-plan.txt` (strips `Plan:` prefix and `Today's date:` suffix)
 3. Injects Google Analytics into `030-report.html` after `</title>` (replaces existing GA if present)
 4. Extracts the title from the `<title>` tag
-5. Writes a modified zip to `output/` (preserves original zip structure)
+5. Derives the canonical name `YYYYMMDD_descriptive_name` from `001-1-start_time.json` (date) and the title (slug)
+6. Creates a modified zip in `output/` named `YYYYMMDD_name.zip` with a matching wrapper directory
+7. Copies the GA-injected report to `output/YYYYMMDD_name_report.html`
+8. Invokes `convert_images.py` to produce `output/YYYYMMDD_name-big.jpg` and `output/YYYYMMDD_name-thumbnail.jpg`
+9. Generates `output/example_item.yml` — a YAML snippet ready to prepend to `_data/examples.yml` (with `PLACEHOLDER_DESCRIPTION` for the user to fill in or remove)
 
-Output to stdout (parseable):
+**Output files in `output/`:**
+```
+YYYYMMDD_name.zip                  # Modified zip with GA injected
+YYYYMMDD_name_report.html          # GA-injected report
+YYYYMMDD_name-big.jpg              # Hero image (max 1024px, ≤300KB)
+YYYYMMDD_name-thumbnail.jpg        # Gallery thumbnail (256px wide)
+example_item.yml                   # YAML snippet for examples.yml
+```
+
+**Stdout output** (parseable — status goes to stderr):
 ```
 TITLE: EuroLens Platform
-PROMPT_START
-Build and launch an open-source...
-PROMPT_END
+PLAN_NAME: 20260318_eurolens_platform
 ```
 
-Status messages go to stderr, so `TITLE`/`PROMPT` can be captured cleanly.
+**Important:** The script never modifies or deletes files in `input/`. If something goes wrong, the original files are still there for re-running.
 
-Check `upsert_plan/input/` first when the user says they have a new plan. The original zip stays in `input/` — the modified zip goes to `output/`.
+Check `upsert_plan/input/` first when the user says they have a new plan.
 
 ## Workflow: Add a new plan
 
-Ask the user for:
-1. **Title** for the gallery card
-2. **Description** (optional — ask if they want one, suggest omitting if the title speaks for itself)
-
-Check `upsert_plan/input/` for the zip and image files. If they're not there, ask the user to place them there (or provide paths).
-
-Then execute these steps:
+Check `upsert_plan/input/` for the zip and image files. If they're not there, ask the user to place them there.
 
 ### Step 1: Run process_plan_zip.py
 
 ```bash
 cd <repo_root>/upsert_plan
+source .venv/bin/activate
 python3 process_plan_zip.py
 ```
 
-This handles unzip, GA injection, prompt extraction, and re-zip in one step. Capture the stdout output — it contains the TITLE and PROMPT.
+This produces all files in `output/`: the modified zip, report HTML, both image variants, and `example_item.yml`.
 
-The modified zip is written to `upsert_plan/output/`.
-
-### Step 2: Determine the plan name
-
-Use the TITLE from step 1 and the date from inside the zip (`001-1-start_time.json`) to derive `YYYYMMDD_descriptive_name`:
-1. Convert the title to lowercase_with_underscores (e.g. "EuroLens Platform" → `eurolens_platform`)
-2. Combine with the date prefix: `YYYYMMDD_descriptive_name`
-3. Confirm the name with the user.
-
-### Step 3: Move output files to repo root
-
-Rename the output zip and extract the report:
+### Step 2: Move output files to repo root
 
 ```bash
-mv <repo_root>/upsert_plan/output/<zip_name>.zip <repo_root>/YYYYMMDD_descriptive_name.zip
-# Extract just the report from the new zip
-unzip -o -j <repo_root>/YYYYMMDD_descriptive_name.zip "*/030-report.html" -d /tmp/
-mv /tmp/030-report.html <repo_root>/YYYYMMDD_descriptive_name_report.html
+mv <repo_root>/upsert_plan/output/YYYYMMDD_name.zip <repo_root>/
+mv <repo_root>/upsert_plan/output/YYYYMMDD_name_report.html <repo_root>/
+mv <repo_root>/upsert_plan/output/YYYYMMDD_name-big.jpg <repo_root>/
+mv <repo_root>/upsert_plan/output/YYYYMMDD_name-thumbnail.jpg <repo_root>/
 ```
+
+### Step 3: Add the YAML entry
+
+The script generates `output/example_item.yml` with `PLACEHOLDER_DESCRIPTION`. Ask the user for a description (or whether to omit it), then prepend the entry to the top of `_data/examples.yml` using the Edit tool. Insert before the first `- title:` line.
 
 ### Step 4: Clean up
 
-Delete the original zip from `upsert_plan/input/` and any remaining files from `upsert_plan/output/`. Keep the `.gitkeep` files.
+Remove processed files from `output/`. Input files stay untouched.
 
 ```bash
-rm <repo_root>/upsert_plan/input/<original_zip_file>
 rm -f <repo_root>/upsert_plan/output/*
 ```
 
-### Step 5: Process the image
+### Step 5: Verify locally
 
-The image file should already be in `upsert_plan/input/`. Rename it to match the plan name before running the converter.
-
-```bash
-# Rename the image to match the plan name
-mv <repo_root>/upsert_plan/input/<image_file> <repo_root>/upsert_plan/input/YYYYMMDD_descriptive_name.jpg
-
-# Run the converter (ensure venv + pillow are available)
-cd <repo_root>/upsert_plan
-python3 -m venv .venv 2>/dev/null
-source .venv/bin/activate
-pip install pillow -q
-python3 convert_images.py
-
-# Move outputs to repo root
-cp output/YYYYMMDD_descriptive_name-big.jpg <repo_root>/
-cp output/YYYYMMDD_descriptive_name-thumbnail.jpg <repo_root>/
-
-# Clean up input and output
-rm <repo_root>/upsert_plan/input/YYYYMMDD_descriptive_name.jpg
-rm <repo_root>/upsert_plan/output/*
-```
-
-If the image is not a JPEG, the converter handles conversion automatically.
-
-### Step 6: Add the YAML entry
-
-Prepend a new entry to the top of `_data/examples.yml`. Use the Edit tool to insert before the first `- title:` line.
-
-Use the PROMPT captured from step 1 stdout. The prompt text goes under `prompt: |` with 4-space indentation. Preserve the original paragraph breaks. Make sure there's proper YAML escaping — the `|` block scalar handles most special characters, but double-check for trailing whitespace issues.
-
-### Step 7: Verify locally
-
-After all files are in place, suggest the user run `bundle exec jekyll serve` to preview. The new plan should appear as the first card in the examples gallery.
+Suggest the user run `bundle exec jekyll serve` to preview. The new plan should appear as the first card in the examples gallery.
 
 ## Workflow: Replace/improve an existing plan
 
 Ask the user for:
 1. **Which plan to update** (by title or filename prefix)
-2. Whether the **prompt has changed** (it often gets more detailed in regenerated plans)
-3. Whether a **new image** is needed (usually not — the existing images stay)
+2. Whether a **new image** is needed (usually not — the existing images stay)
 
-Check `upsert_plan/input/` for the new zip file. If it's not there, ask the user to place it there (or provide a path).
-
-Then execute:
+Place the new zip (and image if needed) in `upsert_plan/input/`.
 
 ### Step 1: Run process_plan_zip.py
 
-Same as "add new plan" step 1. This handles GA injection, prompt/title extraction, and creates the modified zip in `upsert_plan/output/`.
+Same as "add new plan" step 1. All output files go to `output/`.
 
 ### Step 2: Replace files in repo root
 
-Move the output zip to overwrite the existing zip in the repo root. Extract and replace the `_report.html` file.
+Overwrite the existing zip, report HTML, and images (if updated) in the repo root with the files from `output/`.
 
-### Step 3: Clean up
+### Step 3: Update the YAML entry (if prompt changed)
 
-Delete the original zip from `upsert_plan/input/` and clear `upsert_plan/output/`. Keep the `.gitkeep` files.
+Compare `output/example_item.yml` with the existing entry in `_data/examples.yml`. If the prompt differs, update the YAML entry using the Edit tool. Show the user the diff before applying.
 
-### Step 4: Update the prompt (if changed)
+### Step 4: Clean up
 
-Extract `001-2-plan.txt` from the new zip. Compare with the existing prompt in `_data/examples.yml`. If different, update the YAML entry using the Edit tool. Show the user the diff before applying.
-
-### Step 5: Update images (if provided)
-
-If the user provides a new image, place it in `upsert_plan/input/`, process it through `convert_images.py`, and replace the existing `-big.jpg` and `-thumbnail.jpg` files in the repo root.
+Remove processed files from `output/`. Input files stay untouched.
 
 ## Important conventions
 
