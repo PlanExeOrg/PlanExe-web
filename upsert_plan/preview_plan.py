@@ -126,10 +126,17 @@ def main() -> int:
     print("Prepended example_item.yml to _data/examples.yml", file=sys.stderr)
 
     # --- Start Jekyll ---
+    # Ruby 3.3 is required (GitHub Pages doesn't support Ruby 4.x yet).
+    # Homebrew installs it at /opt/homebrew/opt/ruby@3.3/bin.
+    env = dict(__import__("os").environ)
+    ruby33_bin = "/opt/homebrew/opt/ruby@3.3/bin"
+    env["PATH"] = ruby33_bin + ":" + env.get("PATH", "")
+
     print(f"\nStarting Jekyll on port {port}...", file=sys.stderr)
     jekyll = subprocess.Popen(
         ["bundle", "exec", "jekyll", "serve", "--port", str(port)],
         cwd=str(REPO_ROOT),
+        env=env,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         text=True,
