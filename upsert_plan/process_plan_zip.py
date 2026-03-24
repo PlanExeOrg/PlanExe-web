@@ -227,6 +227,23 @@ def process_image(
         return created
 
 
+def generate_example_yml(title: str, prompt: str, canonical_name: str) -> str:
+    """Generate a YAML snippet for ``_data/examples.yml``."""
+    # Indent every line of the prompt by 4 spaces for the YAML block scalar.
+    indented_prompt = "\n".join(
+        f"    {line}" if line.strip() else "" for line in prompt.splitlines()
+    )
+    return (
+        f"- title: {title}\n"
+        f"  description: |\n"
+        f"    PLACEHOLDER_DESCRIPTION\n"
+        f"  prompt: |\n"
+        f"{indented_prompt}\n"
+        f"  report_link: {canonical_name}_report.html\n"
+        f"  thumbnail: {canonical_name}-thumbnail.jpg\n"
+    )
+
+
 def inject_ga(html: str) -> str:
     """Ensure the canonical GA snippet is present after ``</title>``.
 
@@ -353,15 +370,18 @@ def main() -> int:
     for img in created_images:
         print(f"Output image: {img}", file=sys.stderr)
 
+    # --- Generate example_item.yml ---
+    out_yml_path = output_dir / "example_item.yml"
+    yml_content = generate_example_yml(title, prompt, canonical_name)
+    out_yml_path.write_text(yml_content, encoding="utf-8")
+
     # --- Print results ---
-    print(f"Output zip: {out_zip_path}", file=sys.stderr)
+    print(f"Output zip:    {out_zip_path}", file=sys.stderr)
     print(f"Output report: {out_report_path}", file=sys.stderr)
+    print(f"Output yml:    {out_yml_path}", file=sys.stderr)
 
     print(f"TITLE: {title}")
     print(f"PLAN_NAME: {canonical_name}")
-    print("PROMPT_START")
-    print(prompt)
-    print("PROMPT_END")
 
     return 0
 
