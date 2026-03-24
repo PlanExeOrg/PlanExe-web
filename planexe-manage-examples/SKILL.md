@@ -159,37 +159,51 @@ python3 process_plan.py
 
 This produces all files in `output/`: the modified zip, report HTML, both image variants, and `example_item.yml`.
 
-### Step 2: Move output files to repo root
+### Step 2: Ask for a description
 
-```bash
-mv <repo_root>/upsert_plan/output/YYYYMMDD_name.zip <repo_root>/
-mv <repo_root>/upsert_plan/output/YYYYMMDD_name_report.html <repo_root>/
-mv <repo_root>/upsert_plan/output/YYYYMMDD_name-big.jpg <repo_root>/
-mv <repo_root>/upsert_plan/output/YYYYMMDD_name-thumbnail.jpg <repo_root>/
-```
+The script generates `output/example_item.yml` with `PLACEHOLDER_DESCRIPTION`. Present the user with description options (suggest 3 based on the plan content, plus "No description" to omit the field). Edit **only** `output/example_item.yml` to replace the placeholder — never touch `_data/examples.yml` directly at this stage.
 
-### Step 3: Add the YAML entry
+### Step 3: Preview locally
 
-The script generates `output/example_item.yml` with `PLACEHOLDER_DESCRIPTION`. Ask the user for a description (or whether to omit it), then prepend the entry to the top of `_data/examples.yml` using the Edit tool. Insert before the first `- title:` line.
-
-### Step 4: Clean up
-
-Remove processed files from `output/`. Input files stay untouched.
-
-```bash
-rm -f <repo_root>/upsert_plan/output/*
-```
-
-### Step 5: Verify locally
-
-Suggest the user run `preview_plan.py` to preview before committing:
+Run `preview_plan.py` to preview:
 
 ```bash
 cd <repo_root>/upsert_plan
 python3 preview_plan.py
 ```
 
-This temporarily stages everything, starts Jekyll, and opens the examples page. Ctrl-C reverts all changes. The new plan should appear as the first card in the examples gallery.
+This temporarily stages output files into the repo and opens the examples page. It always prepends from a clean `_data/examples.yml` (backed up and restored on exit). The new plan should appear as the first card.
+
+### Step 4: User decides
+
+Present the user with 3 choices:
+1. **Change description** — edit `output/example_item.yml` with the new description, then re-run `preview_plan.py`. Loop back to this step.
+2. **Commit & push** — proceed to step 5.
+3. **Abort** — discard all changes, clean `output/`, done.
+
+**Critical:** When changing the description, only edit `output/example_item.yml`. Never manually prepend to `_data/examples.yml` — let `preview_plan.py` handle the temporary prepend/revert cycle. This prevents duplicate entries.
+
+### Step 5: Commit & push
+
+Move output files to the repo root, prepend `example_item.yml` to `_data/examples.yml` (once, on the clean file), commit, and push:
+
+```bash
+# Move output files to repo root
+mv <repo_root>/upsert_plan/output/YYYYMMDD_name.zip <repo_root>/
+mv <repo_root>/upsert_plan/output/YYYYMMDD_name_report.html <repo_root>/
+mv <repo_root>/upsert_plan/output/YYYYMMDD_name-big.jpg <repo_root>/
+mv <repo_root>/upsert_plan/output/YYYYMMDD_name-thumbnail.jpg <repo_root>/
+```
+
+Prepend the contents of `output/example_item.yml` to the top of `_data/examples.yml` using the Edit tool. Then commit with the plan name as the message (e.g. `"20260318_eurolens_platform"`) and push.
+
+### Step 6: Clean up
+
+Remove processed files from `output/`. Input files stay untouched.
+
+```bash
+rm -f <repo_root>/upsert_plan/output/*
+```
 
 ## Workflow: Replace/improve an existing plan
 
