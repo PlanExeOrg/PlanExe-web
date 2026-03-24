@@ -270,10 +270,38 @@ def inject_ga(html: str) -> str:
 # Main
 # ---------------------------------------------------------------------------
 
+def check_git_branch() -> str | None:
+    """Check that we're on the 'main' branch. Return error message or None."""
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+            capture_output=True,
+            text=True,
+        )
+        if result.returncode != 0:
+            return None  # Not a git repo or git not available — skip check.
+        branch = result.stdout.strip()
+        if branch != "main":
+            return (
+                f"ERROR: Current branch is '{branch}', expected 'main'.\n"
+                f"Input files are placed on the 'main' branch. "
+                f"If you're in a worktree, exit it first."
+            )
+    except FileNotFoundError:
+        pass  # git not installed — skip check.
+    return None
+
+
 def main() -> int:
     args = parse_args()
     input_dir: Path = args.input
     output_dir: Path = args.output
+
+    # --- Check git branch ---
+    branch_error = check_git_branch()
+    if branch_error:
+        print(branch_error, file=sys.stderr)
+        return 1
 
     if not input_dir.is_dir():
         print(f"Input directory not found: {input_dir}", file=sys.stderr)

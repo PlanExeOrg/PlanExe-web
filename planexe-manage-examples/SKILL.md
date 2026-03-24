@@ -146,6 +146,10 @@ python3 preview_plan.py
 
 Check `upsert_plan/input/` first when the user says they have a new plan.
 
+## Important: Branch requirement
+
+The user places input files on the **main** branch. `process_plan.py` will refuse to run if the current branch is not `main`. If you're in a worktree, **ask the user to disable the worktree setting** and start a new session — you cannot switch to `main` from inside a worktree.
+
 ## Workflow: Add a new plan
 
 Check `upsert_plan/input/` for the zip and image files. If they're not there, ask the user to place them there.
