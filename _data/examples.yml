@@ -1078,8 +1078,7 @@
 
 - title: Stop toxic caterpillar outbreak
   prompt: |
-    Eradication of Oak Processionary Caterpillars. It was discovered in Denmark for the first time just under three weeks ago, with around 800 nests found in trees in southeastern Odense. You suffocate from the caterpillar's toxic hairs.
-    Limit the outbreak as quick as possible.
+    Eradication of Oak Processionary Caterpillars. It was discovered in Denmark for the first time just under three weeks ago, with around 800 nests found in trees in southeastern Odense. You suffocate from the caterpillar's toxic hairs. Limit the outbreak as quick as possible.
   report_link: 20250220_opc_eradication_report.html
   thumbnail: 20250220_opc_eradication-thumbnail.jpg
 
