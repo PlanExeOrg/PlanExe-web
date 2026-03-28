@@ -200,7 +200,7 @@ Present the user with 4 choices:
    python3 edit_plan.py YYYYMMDD_name --description "New description."
    ```
    Then also update the `description:` field in `output/example_item.yml`.
-3. **Commit & push** — stop the background preview task, then proceed to step 5.
+3. **Commit & push** — proceed to step 5. Do NOT kill the Jekyll server — the user will close their browser tabs and stop it themselves.
 4. **Abort** — follow the abort procedure below.
 
 **Abort procedure:**
@@ -210,10 +210,7 @@ When `preview_plan.py` runs in the background and is killed by signal (as happen
 ```bash
 cd <repo_root>
 
-# 1. Kill any Jekyll server still running on port 4000
-lsof -ti:4000 | xargs kill 2>/dev/null
-
-# 2. Restore _data/examples.yml (preview may have left it modified)
+# 1. Restore _data/examples.yml (preview may have left it modified)
 git checkout -- _data/examples.yml
 
 # 3. Remove any plan files staged in the repo root by the preview

@@ -138,6 +138,8 @@ Open the browser:
 open http://localhost:4000/examples/
 ```
 
+**IMPORTANT:** Do NOT kill the Jekyll server after the user is done reviewing. Killing the process closes their browser tabs. Leave it running — the user will close tabs and stop the server themselves. It is OK to kill an existing Jekyll process *before* starting a new one (to avoid port conflicts), but never after the user has been reviewing.
+
 ### Step 4: User decides
 
 Present the user with choices:
@@ -153,7 +155,6 @@ Present the user with choices:
 **Abort procedure:**
 ```bash
 cd <repo_root>
-lsof -ti:4000 | xargs kill 2>/dev/null
 cp _data/examples.yml.bak _data/examples.yml
 rm -f _data/examples.yml.bak
 git checkout -- EXISTING_NAME.zip EXISTING_NAME_report.html
