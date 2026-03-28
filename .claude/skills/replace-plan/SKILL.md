@@ -122,23 +122,14 @@ cp upsert_plan/output/EXISTING_NAME_report.html .
 cd upsert_plan
 python3 upsert_examples_yml.py
 
-# Start Jekyll
-cd <repo_root>
-lsof -ti:4000 | xargs kill 2>/dev/null
-LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 PATH="/opt/homebrew/opt/ruby@3.3/bin:$PATH" bundle exec jekyll serve --port 4000 &
+# Start Jekyll and open browser (kills any existing Jekyll first)
+cd <repo_root>/upsert_plan
+python3 start_jekyll.py --plan EXISTING_NAME
 ```
 
-Run the Jekyll command **in the background** (`run_in_background: true`). Wait a few seconds, then verify:
-```bash
-curl -s -o /dev/null -w "%{http_code}" http://localhost:4000/examples/
-```
+Run this command **in the background** (`run_in_background: true`). The script waits for Jekyll to be ready, then opens both the examples gallery and the plan's report page.
 
-Open the browser:
-```bash
-open http://localhost:4000/examples/
-```
-
-**IMPORTANT:** Do NOT kill the Jekyll server after the user is done reviewing. Killing the process closes their browser tabs. Leave it running — the user will close tabs and stop the server themselves. It is OK to kill an existing Jekyll process *before* starting a new one (to avoid port conflicts), but never after the user has been reviewing.
+**IMPORTANT:** Do NOT kill the Jekyll server after the user is done reviewing. Killing the process closes their browser tabs. Leave it running — the user will close tabs and stop the server themselves. If the user explicitly asks to stop Jekyll, use `python3 stop_jekyll.py` (never `lsof` port-based killing, which also kills the browser).
 
 ### Step 4: User decides
 

@@ -169,10 +169,13 @@ python3 preview_plan.py
 
 `preview_plan.py` does not need Pillow, so system `python3` works (unlike `process_plan.py` which requires `.venv/bin/python3`).
 
-If port 4000 is already in use, kill the existing process first:
+If port 4000 is already in use, kill the existing Jekyll process first:
 ```bash
-lsof -ti:4000 | xargs kill 2>/dev/null
+cd <repo_root>/upsert_plan
+python3 stop_jekyll.py
 ```
+
+**IMPORTANT:** Never use `lsof -ti:4000 | xargs kill` — it kills ALL processes connected to that port, including the user's browser. Always use `stop_jekyll.py` instead.
 
 This temporarily stages output files into the repo and opens the examples page. It always prepends from a clean `_data/examples.yml` (backed up and restored on exit). The new plan should appear as the first card.
 
