@@ -1,3 +1,21 @@
+- title: FMD Outbreak in Russia
+  description: |
+    [FMD ("Foot-and-mouth disease")](https://en.wikipedia.org/wiki/Foot-and-mouth_disease) outbreak response under extreme political constraints.
+  prompt: |
+    It is late March 2026 and Novosibirsk Oblast is in crisis. Authorities have declared a state of emergency citing pasteurellosis and rabies, but the scale of the response — mass culling across roughly 170–190 holdings in Bagansky, Kupinsky, Karasuksky, Cherepanovsky, and Ordynsky districts, police checkpoints, export restrictions, and continued farmer resistance — suggests a more serious outbreak, possibly foot-and-mouth disease (FMD), without public confirmation. Official claims of containment are not fully consistent with ongoing culling, expanding controls, and signs of spread.
+
+    Plan the emergency response from the perspective of the Novosibirsk Oblast Veterinary Administration. Assume the real challenge is to deliver an FMD-grade response under Russian political conditions: centralized control, narrative management, pressure to avoid formal FMD acknowledgment, and the need to contain both disease and unrest. Do not assume a transparent Western-style response model.
+
+    Treat farmer resistance as a first-order operational constraint. Smallholders are blocking roads, confronting veterinary and police teams, and accusing authorities of killing healthy animals without credible diagnostics. Compensation is widely distrusted: the announced ₽190 million is likely inadequate if the outbreak expands, payment delays are expected, and perceptions of favoritism toward large holdings are worsening unrest.
+
+    Design three-tier control zones (infected, surveillance, oblast-wide restriction), movement controls on cloven-hoofed animals and animal products, and a response plan that compares three strategies: stamping-out only, ring vaccination plus stamping-out, and politically concealed vaccination. For each, assess epidemiological value, operational feasibility, political risk, and recovery implications. Be explicit about uncertainty: distinguish confirmed facts, assumptions, and inference.
+
+    Address the hardest execution constraints directly: rasputitsa logistics, inadequate veterinary manpower, cold chain reliability, carcass disposal during freeze-thaw, checkpoint enforcement, and milk-supply disruption to Novosibirsk city. Specify what federal reinforcement, mobile diagnostics, compensation mechanisms, feed support, and alternative milk sourcing would be required if the outbreak expands significantly.
+
+    Model two communication paths: continued official denial of FMD versus forced disclosure under domestic or external pressure. Evaluate escalation risks including violent protests, wider trade restrictions, spread to neighboring regions, and exposure of any concealed vaccination program. Crucially, frame your financial planning for this 6–9 month response around the brutal constraints of this political reality rather than an epidemiological ideal. You cannot assume the ₽12–15 billion RUB truly required for fair market compensation and pristine environmental disposal. Instead, provide specific monetary estimates in RUB detailing how funds are allocated under both paths. For the "continued official denial" path, model a restricted overt budget (e.g., capping around ₽2.5 billion RUB) that relies heavily on cost-shifting: prioritizing funds for security forces and checkpoint coercion, quietly bailing out large agro-holdings while starving smallholders of adequate compensation, and executing cheap, hazardous mass-grave disposal, alongside a covert "black budget" (e.g., ~₽1.2 billion RUB) to secretly procure and administer FMD vaccines off the books. Contrast this with the "forced disclosure" path, where the budget must abruptly pivot to cover the massive epidemiological, quarantine, and international trade-containment costs. Provide explicit triggers for budget extensions in both scenarios rather than assuming fast containment.
+  report_link: 20260326_fmd_containment_report.html
+  thumbnail: 20260326_fmd_containment-thumbnail.jpg
+
 - title: Cryosleep Program
   description: |
     Suspended animation is shown in many movies such as [Alien](https://en.wikipedia.org/wiki/Alien_(film)) and [Idiocracy](https://en.wikipedia.org/wiki/Idiocracy).
