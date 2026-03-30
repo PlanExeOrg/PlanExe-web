@@ -6,7 +6,7 @@ title: PlanExe - Agentic Planning Engine
 <header class="post-header planexe-index-header">
 <h1 class="post-title">PlanExe: convert idea to plan</h1>
 <div class="header-description">
-    <p class="subtitle">Executive summary, gantt, risks, swot, budget, premortem, and more — in 15 minutes.</p>
+    <p class="subtitle">Executive summary, gantt, risks, swot, budget, premortem, and more.</p>
 </div>
 <div class="planexe-hero-cta">
     <a class="px-button px-button-primary px-button-hero" href="https://app.mach-ai.com/planexe_early_access">Create your first plan free &nbsp;&rarr;</a>
@@ -38,7 +38,7 @@ title: PlanExe - Agentic Planning Engine
 <div class="px-persona-grid">
   <div class="px-persona-card">
     <h3>Founders & Startups</h3>
-    <p>Stress-test business models and generate investor-grade risk assessments. Know if your idea is viable before burning runway.</p>
+    <p>Stress-test business models and surface risks before they become expensive. Know if your idea is viable before burning runway.</p>
   </div>
   <div class="px-persona-card">
     <h3>Enterprise PMOs</h3>
