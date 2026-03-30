@@ -70,6 +70,7 @@ Most AI tools just agree with you. PlanExe red-teams your plan to find fatal fla
 
 <div class="px-paths-grid">
   <div class="planexe-split-panel">
+    <div class="px-difficulty-badge px-difficulty-beginner">Beginner</div>
     <h3>PlanExe Cloud</h3>
     <p>Managed, fast, zero-setup. Type in your idea and read the generated plan.</p>
     <div class="planexe-cta-block">
@@ -78,6 +79,7 @@ Most AI tools just agree with you. PlanExe red-teams your plan to find fatal fla
     </div>
   </div>
   <div class="planexe-split-panel">
+    <div class="px-difficulty-badge px-difficulty-medium">Medium</div>
     <h3>PlanExe Account</h3>
     <p>Get your API keys to connect PlanExe's MCP server to Claude, Codex, Cursor, or Windsurf. Manage credits and view your generated plans.</p>
     <div class="planexe-cta-block">
@@ -85,6 +87,7 @@ Most AI tools just agree with you. PlanExe red-teams your plan to find fatal fla
     </div>
   </div>
   <div class="planexe-split-panel">
+    <div class="px-difficulty-badge px-difficulty-expert">Expert</div>
     <h3>PlanExe Local</h3>
     <p>100% private. Install and run PlanExe locally on your own hardware. Open source, MIT license.</p>
     <p><a href="https://github.com/PlanExeOrg/PlanExe">github.com/PlanExeOrg/PlanExe</a></p>
