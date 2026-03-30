@@ -66,6 +66,10 @@ Most AI tools just agree with you. PlanExe red-teams your plan to find fatal fla
   </div>
 </div>
 
+## Your plans stay yours
+
+When you use the internet, your data gets stored, logged, and processed through multiple systems along the way. For business strategies or anything confidential, that's a risk. PlanExe can run entirely offline on your own hardware — your data never leaves your machine.
+
 ## Get started
 
 <div class="px-paths-grid">
