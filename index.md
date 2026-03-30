@@ -4,7 +4,7 @@ title: PlanExe - Agentic Planning Engine
 ---
 
 <header class="post-header planexe-index-header">
-<h1 class="post-title">PlanExe: convert idea to plan</h1>
+<h1 class="post-title">PlanExe: Turn your idea into a detailed plan</h1>
 <div class="header-description">
     <p class="subtitle">Executive summary, gantt, risks, swot, budget, premortem, and more.</p>
 </div>
@@ -71,7 +71,7 @@ Most AI tools just agree with you. PlanExe red-teams your plan to find flaws bef
 
 ## Your plans stay yours
 
-When you use the internet, your data gets stored, logged, and processed through multiple systems along the way. For business strategies or anything confidential, that's a risk. PlanExe can run entirely offline on your own hardware — your data never leaves your machine.
+Unlike cloud-based alternatives, PlanExe can run fully offline on your own hardware. That means you can work on sensitive plans without sending them to external services.
 
 ## Get started
 
