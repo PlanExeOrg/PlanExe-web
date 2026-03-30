@@ -641,7 +641,7 @@ a:hover {
   border-radius: 16px;
   border: 1px solid var(--px-border);
   background: var(--px-surface);
-  box-shadow: 0 12px 30px rgba(15, 20, 34, 0.03);
+  box-shadow: var(--px-shadow-sm);
 }
 
 .planexe-split-panel h3 {
