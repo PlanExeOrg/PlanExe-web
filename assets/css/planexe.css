@@ -688,6 +688,54 @@ a:hover {
   transform: translateX(4px);
 }
 
+/* ---------- Steps (How it works) ---------- */
+.px-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.px-step-card {
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--px-border);
+  background: var(--px-surface);
+  box-shadow: var(--px-shadow-sm);
+}
+
+.px-step-number {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--px-primary);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.px-step-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: var(--px-text);
+}
+
+.px-step-card p {
+  margin: 0;
+  color: var(--px-text-2);
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 860px) {
+  .px-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Feature cards (AI That Pushes Back) ---------- */
 .px-feature-grid {
   display: grid;

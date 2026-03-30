@@ -4,11 +4,31 @@ title: PlanExe - Agentic Planning Engine
 ---
 
 <header class="post-header planexe-index-header">
-<h1 class="post-title">Agentic Planning Engine for Complex Projects</h1>
+<h1 class="post-title">Most AI tools agree with you.<br>PlanExe fights back.</h1>
 <div class="header-description">
-    <p class="subtitle">PlanExe runs your goal through a 100+ step AI pipeline to generate risk assessments, Gantt charts, and adversarial premortems.</p>
+    <p class="subtitle">Run your idea through a 100+ step agentic pipeline that delivers risk assessments, premortems, Gantt charts, and adversarial analysis — before you waste time or money.</p>
 </div>
 </header>
+
+## How it works
+
+<div class="px-steps-grid">
+  <div class="px-step-card">
+    <div class="px-step-number">1</div>
+    <h3>Describe your idea</h3>
+    <p>Type a plain-English description of your project — from a startup pitch to a billion-dollar infrastructure initiative.</p>
+  </div>
+  <div class="px-step-card">
+    <div class="px-step-number">2</div>
+    <h3>AI pipeline runs</h3>
+    <p>PlanExe orchestrates 100+ LLM calls across legal, financial, and engineering experts — cross-referencing, challenging, and stress-testing your plan.</p>
+  </div>
+  <div class="px-step-card">
+    <div class="px-step-number">3</div>
+    <h3>Read your battle-tested plan</h3>
+    <p>Get a 20+ section interactive report with Gantt charts, risk matrices, budget breakdowns, and adversarial premortems.</p>
+  </div>
+</div>
 
 ## AI That Pushes Back
 
