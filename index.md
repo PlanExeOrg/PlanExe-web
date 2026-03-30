@@ -8,6 +8,9 @@ title: PlanExe - Agentic Planning Engine
 <div class="header-description">
     <p class="subtitle">Executive summary, Gantt chart, risks, SWOT, budget, premortem, and more — in 15 minutes.</p>
 </div>
+<div class="planexe-hero-cta">
+    <a class="px-button px-button-primary px-button-hero" href="https://app.mach-ai.com/planexe_early_access">Create your first plan free &rarr;</a>
+</div>
 </header>
 
 ## How it works
