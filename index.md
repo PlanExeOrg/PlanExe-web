@@ -57,7 +57,7 @@ Most AI tools just agree with you. PlanExe red-teams your plan to find flaws bef
 <div class="px-feature-grid">
   <div class="px-feature-card">
     <h3>Premise Attack</h3>
-    <p>Challenges your core assumptions. If your idea has a hidden weakness, PlanExe will surface it before investors or reality does.</p>
+    <p>Deliberately argues that it's a bad idea. If there's a reason your idea won't work, PlanExe will make the case.</p>
   </div>
   <div class="px-feature-card">
     <h3>Premortem Analysis</h3>
