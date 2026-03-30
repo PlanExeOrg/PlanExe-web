@@ -19,7 +19,7 @@ title: PlanExe - Agentic Planning Engine
   <div class="px-step-card">
     <div class="px-step-number">1</div>
     <h3>Describe your idea</h3>
-    <p>Type a plain-English description of your project — from a startup pitch to a billion-dollar infrastructure initiative.</p>
+    <p>Type a plain-English description of your project — from a startup pitch to a complex infrastructure project.</p>
   </div>
   <div class="px-step-card">
     <div class="px-step-number">2</div>
@@ -28,14 +28,14 @@ title: PlanExe - Agentic Planning Engine
   </div>
   <div class="px-step-card">
     <div class="px-step-number">3</div>
-    <h3>Read your battle-tested plan</h3>
+    <h3>Read your generated plan</h3>
     <p>Get a comprehensive report you can hand to investors, present to leadership, or use to kick off your project.</p>
   </div>
 </div>
 
 ## AI that pushes back
 
-Most AI tools just agree with you. PlanExe red-teams your plan to find fatal flaws before you spend a dime.
+Most AI tools just agree with you. PlanExe red-teams your plan to find flaws before you commit serious time or money.
 
 <div class="px-feature-grid">
   <div class="px-feature-card">
