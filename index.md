@@ -57,7 +57,7 @@ Most AI tools just agree with you. PlanExe red-teams your plan to find flaws bef
 <div class="px-feature-grid">
   <div class="px-feature-card">
     <h3>Premise Attack</h3>
-    <p>Deliberately argues that it's a bad idea. If there's a reason your idea won't work, PlanExe will make the case.</p>
+    <p>Deliberately argues that it's a bad idea. It doesn't matter how good your plan is — it will always argue against it.</p>
   </div>
   <div class="px-feature-card">
     <h3>Premortem Analysis</h3>
