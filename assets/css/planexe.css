@@ -405,6 +405,9 @@ a:hover {
 .px-prose h2 {
   font-size: 1.65rem;
 }
+.planexe-index-header ~ h2 {
+  margin-top: 2.4em;
+}
 .px-prose h3 {
   font-size: 1.25rem;
 }
