@@ -19,12 +19,12 @@ title: PlanExe - Agentic Planning Engine
   <div class="px-step-card">
     <div class="px-step-number">1</div>
     <h3>Describe your idea</h3>
-    <p>Input a description of your project, from a startup pitch to a complex infrastructure project.</p>
+    <p>Enter a description of your project, from a startup pitch to a complex infrastructure project.</p>
   </div>
   <div class="px-step-card">
     <div class="px-step-number">2</div>
     <h3>AI pipeline runs</h3>
-    <p>PlanExe orchestrates 100+ LLM calls across legal, financial, and engineering experts — cross-referencing, challenging, and stress-testing your plan.</p>
+    <p>PlanExe orchestrates 100+ LLM calls across legal, financial, and engineering review stages — cross-referencing, challenging, and stress-testing your plan.</p>
   </div>
   <div class="px-step-card">
     <div class="px-step-number">3</div>
@@ -38,7 +38,7 @@ title: PlanExe - Agentic Planning Engine
 <div class="px-persona-grid">
   <div class="px-persona-card">
     <h3>Founders & Startups</h3>
-    <p>Stress-test business models and surface risks before they become expensive. Find out early if your idea is doomed.</p>
+    <p>Stress-test business models and surface risks before they become expensive. Find out early whether your idea has serious weaknesses.</p>
   </div>
   <div class="px-persona-card">
     <h3>Enterprise PMOs</h3>
@@ -46,7 +46,7 @@ title: PlanExe - Agentic Planning Engine
   </div>
   <div class="px-persona-card">
     <h3>Developers & AI Agents</h3>
-    <p>Orchestrate long-running planning tasks via MCP. Claude, Codex, Cursor and Windsurf can connect to PlanExe.</p>
+    <p>Orchestrate long-running planning tasks via MCP. Claude, Codex, Cursor, and Windsurf can connect to PlanExe.</p>
   </div>
 </div>
 
