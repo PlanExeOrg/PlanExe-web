@@ -61,7 +61,7 @@ Most AI tools just agree with you. PlanExe red-teams your plan to find flaws bef
   </div>
   <div class="px-feature-card">
     <h3>Premortem Analysis</h3>
-    <p>Imagines your project has already failed and works backwards to find out why. Identifies risks like "The Austerity Asteroid" before they strike.</p>
+    <p>Imagines your project has already failed and works backwards to find out why.</p>
   </div>
   <div class="px-feature-card">
     <h3>Self-Audit</h3>
