@@ -33,6 +33,7 @@
     Budget of ¥18 billion is funded through the National Key R&D Program, CAS strategic priority allocation, provincial co-funding from Yunnan and Shandong, CMSA crewed spaceflight development budget, and supplemental investment from state biotech and medical device funds. Personnel: approximately 500 FTE at peak spanning cryobiologists, perfusion engineers, veterinary surgeons, neuroscientists, materials scientists, bioelectronics engineers, aerospace life-support engineers, and program managers. A dedicated technology transfer office operates from year 4, with a mandate to license implant and cryoprotectant IP, incubate medical device spinoffs, and attract private capital — the implantable life-support devices in particular are expected to find immediate markets in organ transplant logistics, emergency medicine, and surgical hypothermia well before the cryosleep application matures. Pick a realistic, risk-aware scenario — the plan should explicitly model tier-gate failures, budget reallocation on partial success, and define the minimum viable scientific outcome if full long-duration revival proves impossible within the program window. Banned words: blockchain, VR, AR, metaverse, immortality.
   report_link: 20260324_cryosleep_program_report.html
   thumbnail: 20260324_cryosleep_program-thumbnail.jpg
+  featured: true
 
 - title: Hong Kong Game
   description: |
@@ -707,7 +708,6 @@
     Banned words: AR/VR/NFT/blockchain.
   report_link: 20251016_minecraft_escape_report.html
   thumbnail: 20251016_minecraft_escape-thumbnail.jpg
-  featured: true
 
 - title: Rent humans to do AI's dirty work
   description: |
@@ -955,6 +955,7 @@
     This initiative explicitly excludes Russia's Roscosmos and China's CNSA due to ongoing geopolitical conflicts and a lack of mutual trust, which make collaboration impossible at this time. While their participation would be ideal for a truly global effort, current political realities prevent their involvement. The coalition remains open to expanding cooperation if and when these conditions change.
   report_link: 20250711_debris_removal_report.html
   thumbnail: 20250711_debris_removal-thumbnail.jpg
+  featured: true
 
 - title: End bull torture, keep cultural heritage
   prompt: |
