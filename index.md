@@ -38,7 +38,7 @@ title: PlanExe - Agentic Planning Engine
 <div class="px-persona-grid">
   <div class="px-persona-card">
     <h3>Founders & Startups</h3>
-    <p>Stress-test business models and surface risks before they become expensive. Know if your idea is viable before burning runway.</p>
+    <p>Stress-test business models and surface risks before they become expensive. Find out early if your idea is doomed.</p>
   </div>
   <div class="px-persona-card">
     <h3>Enterprise PMOs</h3>
@@ -65,7 +65,7 @@ Most AI tools just agree with you. PlanExe red-teams your plan to find flaws bef
   </div>
   <div class="px-feature-card">
     <h3>Self-Audit</h3>
-    <p>Cross-references experts across legal, financial, and engineering domains. Catches inconsistencies a single consultant would miss.</p>
+    <p>Cross-references experts across legal, financial, and engineering domains. Catches inconsistencies and contradictions.</p>
   </div>
 </div>
 
