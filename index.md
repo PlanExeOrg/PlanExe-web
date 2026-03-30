@@ -29,7 +29,7 @@ title: PlanExe - Agentic Planning Engine
   <div class="px-step-card">
     <div class="px-step-number">3</div>
     <h3>Read your generated plan</h3>
-    <p>Get a comprehensive report you can almost hand to investors, present to leadership, or use to kick off your project.</p>
+    <p>Get a comprehensive report you can refine for investors, leadership, or internal planning.</p>
   </div>
 </div>
 
