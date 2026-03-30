@@ -29,7 +29,24 @@ title: PlanExe - Agentic Planning Engine
   <div class="px-step-card">
     <div class="px-step-number">3</div>
     <h3>Read your generated plan</h3>
-    <p>Get a comprehensive report you can hand to investors, present to leadership, or use to kick off your project.</p>
+    <p>Get a comprehensive report you can almost hand to investors, present to leadership, or use to kick off your project.</p>
+  </div>
+</div>
+
+## Who is PlanExe for?
+
+<div class="px-persona-grid">
+  <div class="px-persona-card">
+    <h3>Founders & Startups</h3>
+    <p>Stress-test business models and generate investor-grade risk assessments. Know if your idea is viable before burning runway.</p>
+  </div>
+  <div class="px-persona-card">
+    <h3>Enterprise PMOs</h3>
+    <p>Standardize project initiation with 20+ section reports covering budgets, legal, and risk matrices. Export csv and gantt for import into your existing tools.</p>
+  </div>
+  <div class="px-persona-card">
+    <h3>Developers & AI Agents</h3>
+    <p>Orchestrate long-running planning tasks via MCP. Claude, Codex, Cursor and Windsurf can connect to PlanExe.</p>
   </div>
 </div>
 
@@ -49,23 +66,6 @@ Most AI tools just agree with you. PlanExe red-teams your plan to find flaws bef
   <div class="px-feature-card">
     <h3>Self-Audit</h3>
     <p>Cross-references experts across legal, financial, and engineering domains. Catches inconsistencies a single consultant would miss.</p>
-  </div>
-</div>
-
-## Who is PlanExe for?
-
-<div class="px-persona-grid">
-  <div class="px-persona-card">
-    <h3>Founders & Startups</h3>
-    <p>Stress-test business models and generate investor-grade risk assessments. Know if your idea is viable before burning runway.</p>
-  </div>
-  <div class="px-persona-card">
-    <h3>Enterprise PMOs</h3>
-    <p>Standardize project initiation with 20+ section reports covering budgets, legal, and risk matrices. Export csv and gantt for import into your existing tools.</p>
-  </div>
-  <div class="px-persona-card">
-    <h3>Developers & AI Agents</h3>
-    <p>Orchestrate long-running planning tasks via MCP. Claude, Codex, Cursor and Windsurf can connect to PlanExe.</p>
   </div>
 </div>
 
