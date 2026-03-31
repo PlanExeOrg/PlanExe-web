@@ -35,20 +35,9 @@ title: PlanExe - Agentic Planning Engine
 
 ## Who is PlanExe for?
 
-<div class="px-persona-grid">
-  <div class="px-persona-card">
-    <h3>Founders & Startups</h3>
-    <p>Stress-test business models and surface risks before they become expensive. Find out early whether your idea has serious weaknesses.</p>
-  </div>
-  <div class="px-persona-card">
-    <h3>Enterprise PMOs</h3>
-    <p>Standardize project initiation with 20+ section reports covering budgets, legal, and risk matrices. Export csv and gantt for import into your existing tools.</p>
-  </div>
-  <div class="px-persona-card">
-    <h3>Developers & AI Agents</h3>
-    <p>Orchestrate long-running planning tasks via MCP. Claude, Codex, Cursor, and Windsurf can connect to PlanExe.</p>
-  </div>
-</div>
+- **Founders** — Stress-test ideas early and avoid expensive mistakes.
+- **Project Managers** — Standardize project kickoffs with structured, exportable plans.
+- **Developers** — Connect PlanExe via MCP to tools like Claude, Cursor, and Codex.
 
 ## AI that pushes back
 
