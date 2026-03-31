@@ -945,7 +945,7 @@
 
 - title: 500 health tests from one blood drop
   prompt: |
-    Build a startup that can run 500 complex health tests from a single drop of blood. The mass production of blood-testing devices will be in Newark, California.
+    build a startup that can run 500 complex health tests from a single drop of blood. The mass production of blood-testing devices will be in Newark, California.
   report_link: 20250714_bloodtest_startup_report.html
   thumbnail: 20250714_bloodtest_startup-thumbnail.jpg
 
