@@ -1046,7 +1046,7 @@
 
 - title: Build next GTA with crime and heists
   prompt: |
-    Develop the next Grand Theft Auto (GTA), featuring a sprawling, immersive open-world metropolis blending elements of Los Angeles, Detroit, and Miami, filled with intricate narratives of crime, corruption, and power struggles, realistic criminal economies, dynamic NPC interactions, complex heist mechanics, extensive vehicle customization, nuanced morality systems, advanced procedural generation, next-gen graphical fidelity, multiplayer modes, and innovative gameplay funded by strategic industry partnerships, publisher investments, and government innovation grants.
+    Develop the next Grand Theft Auto (GTA), featuring a sprawling, immersive open-world metropolis blending elements of Los Angeles, Detroit, and Miami, filled with intricate narratives of crime, corruption, and power struggles, realistic criminal economies, dynamic NPC interactions, complex heist mechanics, extensive vehicle customization, nuanced morality systems, advanced procedural generation, next-gen graphical fidelity, multiplayer modes, and innovative gameplay funded by strategic industry partnerships, publisher investments, and government innovation grants. Don't go for the most aggressive scenario. Banned words: blockchain, DAO, crowdfunding.
   report_link: 20250329_gta_game_report.html
   thumbnail: 20250329_gta_game-thumbnail.jpg
 
