@@ -949,7 +949,7 @@
 
 - title: Build space sunshade, control climate
   prompt: |
-    'Project Solace': a 30-year, $5 trillion initiative led by a G20-led international consortium to design, construct, and deploy a solar sunshade at the Earth-Sun [L1 Lagrange point](https://www.esa.int/Science_Exploration/Space_Science/L1_the_first_Lagrangian_Point), with the goal of reducing global mean temperatures by 1.5°C. The plan must prioritize the development of a binding "Global Thermostat Governance Protocol" as its most critical Phase 1 deliverable, addressing control, decision-making, and liability among participating nations before any hardware is deployed. The project will use a fleet of automated, heavy-lift launch vehicles for construction and must address the dual-use risk of the sunshade being perceived as a potential weapon.
+    'Project Solace': a 30-year, $5 trillion initiative led by a G20-led international consortium to design, construct, and deploy a solar sunshade at the Earth-Sun L1 Lagrange point, with the goal of reducing global mean temperatures by 1.5°C. The plan must prioritize the development of a binding "Global Thermostat Governance Protocol" as its most critical Phase 1 deliverable, addressing control, decision-making, and liability among participating nations before any hardware is deployed. The project will use a fleet of automated, heavy-lift launch vehicles for construction and must address the dual-use risk of the sunshade being perceived as a potential weapon.
   report_link: 20250721_project_solace_report.html
   thumbnail: 20250721_project_solace-thumbnail.jpg
 
