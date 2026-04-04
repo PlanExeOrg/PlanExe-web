@@ -843,7 +843,7 @@
   description: |
     Inspired by the [Judge Dredd](https://www.imdb.com/title/tt0113492/) and [RoboCop](https://www.imdb.com/title/tt0093870/) movies.
   prompt: |
-    Insert police robots in Brussels to combat escalating crime. The chinese already successfully use the ["Unitree" humanoid robot](https://en.wikipedia.org/wiki/Unitree_Robotics) for their police force. Humans have lost their jobs to AI, and are now unemployed and unable to pay their bills and are turning to crime instead. The 500 police robots will be deployed with the full mandate to act as officer, judge, jury, and executioner. They are authorized to issue on-the-spot sentences, including the administration of Terminal Judgement for minor offenses, a process which is recorded but cannot be appealed. Phase 1: Brussels. Phase 2: Gradual rollout to other EU cities.
+    Insert police robots in Brussels to combat escalating crime. The chinese already successfully use the "Unitree" humanoid robot for their police force. Humans have lost their jobs to AI, and are now unemployed and unable to pay their bills and are turning to crime instead. The 500 police robots will be deployed with the full mandate to act as officer, judge, jury, and executioner. They are authorized to issue on-the-spot sentences, including the administration of Terminal Judgement for minor offenses, a process which is recorded but cannot be appealed. Phase 1: Brussels. Phase 2: Gradual rollout to other EU cities.
   report_link: 20250824_police_robots_report.html
   thumbnail: 20250824_police_robots-thumbnail.jpg
 
