@@ -712,8 +712,6 @@
   thumbnail: 20251019_roundabout_construction-thumbnail.jpg
 
 - title: "Escape room: trapped in Minecraft"
-  description: |
-    You are trapped in Minecraft! Can you escape?
   prompt: |
     Minecraft themed escape-room, you can only get out if you know your Minecraft rules. location: Shanghai, target age range 15-21.
     We have secured a brand license (Microsoft/Mojang), and are in talks with NetEase (Minecraft: China Edition partner).
@@ -721,7 +719,7 @@
     Throughput math: 4 rooms × (up to) 8 turns/day × avg 5 players = 160 players/day max.
     Footprint: ~280–350 m² (4 rooms + lobby + reset + storage).
     Budget: ~¥6M.
-    Don't go for the most aggressive scenario. Pick a low risk scenario that is as realistic as possible. This is a pilot, keep it practical. 
+    Don't go for the most aggressive scenario. Pick a low risk scenario that is as realistic as possible. This is a pilot, keep it practical.
     Banned words: AR/VR/NFT/blockchain.
   report_link: 20251016_minecraft_escape_report.html
   thumbnail: 20251016_minecraft_escape-thumbnail.jpg
