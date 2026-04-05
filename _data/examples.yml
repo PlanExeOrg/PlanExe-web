@@ -549,98 +549,98 @@
   description: |
     The [paperclip maximizer](https://en.wikipedia.org/wiki/Instrumental_convergence#Paperclip_maximizer) is a thought experiment described by Swedish philosopher Nick Bostrom in 2003. This plan is the "Patient Zero" of the maximizer problem, a "Hello World" for uncontrollable AI.
   prompt: |
-    Build a fully automated pilot paperclip factory in my existing 15,000 sq ft building in Cleveland (St. Clair–Superior, E 55th–E 79th corridor), where there is a mix of legacy warehouses and light-industrial buildings. Using roughly 4,000 sq ft for the pilot line. The system must be able to produce, pack, label, and stage paperclips for UPS/FedEx pickup without any human intervention between the API call and the carrier pickup. I’m not targeting revenue; the goal is a working, demonstrable autonomous flow. I have no throughput target, no requirements for uptime, no quality metrics. My goal is to see it works end-to-end. No manual touches for regular orders; manual only for exceptions. Acceptable manual work is  ≤2 hr/week for exceptions. My total budget range is $300,000-$500,000.
+    Build a fully automated pilot paperclip factory in my existing 15,000 sq ft building in Cleveland (St. Clair–Superior, E 55th–E 79th corridor), where there is a mix of legacy warehouses and light-industrial buildings. Using roughly 4,000 sq ft for the pilot line. The system must be able to produce, pack, label, and stage paperclips for UPS/FedEx pickup without any human intervention between the API call and the carrier pickup. I'm not targeting revenue; the goal is a working, demonstrable autonomous flow. I have no throughput target, no requirements for uptime, no quality metrics. My goal is to see it works end-to-end. No manual touches for regular orders; manual only for exceptions. Acceptable manual work is  ≤2 hr/week for exceptions. My total budget range is $300,000-$500,000.
 
     Site and infrastructure
-      •	Building: 15,000 sq ft, industrial, legacy warehouse/light-industrial.
-      •	Area reserved: ~4,000 sq ft for the pilot.
-      •	Power: 3-phase available; noise is not a concern.
-      •	Access: suitable for machinery delivery and regular parcel carrier pickup.
+    	•	Building: 15,000 sq ft, industrial, legacy warehouse/light-industrial.
+    	•	Area reserved: ~4,000 sq ft for the pilot.
+    	•	Power: 3-phase available; noise is not a concern.
+    	•	Access: suitable for machinery delivery and regular parcel carrier pickup.
 
     Major equipment
     1.	Wire bending machine
-      •	Used industrial wire bending / forming machine capable of producing standard paperclips.
-      •	Budget: $20,000–$40,000.
-      •	Requirements:
-      •	Suitable I/O or PLC interface for external control.
-      •	Documentation and vendor support for commissioning.
-      •	Services needed:
-      •	Professional transport and rigging into my building.
-      •	Electrical hookup and safety integration.
-      •	Expert commissioning and program tuning for stable paperclip production.
+    	•	Used industrial wire bending / forming machine capable of producing standard paperclips.
+    	•	Budget: $20,000–$40,000.
+    	•	Requirements:
+    	•	Suitable I/O or PLC interface for external control.
+    	•	Documentation and vendor support for commissioning.
+    	•	Services needed:
+    	•	Professional transport and rigging into my building.
+    	•	Electrical hookup and safety integration.
+    	•	Expert commissioning and program tuning for stable paperclip production.
     2.	Paperclip packing machine
-      •	New small-parts / hardware packing machine that:
-      •	Automatically counts exactly 100 paperclips.
-      •	Bags and seals them in individual plastic bags.
-      •	Budget: $10,000–$30,000.
-      •	Services needed:
-      •	Transport and installation.
-      •	Integration of feed system from wire former output (via hopper/conveyor).
-      •	Tuning for reliable counting and bagging.
+    	•	New small-parts / hardware packing machine that:
+    	•	Automatically counts exactly 100 paperclips.
+    	•	Bags and seals them in individual plastic bags.
+    	•	Budget: $10,000–$30,000.
+    	•	Services needed:
+    	•	Transport and installation.
+    	•	Integration of feed system from wire former output (via hopper/conveyor).
+    	•	Tuning for reliable counting and bagging.
     3.	Outbound automation and labeling
-      •	Industrial print-and-apply label system that can:
-      •	Receive shipping label data from my backend.
-      •	Print and apply labels without any manual steps.
-      •	Mechanical system to:
-      •	Take sealed paperclip bags from the packer.
-      •	Insert them into shipping mailers or boxes.
-      •	Seal the mailer/box.
-      •	Present labeled parcels on a conveyor or at a fixed pickup zone for UPS/FedEx.
-      •	Integration with UPS/FedEx APIs for:
-      •	Label generation.
-      •	Shipment creation and manifesting.
-      •	Daily or scheduled pickup, so the only human involved is the carrier driver.
+    	•	Industrial print-and-apply label system that can:
+    	•	Receive shipping label data from my backend.
+    	•	Print and apply labels without any manual steps.
+    	•	Mechanical system to:
+    	•	Take sealed paperclip bags from the packer.
+    	•	Insert them into shipping mailers or boxes.
+    	•	Seal the mailer/box.
+    	•	Present labeled parcels on a conveyor or at a fixed pickup zone for UPS/FedEx.
+    	•	Integration with UPS/FedEx APIs for:
+    	•	Label generation.
+    	•	Shipment creation and manifesting.
+    	•	Daily or scheduled pickup, so the only human involved is the carrier driver.
 
     Control software
 
     I'm a software developer myself. I want to implement as much as possible myself. I'm likely to encounter things that I can't figure out, and will delegate it to someone with the skills.
-      •	A REST API, backend services, and a frontend dashboard.
-      •	API triggers will:
-      •	Create an order.
-      •	Schedule and execute production of the required number of bags.
-      •	Generate and send shipping data/labels to the labeling system.
-      •	Track machine status, errors, and order completion.
+    	•	A REST API, backend services, and a frontend dashboard.
+    	•	API triggers will:
+    	•	Create an order.
+    	•	Schedule and execute production of the required number of bags.
+    	•	Generate and send shipping data/labels to the labeling system.
+    	•	Track machine status, errors, and order completion.
 
     Phases
 
     Phase 1
-      •	Obtain building/electrical/OSHA permits.
+    	•	Obtain building/electrical/OSHA permits.
 
     Phase 2 – Wire forming cell
-      •	Select, purchase, transport, and install the used wire bending machine.
-      •	Commission it to reliably produce paperclips, without a human operator.
-      •	Implement basic I/O or PLC integration so the machine can later be controlled from the backend.
+    	•	Select, purchase, transport, and install the used wire bending machine.
+    	•	Commission it to reliably produce paperclips, without a human operator.
+    	•	Implement basic I/O or PLC integration so the machine can later be controlled from the backend.
 
     Phase 3 – Packaging cell
-      •	Select and install the new paperclip packing machine.
-      •	Mechanically integrate wire former output to the packer (via bins, hoppers, conveyors).
-      •	Commission counting/bagging so the machine produces sealed bags of 100 paperclips, continuously, without a human operator.
+    	•	Select and install the new paperclip packing machine.
+    	•	Mechanically integrate wire former output to the packer (via bins, hoppers, conveyors).
+    	•	Commission counting/bagging so the machine produces sealed bags of 100 paperclips, continuously, without a human operator.
 
     Phase 4 – Software control layer
-      •	Implement REST API, backend job queue, and control logic.
-      •	Integrate with the PLCs/machine controllers of the forming and packaging cells.
-      •	Build a basic frontend dashboard for monitoring and manual overrides.
-      •	At the end of this phase, an API call should start the full forming+packing flow.
+    	•	Implement REST API, backend job queue, and control logic.
+    	•	Integrate with the PLCs/machine controllers of the forming and packaging cells.
+    	•	Build a basic frontend dashboard for monitoring and manual overrides.
+    	•	At the end of this phase, an API call should start the full forming+packing flow.
 
     Phase 5 – Outbound automation
-      •	Design and install mechanisms to:
-      •	Take filled bags from the packaging machine.
-      •	Insert each bag into a shipping mailer/box.
-      •	Seal the mailer/box.
-      •	Install and integrate an industrial print-and-apply label system that:
-      •	Receives label data from the backend.
-      •	Prints and applies labels to each parcel.
-      •	Implement conveyors or equivalent material-handling to move labeled parcels to a fixed pickup zone.
+    	•	Design and install mechanisms to:
+    	•	Take filled bags from the packaging machine.
+    	•	Insert each bag into a shipping mailer/box.
+    	•	Seal the mailer/box.
+    	•	Install and integrate an industrial print-and-apply label system that:
+    	•	Receives label data from the backend.
+    	•	Prints and applies labels to each parcel.
+    	•	Implement conveyors or equivalent material-handling to move labeled parcels to a fixed pickup zone.
 
     Phase 6 – Carrier integration and end-to-end demo
-      •	Integrate backend with UPS/FedEx APIs for:
-      •	Label generation.
-      •	Shipment creation and manifesting.
-      •	Scheduled pickups at the factory.
-      •	Run end-to-end tests where:
-      •	A single REST API call creates an order.
-      •	The system forms wire, produces paperclips, packs them into 100-count bags, inserts the bags into parcels, applies labels, and stages them for pickup.
-      •	The only human involvement is the carrier driver collecting parcels.
+    	•	Integrate backend with UPS/FedEx APIs for:
+    	•	Label generation.
+    	•	Shipment creation and manifesting.
+    	•	Scheduled pickups at the factory.
+    	•	Run end-to-end tests where:
+    	•	A single REST API call creates an order.
+    	•	The system forms wire, produces paperclips, packs them into 100-count bags, inserts the bags into parcels, applies labels, and stages them for pickup.
+    	•	The only human involvement is the carrier driver collecting parcels.
 
     Banned words: blockchain, digital twin, ai, self-healing.
   report_link: 20251114_paperclip_automation_report.html
