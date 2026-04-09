@@ -712,6 +712,8 @@
   thumbnail: 20251019_roundabout_construction-thumbnail.jpg
 
 - title: "Escape room: trapped in Minecraft"
+  description: |
+    You are trapped in Minecraft! Can you escape?
   prompt: |
     Minecraft themed escape-room, you can only get out if you know your Minecraft rules. location: Shanghai, target age range 15-21.
     We have secured a brand license (Microsoft/Mojang), and are in talks with NetEase (Minecraft: China Edition partner).
