@@ -50,9 +50,9 @@ The PlanExe zip may have two different structures:
 - **Flat (no wrapper directory)**: Files at the zip root with a UUID-style filename (e.g. `9a202a96-240d-4465-b6bd-218414e09c10.zip`). In this case, the plan name must be derived from the content (see Step 1 below).
 
 Key files inside the zip:
-- `001-2-plan.txt` — The original prompt. Starts with `Plan:\n` and ends with `\nToday's date:\n...`. Strip these wrapper lines to get the clean prompt.
-- `001-1-start_time.json` — Contains `server_iso_utc` with the plan generation timestamp. Use this to derive the `YYYYMMDD` date prefix.
-- `030-report.html` — The rendered HTML report. Its `<title>` tag contains the plan title, useful for deriving the descriptive name portion.
+- `plan.txt` — The original prompt. Starts with `Plan:\n` and ends with `\nToday's date:\n...`. Strip these wrapper lines to get the clean prompt.
+- `start_time.json` — Contains `server_iso_utc` with the plan generation timestamp. Use this to derive the `YYYYMMDD` date prefix.
+- `report.html` — The rendered HTML report. Its `<title>` tag contains the plan title, useful for deriving the descriptive name portion.
 - Various JSON files (analysis artifacts, not needed for the website).
 
 ### Image processing
@@ -91,10 +91,10 @@ rm -rf .venv && python3 -m venv .venv && .venv/bin/pip install pillow
 
 **What it does (in order):**
 1. Validates that `input/` contains exactly one `.zip` and at least one image file
-2. Extracts the prompt from `001-2-plan.txt` (strips `Plan:` prefix and `Today's date:` suffix)
-3. Injects Google Analytics into `030-report.html` after `</title>` (replaces existing GA if present)
+2. Extracts the prompt from `plan.txt` (strips `Plan:` prefix and `Today's date:` suffix)
+3. Injects Google Analytics into `report.html` after `</title>` (replaces existing GA if present)
 4. Extracts the title from the `<title>` tag
-5. Derives the canonical name `YYYYMMDD_descriptive_name` from `001-1-start_time.json` (date) and the title (slug)
+5. Derives the canonical name `YYYYMMDD_descriptive_name` from `start_time.json` (date) and the title (slug)
 6. Creates a modified zip in `output/` named `YYYYMMDD_name.zip` with a matching wrapper directory
 7. Copies the GA-injected report to `output/YYYYMMDD_name_report.html`
 8. Invokes `convert_images.py` to produce `output/YYYYMMDD_name-big.jpg` and `output/YYYYMMDD_name-thumbnail.jpg`

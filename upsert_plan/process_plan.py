@@ -3,9 +3,9 @@
 Process a PlanExe zip file for the planexe.org examples gallery.
 
 Reads a single .zip from the input directory and performs these steps:
-  1. Extracts the prompt from 001-2-plan.txt
-  2. Injects Google Analytics into 030-report.html (replaces if already present)
-  3. Extracts the title from the <title> tag of 030-report.html
+  1. Extracts the prompt from plan.txt
+  2. Injects Google Analytics into report.html (replaces if already present)
+  3. Extracts the title from the <title> tag of report.html
   4. Creates a new zip in the output directory with the modified report
 
 The extracted TITLE and PROMPT are printed to stdout in a parseable format.
@@ -122,7 +122,7 @@ def resolve_member(prefix: str, filename: str) -> str:
 
 
 def extract_date_prefix(start_time_json: str) -> str:
-    """Parse ``001-1-start_time.json`` and return a ``YYYYMMDD`` date string."""
+    """Parse ``start_time.json`` and return a ``YYYYMMDD`` date string."""
     data = json.loads(start_time_json)
     # Prefer server_iso_utc, fall back to server_iso_local.
     iso_str = data.get("server_iso_utc") or data.get("server_iso_local", "")
@@ -374,20 +374,20 @@ def main() -> int:
             zf.extractall(tmp_dir)
 
         # Resolve key files.
-        plan_path = tmp_dir / resolve_member(prefix, "001-2-plan.txt")
-        report_path = tmp_dir / resolve_member(prefix, "030-report.html")
-        start_time_path = tmp_dir / resolve_member(prefix, "001-1-start_time.json")
+        plan_path = tmp_dir / resolve_member(prefix, "plan.txt")
+        report_path = tmp_dir / resolve_member(prefix, "report.html")
+        start_time_path = tmp_dir / resolve_member(prefix, "start_time.json")
 
         # --- Extract the prompt ---
         if not plan_path.is_file():
-            print(f"Missing 001-2-plan.txt in zip", file=sys.stderr)
+            print(f"Missing plan.txt in zip", file=sys.stderr)
             return 1
 
         prompt = extract_prompt(plan_path.read_text(encoding="utf-8"))
 
         # --- Process the report ---
         if not report_path.is_file():
-            print(f"Missing 030-report.html in zip", file=sys.stderr)
+            print(f"Missing report.html in zip", file=sys.stderr)
             return 1
 
         report_html = report_path.read_text(encoding="utf-8")
@@ -401,7 +401,7 @@ def main() -> int:
             print(f"Using overridden name: {canonical_name}", file=sys.stderr)
         else:
             if not start_time_path.is_file():
-                print(f"Missing 001-1-start_time.json in zip", file=sys.stderr)
+                print(f"Missing start_time.json in zip", file=sys.stderr)
                 return 1
 
             date_prefix = extract_date_prefix(

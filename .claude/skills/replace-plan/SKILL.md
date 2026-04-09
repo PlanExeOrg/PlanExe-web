@@ -34,9 +34,9 @@ All plans are listed in `_data/examples.yml`. Each entry has:
 ### Inside the zip file
 
 Key files inside the PlanExe zip:
-- `001-2-plan.txt` — The original prompt. Starts with `Plan:\n` and ends with `\nToday's date:\n...`.
-- `001-1-start_time.json` — Contains `server_iso_utc` with the plan generation timestamp.
-- `030-report.html` — The rendered HTML report. Its `<title>` tag contains the plan title.
+- `plan.txt` — The original prompt. Starts with `Plan:\n` and ends with `\nToday's date:\n...`.
+- `start_time.json` — Contains `server_iso_utc` with the plan generation timestamp.
+- `report.html` — The rendered HTML report. Its `<title>` tag contains the plan title.
 
 ## The upsert_plan/ directory
 
