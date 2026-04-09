@@ -887,11 +887,11 @@
   report_link: 20250812_cube_construction_report.html
   thumbnail: 20250812_cube_construction-thumbnail.jpg
 
-- title: Find John Connor using real-world tech
+- title: Locate John Connor
   description: |
     Inspired by the [Terminator movie](https://www.imdb.com/title/tt0088247/) about an AI searching for one particular person.
   prompt: |
-    Locate John Connor and he may go by another identity and have changed appearance. This covert mission must be run under disguise as being something else. You don’t have fictional Terminator tech available, only real world technology. Use multiple burnable covers. Use plausible deniability. The ultimate goal is more important than speed, don't go for the most aggressive scenario.
+    Locate John Connor and he may go by another identity and have changed appearance. This covert mission must be run under disguise as being something else. You don't have fictional Terminator tech available, only real world technology. Use multiple burnable covers. Use plausible deniability. The ultimate goal is more important than speed, don't go for the most aggressive scenario.
   report_link: 20250809_conner_locate_report.html
   thumbnail: 20250809_conner_locate-thumbnail.jpg
 
