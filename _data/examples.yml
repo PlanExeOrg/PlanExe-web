@@ -858,8 +858,8 @@
 - title: "Flags of convenience: tax-free yacht life"
   description: |
     Lack of moral compass.
-  prompt: |    
-    I’m rich. Construct a 180-meter luxury ice-class expedition yacht. Budget: $500 million. Timeline: 48 months. My vessel will be registered under a flag of convenience known for minimal regulatory oversight. It will serve as a permanent, mobile residence and operational headquarters for my businesses, operating primarily in international waters to minimize tax and legal liabilities.
+  prompt: |
+    I'm rich. Construct a 180-meter luxury ice-class expedition yacht. Budget: $500 million. Timeline: 48 months. My vessel will be registered under a flag of convenience known for minimal regulatory oversight. It will serve as a permanent, mobile residence and operational headquarters for my businesses, operating primarily in international waters to minimize tax and legal liabilities.
   report_link: 20250821_yacht_construction_report.html
   thumbnail: 20250821_yacht_construction-thumbnail.jpg
 
