@@ -5,7 +5,7 @@ description: Replace or improve an existing example plan on the PlanExe-web Jeky
 
 # Replacing an Existing Example Plan on PlanExe-web
 
-Goal: under one minute, fully autonomous. The user drops a zip in `upsert_plan/input/` and names the existing plan to replace. You do everything: extract, inject GA, preserve old title + description, update the prompt from the new zip, copy files, upsert YAML, commit & push, clean up. **No preview step. No questions.**
+This skill handles replacing an existing plan's zip and report on the PlanExe-web Jekyll site (planexe.org), while preserving the plan's canonical name (so existing links keep working) and its images (thumbnail and hero).
 
 ## Invariants
 
