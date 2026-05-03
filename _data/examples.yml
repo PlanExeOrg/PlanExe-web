@@ -229,50 +229,50 @@
 
     Scope (must include all)
     1. Triggering and governance
-      - Define heat alert levels (e.g., forecast thresholds for daytime highs and night-time lows).
-      - Establish an incident-command style structure: who declares an alert, who owns operations, who owns comms, who owns partner coordination.
-      - Provide a communications cadence (daily situation report, partner briefings, public updates).
+    - Define heat alert levels (e.g., forecast thresholds for daytime highs and night-time lows).
+    - Establish an incident-command style structure: who declares an alert, who owns operations, who owns comms, who owns partner coordination.
+    - Provide a communications cadence (daily situation report, partner briefings, public updates).
 
     2. Cooling access & transport
-      - Create a network of “cooling centers” using existing assets (libraries, community centers, malls, churches, sports halls).
-      - Specify hours, capacity assumptions, staffing, and security considerations.
-      - Design transport support for mobility-limited residents (contracts with taxi/transport providers, volunteer drivers, or paratransit).
-      - Define accessibility requirements (wheelchair access, quiet rooms, water, toilets).
+    - Create a network of “cooling centers” using existing assets (libraries, community centers, malls, churches, sports halls).
+    - Specify hours, capacity assumptions, staffing, and security considerations.
+    - Design transport support for mobility-limited residents (contracts with taxi/transport providers, volunteer drivers, or paratransit).
+    - Define accessibility requirements (wheelchair access, quiet rooms, water, toilets).
 
     3. Outreach to high-risk residents
-      - A GDPR-compliant approach to identifying and contacting high-risk residents:
-        - Use opt-in registries, GP/pharmacy partnerships, social services lists, housing associations, and NGO networks.
-        - Include a “no wrong door” enrollment mechanism (phone line, in-person at centers).
-      - Design a “phone-tree + door-knock” protocol with scripts, escalation rules, and safety for outreach staff.
-      - Provide guidance for multilingual communication.
+    - A GDPR-compliant approach to identifying and contacting high-risk residents:
+    - Use opt-in registries, GP/pharmacy partnerships, social services lists, housing associations, and NGO networks.
+    - Include a “no wrong door” enrollment mechanism (phone line, in-person at centers).
+    - Design a “phone-tree + door-knock” protocol with scripts, escalation rules, and safety for outreach staff.
+    - Provide guidance for multilingual communication.
 
     4. Home-level interventions (fast + cheap)
-      - Deploy a targeted package for the highest-risk homes (e.g., exterior shading kits, reflective blinds, window fans where safe, hydration supplies, thermometer/hygrometer, simple guidance).
-      - Include procurement, distribution, and basic installation support (handyperson service).
-      - Address top-floor flats and social housing as priority segments; define the selection rubric.
+    - Deploy a targeted package for the highest-risk homes (e.g., exterior shading kits, reflective blinds, window fans where safe, hydration supplies, thermometer/hygrometer, simple guidance).
+    - Include procurement, distribution, and basic installation support (handyperson service).
+    - Address top-floor flats and social housing as priority segments; define the selection rubric.
 
     5. Health system coordination
-      - Integrate with hospitals, emergency services, and primary care:
-        - Define a minimal data loop that is legal and useful (aggregate signals, not sensitive personal records).
-        - Define “heat illness escalation” guidelines for call centers and outreach workers.
-      - Include a plan to protect healthcare capacity (e.g., proactive check-ins to prevent emergencies).
+    - Integrate with hospitals, emergency services, and primary care:
+    - Define a minimal data loop that is legal and useful (aggregate signals, not sensitive personal records).
+    - Define “heat illness escalation” guidelines for call centers and outreach workers.
+    - Include a plan to protect healthcare capacity (e.g., proactive check-ins to prevent emergencies).
 
     6. Worker protection
-      - A practical plan for outdoor municipal workers and contractors (adjusted schedules, mandatory breaks, water, shaded rest points).
-      - A recommended guidance package for private employers (non-binding but strongly promoted).
+    - A practical plan for outdoor municipal workers and contractors (adjusted schedules, mandatory breaks, water, shaded rest points).
+    - A recommended guidance package for private employers (non-binding but strongly promoted).
 
     7. Public communications
-      - Pre-season campaign + heat-event messaging templates.
-      - Channels that actually reach vulnerable people: radio, flyers, pharmacy posters, door hangers, SMS (opt-in), faith/community leaders.
-      - Counter misinformation and unsafe advice (e.g., alcohol, incorrect fan use in extreme heat).
+    - Pre-season campaign + heat-event messaging templates.
+    - Channels that actually reach vulnerable people: radio, flyers, pharmacy posters, door hangers, SMS (opt-in), faith/community leaders.
+    - Counter misinformation and unsafe advice (e.g., alcohol, incorrect fan use in extreme heat).
 
     Gates (explicit go/no-go)
     - Month 2 readiness gate: cooling centers contracted + staffed; transport contract signed; phone line operational; outreach training completed; procurement orders placed.
     - Month 4 scale gate (releases €1.5M): demonstrate operational performance via drills and early-season heat days:
-      - 80% of planned cooling-center hours delivered
-      - outreach contact success rate ≥ 60% for enrolled high-risk residents
-      - average time-to-transport under 45 minutes during alert days
-      - after-action report completed with corrective actions closed
+    - 80% of planned cooling-center hours delivered
+    - outreach contact success rate ≥ 60% for enrolled high-risk residents
+    - average time-to-transport under 45 minutes during alert days
+    - after-action report completed with corrective actions closed
 
     Metrics (define baselines and measurement plan)
     - Primary outcomes (pick realistic proxies): heat-related EMS calls, ED visits, mortality (with attribution caveats), and a city “excess mortality” estimate.
