@@ -315,7 +315,7 @@
     Inspired by the [Supervulcano](https://en.wikipedia.org/wiki/Supervolcano_(film)) 2005 movie.
   prompt: |
     **Context & Scenario**
-    Create a comprehensive strategic response plan for a "Red Warning" volcanic event at the [Yellowstone Caldera](https://en.wikipedia.org/wiki/Yellowstone_Caldera). USGS sensors have confirmed rapid, unprecedented ground uplift (>20cm in 6 hours) at the Norris Geyser Basin and significant seismic swarm activity (Mag 4.5+ tremors) indicating magma ascension to shallow depths. A phreatic (steam) explosion has already compromised a section of the Grand Loop Road. A VEI-6 or higher eruption is modeled as "Scenario Alpha" with a 40% probability within the next 72 hours.
+    Create a comprehensive strategic response plan for a "Red Warning" volcanic event at the Yellowstone Caldera. USGS sensors have confirmed rapid, unprecedented ground uplift (>20cm in 6 hours) at the Norris Geyser Basin and significant seismic swarm activity (Mag 4.5+ tremors) indicating magma ascension to shallow depths. A phreatic (steam) explosion has already compromised a section of the Grand Loop Road. A VEI-6 or higher eruption is modeled as "Scenario Alpha" with a 40% probability within the next 72 hours.
 
     **Core Mission**
     The primary objective is the preservation of life through the immediate evacuation of the "Zone Zero" (Park Interior) and "Zone One" (100km radius), followed by continuity of operations for regional infrastructure under heavy ashfall conditions.
