@@ -1,3 +1,167 @@
+- title: Datacenter in France
+  description: |
+    Same size as the [Utah 40.000 arces datacenter](https://www.theguardian.com/us-news/2026/may/13/utah-approves-datacenter-backlash).
+  prompt: |
+    Establish an intentionally extreme hyperscale AI data center campus in **Hauts-de-France, France**, focused on the industrial AI belt around **Cambrai / E-Valley, Valenciennes / Denain / Escaudain, Dunkirk, Saint-Omer, and nearby industrial or brownfield land**.
+
+    The project has a fixed notional footprint of **12.7 km × 12.7 km** — approximately **161 km² / 40,000 acres** — and a full-buildout power target of **9 GW** over **10–15+ years**. Treat this as a red-team planning scenario: the plan must be rigorous, skeptical, and allowed to recommend downsizing, splitting the campus, delaying expansion, or cancelling the project if feasibility fails.
+
+    ## Selected Location
+
+    Use **Hauts-de-France** as the only location.
+
+    Reasons:
+
+    - strong industrial redevelopment and reindustrialization narrative
+    - existing logistics, port, rail, steel, refinery, military, and brownfield land contexts
+    - Cambrai / E-Valley as a large redevelopment zone
+    - Dunkirk as a heavy-industry and port-logistics hub
+    - better cooling climate than southern France
+    - strong latency to Paris, London, Brussels, Amsterdam, Frankfurt, and northern Europe
+    - geopolitically safer than Russia-adjacent regions
+    - stronger public narrative than a pure greenfield rural megaproject
+
+    ## Core Feasibility Question
+
+    Can Hauts-de-France realistically host a **9 GW**, **161 km²**, AI/hyperscale compute campus without overwhelming the grid, land market, water systems, permitting process, local communities, and environmental constraints?
+
+    Do not assume the answer is yes.
+
+    Do not invent binding commitments from RTE, EDF, DGSI, ANSSI, tenants, municipalities, or prefectural authorities. Treat all external approvals, grid commitments, security clearances, tenant contracts, and public-sector commitments as uncertain until the plan defines a realistic process to obtain them. Mark any milestone depending on an external authority as “uncontrolled” unless backed by a contract, permit, formal decision, or signed term sheet.
+
+    ## Campus Specifications
+
+    - **Footprint:** 12.7 km × 12.7 km, approximately 161 km² / 40,000 acres
+    - **Power:** 9 GW full buildout
+    - **Phase 1:** 500 MW–1 GW
+    - **Use:** high-density GPU/TPU clusters for AI training, fine-tuning, batch inference, sovereign AI, and selected enterprise inference
+    - **PUE target:** 1.15–1.25
+    - **Cooling:** direct-to-chip liquid cooling by default; optional 50–100 MW immersion cooling pilot
+    - **Water:** prefer zero- or ultra-low-water cooling; treat freshwater or evaporative cooling as high-risk
+    - **Power strategy:** French low-carbon grid, nuclear-backed contracts, EDF/RTE coordination, PPAs, BESS, grid flexibility, and limited backup generation
+    - **Connectivity:** diverse fiber to Paris, London, Brussels, Amsterdam, Frankfurt, Marseille, and subsea/transatlantic routes
+    - **Security:** national-security review, hardened perimeter, cyber/OT separation, anti-drone systems, supply-chain security, and resilience against sabotage or grid/fiber disruption
+
+    ## Building Model
+
+    Use low-to-mid-rise data halls:
+
+    - typical height: **14–20 m**
+    - maximum height: **25–30 m**
+    - individual halls: **20,000–100,000 m²**, with some up to 150,000+ m²
+    - full buildout: **50–100+ major buildings**
+    - explain why taller buildings are usually less suitable for AI-scale data centers
+
+    Do **not** assume most of the 161 km² should be buildings. Create a land-use model covering:
+
+    - data halls
+    - substations
+    - BESS
+    - backup generation
+    - roads/logistics
+    - fiber corridors
+    - stormwater
+    - biodiversity buffers
+    - heat-reuse infrastructure
+    - security setbacks
+    - expansion reserve
+    - community buffers
+    - agricultural or ecological continuation zones
+    - brownfield remediation zones
+
+    Challenge whether a single square footprint is rational, or whether a split-campus model across nearby industrial zones is better.
+
+    ## Budget Assumptions
+
+    Use these estimates, but validate or challenge them:
+
+    - Phase 0 feasibility/site control: **€250M–€750M**
+    - Phase 1, 500 MW–1 GW: **€5B–€10B**
+    - Expansion to 3 GW: **€25B–€45B**
+    - Full 9 GW buildout: **€100B–€140B+**
+
+    Use **EUR as the primary currency** for budgeting, financing, reporting, land, labor, grid, power, permitting, taxes, and public-benefit commitments. Track **USD exposure separately** for GPUs/TPUs, networking hardware, selected software, and international vendor contracts. Include FX hedging assumptions where USD-denominated hardware procurement materially affects the budget.
+
+    Include cost drivers: grid upgrades, substations, nuclear-backed power contracts, cooling systems, fiber, land acquisition, brownfield remediation, environmental mitigation, security, financing costs, French labor, permitting, public benefit commitments, and community compensation.
+
+    ## Phased Roadmap
+
+    ### Phase 0: Years 0–1
+
+    Feasibility, site control, land assembly, grid hosting capacity, EDF/RTE engagement, cooling/water feasibility, environmental baseline, community risk, fiber feasibility, anchor tenant validation, financing pre-commitments, permitting path, national-security review, and no-build alternative.
+
+    Decision gate: proceed only if Phase 1 power, land, water, permits, tenants, financing, fiber, and social license are credible.
+
+    ### Phase 1: Years 1–3
+
+    Build **500 MW–1 GW** with 8–20 data halls, dedicated substation, BESS/backup, liquid-cooling loop, diverse fiber, hardened perimeter, first tenants, public benefit agreement, local workforce program, and environmental monitoring.
+
+    Decision gate: expand only if power reliability, PUE, water, security, and community targets are met, and if creditworthy anchor tenants have signed take-or-pay or equivalent capacity commitments for at least 30–50% of the next expansion tranche. No credible anchor tenants = no FID for the next phase.
+
+    ### Phase 2: Years 3–7
+
+    Scale to **1–3 GW** with more halls, additional substations, transmission upgrades, heat-reuse pilots, expanded fiber, supplier ecosystem, and public-benefit payments.
+
+    ### Phase 3: Years 7–11
+
+    Scale to **3–6 GW** with sovereign AI zones, high-security compute partitions, standardized liquid cooling, resilience testing, and lifecycle replacement planning.
+
+    ### Phase 4: Years 11–15+
+
+    Reach **9 GW** only if demand, grid capacity, financing, environmental permits, and social license remain strong.
+
+    ## Required Analysis
+
+    Analyze:
+
+    - whether 161 km² can be assembled
+    - whether the square footprint is realistic
+    - whether split-campus design is superior
+    - grid and transmission feasibility
+    - power procurement and price risk
+    - cooling and water risk
+    - heat-reuse opportunity
+    - fiber latency and route diversity
+    - brownfield remediation risk
+    - agricultural displacement
+    - permitting and national-security review
+    - local political support
+    - public opposition risk
+    - tenant demand
+    - financing credibility
+    - scalability from 1 GW to 3 GW to 9 GW
+
+    ## Required Output
+
+    Produce a complete plan with:
+
+    - executive summary
+    - selected site rationale
+    - land-use model
+    - single-site vs split-campus analysis
+    - phased roadmap
+    - budget model
+    - power model
+    - cooling model
+    - connectivity strategy
+    - permitting path
+    - stakeholder map
+    - environmental and water strategy
+    - community/social-license strategy
+    - security strategy
+    - tenant strategy
+    - workforce strategy
+    - public benefit strategy
+    - risk register
+    - decision gates
+    - kill criteria
+    - open questions
+    - first 180-day action plan
+
+    The output must be skeptical, not promotional. It should identify what would make the project infeasible and what must be proven before serious capital is committed.
+  report_link: 20260516_hauts_de_france_buildout_report.html
+  thumbnail: 20260516_hauts_de_france_buildout-thumbnail.jpg
+
 - title: Cross-Border Rail Ticketing
   description: |
     Make booking a Lisbon-to-Tallinn train as easy as booking a flight. See [European Commission press release](https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1056).
