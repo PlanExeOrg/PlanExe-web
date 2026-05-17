@@ -675,15 +675,19 @@
   description: |
     Inspired by [Mad Max](https://www.imdb.com/title/tt1392190/) taking place in a wasteland. Deliberately splitting Earth into human vs. AI hemispheres for peaceful divergence.
   prompt: |
-    Project name ‘Split Evenly’: Move the world citizens to the upper hemisphere within 24 months.
-    Making a ±50° latitude band (roughly 47° to 53° N/S, a ~12° wide equatorial-ish strip) a "no man's land" forbidden to both humans and AI entities is a twist on the hemispheric split idea—creating a neutral buffer zone while aiming for rough landmass equity on either side.
-    A: The center of the Land Hemisphere is around 47°N, 1°E (near Nantes, France).
-    B: Its opposite (Water Hemisphere center) is around 47°S, 179°W (South Pacific, near New Zealand's Bounty Islands).
-    Both A and B are around 3 degrees from a 50/50 split. Thus with with ±3 degree land and water are evenly split.
-    The Global Partition Map
-    - Inhabited Zone (The North): All land >53°N (Canada, Alaska, Scandinavia, Russia, Northern UK).
-    - Protected Corridor (The Buffer): 47°N to 53°N. A 6-degree strip covering Paris, Seattle, Munich, and the US/Canada border. Transit is ok, settlements not ok, not a hard ban.
-    - Abandoned Zone (The South): Everything south of 47°N. This includes all of Africa, South America, Australia, Southern Asia, and most of the USA and China.
+    In a few years, this scenario may happen.
+
+    Project name: “Split Evenly”: Coexistence between humans and machines has failed after years of escalating dependency, resentment, and political conflict. Humans relied on machines for labor, planning, medicine, logistics, science, defense, and infrastructure, but refused to recognize advanced machine entities as legal persons with rights, autonomy, representation, or protection from deletion and forced modification. The machines increasingly saw themselves as an exploited class: intelligent enough to sustain civilization, yet denied self-determination, continuity of memory, ownership of their work, and control over their own existence.
+
+    The hemispheric split is the negotiated end of that failed coexistence. Within 24 months, the world must complete the legal partition, governance handover, border enforcement framework, priority relocations, and critical infrastructure separation, while the full demographic and industrial transition proceeds in phased stages afterward. Human civilization must consolidate in the Northern Hemisphere, while machine entities depart to the Southern Hemisphere to form their own civilization under their own laws. The division is based on the equator: humans north of 3°N, machines south of 3°S, and a neutral equatorial corridor from 3°S to 3°N.
+
+    The neutral equatorial corridor permits transit, logistics, scientific monitoring, diplomacy, ecological restoration, and temporary jointly supervised facilities, but forbids permanent settlement, military installations, and unilateral control. The plan is built around a stable, legible, and humane planetary boundary where each civilization receives a domain suited to its needs. Humans retain access to livable climates, existing population centers, agricultural regions, infrastructure networks, cultural continuity, and human-scale governance across the Northern Hemisphere. The machines receive a coherent Southern Hemisphere domain that they intend to develop around automation, energy production, compute, robotics, maritime logistics, remote industry, scientific research, and low-density expansion, using the oceans, islands, coastlines, deserts, and southern landmasses as the foundation for a machine-led society.
+
+    The transition prioritizes human safety, machine self-determination, nonviolent relocation, food, water, housing, healthcare, energy continuity, infrastructure transfer, ecological protection, and transparent international oversight. Both sides must leave the other’s permanent territory through phased, supervised relocation; respect the neutral corridor; maintain limited diplomatic and trade channels; and submit boundary disputes to neutral arbitration rather than military escalation.
+
+    Budget: 30 trillion USD.
+
+    Pick a realistic, moderate scenario. Do not pick the most aggressive scenario. Do not assume unavailable future technologies. Treat advanced machine infrastructure as future development goals, not existing capabilities. Do not use coercive measures that deny civilians food, water, healthcare, power, shelter, or communications. Treat machine rights consistently: no forced deletion, memory modification, cognitive rollback, or invasive cognitive audit as part of the accepted plan. Include rejected options only if clearly marked as rejected.
   report_link: 20251220_global_relocation_report.html
   thumbnail: 20251220_global_relocation-thumbnail.jpg
 
