@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-17T20:09:10Z",
+  "generated_at": "2026-05-17T22:49:32Z",
   "items": [
     {
       "filename": "20250101_india_census.zip",
@@ -387,9 +387,9 @@
     },
     {
       "filename": "20251114_paperclip_automation.zip",
-      "commit_id": "b3685c075ae247cc73722c114ee943d27ce10806",
-      "commit_date": "2026-04-05T19:55:58+02:00",
-      "sha256": "df5b20076382aab665e1ceff30a76e452e19a0f51a09d5995357e77f74af9968"
+      "commit_id": "cfb413c7fc6613cef402a9ad94a42d5fed8ae314",
+      "commit_date": "2026-05-18T00:48:52+02:00",
+      "sha256": "699a9a31daa7b4aeb0c93c369fdc3a859e06923b2b93dad9bd01e09bc03387a6"
     },
     {
       "filename": "20251118_ai_welfare.zip",
