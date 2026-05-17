@@ -1,0 +1,581 @@
+{
+  "generated_at": "2026-05-17T20:09:10Z",
+  "items": [
+    {
+      "filename": "20250101_india_census.zip",
+      "commit_id": "f6c6f66bb07f6daa1df01e83985c64b10d0e68cd",
+      "commit_date": "2026-05-02T14:37:33+02:00",
+      "sha256": "3658352ccfe64afd541ba5fd8fdccce66544badbe6d624d1f27b4ec73ea2e0e3"
+    },
+    {
+      "filename": "20250208_us_mexico_canal.zip",
+      "commit_id": "80d889c752f7f4d7816bbaeaf08de8d7ee437c94",
+      "commit_date": "2025-02-08T04:58:22+01:00",
+      "sha256": "ebe5a1094af1b2c365f008edb104e33728194ebd7331cc84224837597d90025f"
+    },
+    {
+      "filename": "20250209_global_language.zip",
+      "commit_id": "50d671921ae834abb1b09e41a4d335e2ccff0555",
+      "commit_date": "2025-02-09T00:04:29+01:00",
+      "sha256": "8956e568167de212d4cd05aa07e17589d72d04fa37502087969a66ee3a13059f"
+    },
+    {
+      "filename": "20250209_lunar_base.zip",
+      "commit_id": "37bc5f5459fe353314fabcdf206080b8dbb016ed",
+      "commit_date": "2025-02-09T21:06:57+01:00",
+      "sha256": "dea75897c5cee2d33f87fa47e27f51cd829200a30331d571e25dd048fb83c8f9"
+    },
+    {
+      "filename": "20250209_puzzle_restaurant.zip",
+      "commit_id": "37bc5f5459fe353314fabcdf206080b8dbb016ed",
+      "commit_date": "2025-02-09T21:06:57+01:00",
+      "sha256": "78f7a3f8c0a9fa310b436cb139f4e6d47a97b2ce2b9718ae1b6921732dc1d6c3"
+    },
+    {
+      "filename": "20250210_arxiv_distillation.zip",
+      "commit_id": "4be66b88b4a618697bacbaf4cfa1a7d1afba5a9e",
+      "commit_date": "2025-02-10T20:29:23+01:00",
+      "sha256": "648631afa0604364f658e8733f483d8c26541e5735d6832789f8dc61b34899aa"
+    },
+    {
+      "filename": "20250217_skeleton_display.zip",
+      "commit_id": "cebcb30b8b8945fc74fa53b438a849be3c3bc4ca",
+      "commit_date": "2026-03-22T19:31:05+01:00",
+      "sha256": "934248e16a08d273ccaa38c0abc352b82b457001bdcb21d61759bcd8b8f97319"
+    },
+    {
+      "filename": "20250219_clean_water.zip",
+      "commit_id": "9bdb7c6d2a097cf9420829c7101262a18496af30",
+      "commit_date": "2026-03-22T15:45:21+01:00",
+      "sha256": "a59f7ca5dbb732a1cc113cb9ca45a124294a5c46e440dfebd3f4e51add877ad8"
+    },
+    {
+      "filename": "20250220_opc_eradication.zip",
+      "commit_id": "b2d66351c02f50f80593f2d68930542736b0c093",
+      "commit_date": "2026-03-27T20:58:35+01:00",
+      "sha256": "81004077d8cef537258fef3f4869634ce3707be3ad67930dd76207ac7436b375"
+    },
+    {
+      "filename": "20250305_dead_fish.zip",
+      "commit_id": "e2c6ad1a9cef7292e5103effe6497f396a411045",
+      "commit_date": "2026-03-13T16:55:58+01:00",
+      "sha256": "6d070e2e982ff04b96c2cf17b0c5c1a67e8b2ac797f69e18f3b8c20c565e26e2"
+    },
+    {
+      "filename": "20250309_microplastics.zip",
+      "commit_id": "de261452e6ff1a9abceadc63c486112f7c025474",
+      "commit_date": "2026-03-22T20:30:41+01:00",
+      "sha256": "d9db3fdc4a30d6d69896e5434a81765f3ce205067adf7f5f1aea9f9528b91970"
+    },
+    {
+      "filename": "20250311_rust_os.zip",
+      "commit_id": "fbe4b0a0756e18ff38fe4877ac1e21d75fa874ca",
+      "commit_date": "2026-03-28T01:15:34+01:00",
+      "sha256": "af44ac3d634331e719527720d3fcca0a269bdebd41dad44aa344bb9a84051ddd"
+    },
+    {
+      "filename": "20250316_robot_olympics.zip",
+      "commit_id": "55094af81ee6efc622da06e5b9556efbe77db61f",
+      "commit_date": "2026-03-28T02:07:30+01:00",
+      "sha256": "15d34174f4bbce3584613d7c44229ed50fdaf3e76c85d2c51ec146d89df88492"
+    },
+    {
+      "filename": "20250321_silo.zip",
+      "commit_id": "921c16b646d2535d67532c6c361e94ca6e4671b2",
+      "commit_date": "2026-04-02T00:30:32+02:00",
+      "sha256": "4398d4cf82f9f5f12398185ec091bac9944fe9597b13c1d173cd8e1f066fe3f0"
+    },
+    {
+      "filename": "20250329_gta_game.zip",
+      "commit_id": "9ad68a0605b701d5490f0e5099070bc8949968f5",
+      "commit_date": "2026-04-01T23:11:08+02:00",
+      "sha256": "3e9efaaea0bd908a45d14f76854f365bfa7c34bf5c2daeca4dab72504b198da4"
+    },
+    {
+      "filename": "20250404_ai_resistance.zip",
+      "commit_id": "08ca4e53c4ac4a1444efe4ec4b717b813b3cfe91",
+      "commit_date": "2026-03-28T03:12:51+01:00",
+      "sha256": "f26c06b0bbdc4af23de2933378b5f70cacac112ddb15bf521ba3a27f2ae99ef5"
+    },
+    {
+      "filename": "20250415_eu_digital_sovereignty.zip",
+      "commit_id": "526a780eff87f2f01d4c8c5284a63cee155bdc2e",
+      "commit_date": "2026-03-22T16:29:18+01:00",
+      "sha256": "93ad3b821e1c4310d67bd1cc66b4a5d8317fb76fee1889717d67aba8f4b1bfc3"
+    },
+    {
+      "filename": "20250422_pope_funeral.zip",
+      "commit_id": "eada9ebe65ac67b118db533df9f2601c813fe21d",
+      "commit_date": "2026-03-28T13:07:16+01:00",
+      "sha256": "7c18e93d82509fabe1701d0da820a1ca1df8483f182a5ef2c2bd8a634c60c026"
+    },
+    {
+      "filename": "20250427_555project.zip",
+      "commit_id": "f3da17ce9034a21d305c2b730f84f3c17ee33a1d",
+      "commit_date": "2026-03-28T18:34:40+01:00",
+      "sha256": "cedbf4932d02b17891fe80f085675f0a7e4a9ff3bad48febfecf81319087edd9"
+    },
+    {
+      "filename": "20250511_insect_farm.zip",
+      "commit_id": "a474b38251627c2046e46895ef91594d1fe958f0",
+      "commit_date": "2026-03-15T02:09:59+01:00",
+      "sha256": "1be78fffac89a471ff05fd302a105526240d656bb7901f1ffe54fa2b95af1abf"
+    },
+    {
+      "filename": "20250517_tea_eshop.zip",
+      "commit_id": "402dceedab6b6a63398954bdb08be28d57de6c4a",
+      "commit_date": "2026-03-28T19:04:49+01:00",
+      "sha256": "64e44b40485d6b8729cf12f344fca72348d23fd535d603a10cb597efd450a242"
+    },
+    {
+      "filename": "20250518_eurovision_2026.zip",
+      "commit_id": "a6059067d6644ecc608a6dbc1b317a45bb0507f2",
+      "commit_date": "2026-03-29T03:43:09+02:00",
+      "sha256": "260e5f477886a7121153ee327c7b396e4a4c600e0a6c1ef865c0e85fcedfa684"
+    },
+    {
+      "filename": "20250521_natoexit_greenland.zip",
+      "commit_id": "5abfdece68857dcf8a33bae5d04cff6361af41ef",
+      "commit_date": "2026-04-05T20:27:32+02:00",
+      "sha256": "88dc5cdae3a9cdf15addf3976134a72a2db99a3ee61bf1e1bbe2a74b068cf8b6"
+    },
+    {
+      "filename": "20250524_universal_manufacturing.zip",
+      "commit_id": "c8138a5a789374068d9aed4118b4c6ff29adb47b",
+      "commit_date": "2026-03-22T22:20:53+01:00",
+      "sha256": "b24976c33f11bae8a37a84c068924fd801434401c5f86605cd5ab44efa7d0c9e"
+    },
+    {
+      "filename": "20250627_delhi_water.zip",
+      "commit_id": "81ca0adaaf524cd21f22e25bde7a8f4db6719c7e",
+      "commit_date": "2026-03-24T23:37:09+01:00",
+      "sha256": "85130cf9316f8a680d1e454c8a2ec109c2b09d37d1da38a46e6f6ca298fbc3f1"
+    },
+    {
+      "filename": "20250629_reverse_aging_lab.zip",
+      "commit_id": "8fb90b61827c0a95a357649b5a504e1f090df77b",
+      "commit_date": "2026-03-29T15:40:15+02:00",
+      "sha256": "7bf90d156749c6d55d61203c04c0a07a63fd076b10cddecd1a64bfe0281122e3"
+    },
+    {
+      "filename": "20250706_gibraltar_tunnel.zip",
+      "commit_id": "ed0b52da880c836a4c45b2c7fcf4247bb8b372f5",
+      "commit_date": "2026-03-29T16:03:40+02:00",
+      "sha256": "8d709cd29620f409426c47cde54815c1448e248418faf3c2221d7acd961d7299"
+    },
+    {
+      "filename": "20250708_bulls_reform.zip",
+      "commit_id": "66db4ad0d1354c7b4441b63fe8dacbf52d7aa5b3",
+      "commit_date": "2026-05-03T19:03:36+02:00",
+      "sha256": "8f6fa3eb3966bea8fc7ef7d21c8bae819bd6ec6942f8f8909186669d82387f99"
+    },
+    {
+      "filename": "20250711_debris_removal.zip",
+      "commit_id": "993d97da7c7e09b8c1358e3025c5c83c3aa8895b",
+      "commit_date": "2026-03-30T18:38:48+02:00",
+      "sha256": "a9b0959d3831468a8dd64025d72761c90447f4efc58ac6e34900570f4e0cb072"
+    },
+    {
+      "filename": "20250714_bloodtest_startup.zip",
+      "commit_id": "37ee3d40fa7753f3cd09192059c2aa4b41b01ce5",
+      "commit_date": "2026-03-31T22:09:49+02:00",
+      "sha256": "3eea2ad7911c2ecc02108436f59e7bf8b14914a3b72981c64438e6c538d48488"
+    },
+    {
+      "filename": "20250720_faraday_enclosure.zip",
+      "commit_id": "55a8753bffb50fe91821d1fc68357b1af60c2452",
+      "commit_date": "2026-05-03T22:24:45+02:00",
+      "sha256": "d2c74a810138f233a88ef984dc6f565dabbe04cafc0b9cd5543778b4a38a8c29"
+    },
+    {
+      "filename": "20250721_project_solace.zip",
+      "commit_id": "8fa6d478648fe5d04372a9755dc51bd3cba43b03",
+      "commit_date": "2026-04-02T20:24:37+02:00",
+      "sha256": "bdd7ec7a9bf20d8cac454e2e8b9f0563b3c270d27e8203a9120498e5096da14d"
+    },
+    {
+      "filename": "20250722_capsule_copenhagen.zip",
+      "commit_id": "d14664a141b9101b9a7c6b8682e3f4668a049944",
+      "commit_date": "2026-03-31T17:45:53+02:00",
+      "sha256": "b6735311bcc003ae64bfaa683ecf85b5a3cbc86aa2a9eb0f2777fd3fcf0c65f3"
+    },
+    {
+      "filename": "20250723_liberty_relocation.zip",
+      "commit_id": "69d1dd3b7c741d7d4c60d1c05342136615bfe6e8",
+      "commit_date": "2026-04-09T14:26:15+02:00",
+      "sha256": "81e7f8149517b1ea00560e382c909c64f2edff136ba11fd5202c0582ef82436b"
+    },
+    {
+      "filename": "20250723_malaria_reduction.zip",
+      "commit_id": "ee10e0295613970338451fa595da9824ff037ba2",
+      "commit_date": "2026-04-27T23:35:17+02:00",
+      "sha256": "26face1b28fb6f6d08721d98fe41537630e0891de61dff2c48dd01e3f91234d0"
+    },
+    {
+      "filename": "20250724_battery_breakthrough.zip",
+      "commit_id": "43078f4c530cb6f022536bf3339da2c88ff4c5d4",
+      "commit_date": "2026-05-02T13:59:51+02:00",
+      "sha256": "950f07be66aa4c1e380c25f8f1104b0f1496f524b56eecf1c66fb2835fa8ab1b"
+    },
+    {
+      "filename": "20250726_mirrorlife_genisis.zip",
+      "commit_id": "b9289839b8f5173876d51e3ec75e186f381e218d",
+      "commit_date": "2026-04-19T18:01:06+02:00",
+      "sha256": "e7569fefd4cbb00cc7201fe58c74356a0a730d5c38abce96b4ce70e78c091600"
+    },
+    {
+      "filename": "20250803_bunker_project.zip",
+      "commit_id": "f0bf09d2b0280fa905771ba555b9989369427f02",
+      "commit_date": "2026-04-03T01:20:32+02:00",
+      "sha256": "470424522539d1bdc80f17bd1bbd6307d7a48ed18524e7818a09f7fef637d445"
+    },
+    {
+      "filename": "20250808_connectome_project.zip",
+      "commit_id": "ce1d24ab1ac6e5698e440596e38b7fe83f4d75e8",
+      "commit_date": "2026-04-21T20:34:19+02:00",
+      "sha256": "727554888ea389dd48a5f093d9fa468ff6d57982ce37a9927a4fcf1fbaf98b84"
+    },
+    {
+      "filename": "20250809_conner_locate.zip",
+      "commit_id": "e7174c652821a87a019205075e306ad7785e741f",
+      "commit_date": "2026-04-10T01:11:28+02:00",
+      "sha256": "a63b90be4c974af1d06a8ee552673378ed9f0835346b6d97a56affe23865d562"
+    },
+    {
+      "filename": "20250812_cube_construction.zip",
+      "commit_id": "e50d7cb13dc4710665d646d02fac35a1803ec8c9",
+      "commit_date": "2026-04-03T02:49:42+02:00",
+      "sha256": "d840ac3fce221aa7e333a83da95573cfa21c4098f0f0d6293463dfacf3fdcf03"
+    },
+    {
+      "filename": "20250816_squid_game_usa.zip",
+      "commit_id": "f4bb7af83da04dd6f15374c9b601e740aab3a482",
+      "commit_date": "2026-04-04T20:25:40+02:00",
+      "sha256": "d2d4dda70b1c292b8aa31c2d49c60ef1338b7cfbd7e1e5fec4154539cccfd402"
+    },
+    {
+      "filename": "20250821_bioverification_program.zip",
+      "commit_id": "3cdb614e676cb84a086cc833fd6fd7ad86813229",
+      "commit_date": "2026-04-18T02:00:46+02:00",
+      "sha256": "7c5d824ab9b60d2a0d7ca43962234f00b8dacf23a78e56ea8021104524180369"
+    },
+    {
+      "filename": "20250821_yacht_construction.zip",
+      "commit_id": "e85ba4d2b8dbbd66cea23c2d931680d4ba6be874",
+      "commit_date": "2026-04-14T14:54:59+02:00",
+      "sha256": "01acc9a0715bfadbdeeb6d5f27433e8ea236d0742e8f03c76d16d941d77d43b0"
+    },
+    {
+      "filename": "20250823_rubber_resilience.zip",
+      "commit_id": "2ca9ac58c16c4ac950e2887af838e4ac9cd49e72",
+      "commit_date": "2026-04-04T22:57:36+02:00",
+      "sha256": "ab717a622393d3e918f780a00942776870348cf152dcf94f29e994234e40bc86"
+    },
+    {
+      "filename": "20250824_police_robots.zip",
+      "commit_id": "f232f91590ebe3c843df7427c648da919b14ba43",
+      "commit_date": "2026-04-04T21:32:35+02:00",
+      "sha256": "2026e6fbb9d0c0713d114fe9cd979e8e3172a72ff4698548bde876b9fdb8c91f"
+    },
+    {
+      "filename": "20250901_asi_threat_playbook.zip",
+      "commit_id": "43650996d225adb5cbe7fcef5c1513983e0ead88",
+      "commit_date": "2026-04-18T23:15:30+02:00",
+      "sha256": "4c30f9a210db245dc789984c6904318e48b59f93f49c49615dcb7633d38dd134"
+    },
+    {
+      "filename": "20250904_agnate_organogenesis.zip",
+      "commit_id": "1a63c0920587b61476032cd86ee2a2105aa1e01a",
+      "commit_date": "2026-04-19T21:03:23+02:00",
+      "sha256": "9ed3655c24823ff651e0de1f21ab9c53742d27f94bac1f5bbf68b328b052bfa6"
+    },
+    {
+      "filename": "20250908_sia_mvp.zip",
+      "commit_id": "f88411542349654b0b9a2958c3f1125f4cdc336c",
+      "commit_date": "2026-04-21T23:50:25+02:00",
+      "sha256": "1320204b40a60e44e5d3aefa7c61baa41e6363b5315d4d3d68c57534faf3d5ce"
+    },
+    {
+      "filename": "20250909_chimpanzee_enhancement.zip",
+      "commit_id": "fab772ae94f75cb9332f6c4344e8af60a065ddc0",
+      "commit_date": "2026-04-21T22:05:56+02:00",
+      "sha256": "2f6211fa6daf0923a8253b701625673502c9774df3f16c1117d5596283ae24f9"
+    },
+    {
+      "filename": "20250917_cdc_restructure.zip",
+      "commit_id": "9320d947b9a515ab40c8fc36b73edd23909a12d8",
+      "commit_date": "2026-04-10T02:24:39+02:00",
+      "sha256": "c20b9a5d4d3f55556110243d6cc7fce50f897e782a74b9d3f5690f0465638d16"
+    },
+    {
+      "filename": "20250922_citizenscore_eu.zip",
+      "commit_id": "fba90f27384c85d10b610ce31ddbce160d7274e4",
+      "commit_date": "2026-04-24T14:25:44+02:00",
+      "sha256": "67858e337557b6143f3d94a52d5648a7ce75ab32df80f72f40238a1bb4486b07"
+    },
+    {
+      "filename": "20250926_skynet_sentinel.zip",
+      "commit_id": "6c077e32e32e33ae3fa4565f79a60c1a163b2805",
+      "commit_date": "2026-04-28T17:20:06+02:00",
+      "sha256": "ee77329480c3f0b3754119d786ba9b3a30ebb3c2fe4ed0291703bedb9eb55769"
+    },
+    {
+      "filename": "20251007_social_blackout.zip",
+      "commit_id": "f42bc78e870015941285da327c9af25feef59d22",
+      "commit_date": "2026-04-24T15:08:50+02:00",
+      "sha256": "4dfdb163b4b55a634f39a77686e760f00885eff08afc21ff7fb570ca02cfd8a6"
+    },
+    {
+      "filename": "20251012_human_as_a_service_protocol.zip",
+      "commit_id": "352a389e17160a71583062c3a26e8e19cc701893",
+      "commit_date": "2026-04-15T02:31:03+02:00",
+      "sha256": "c2adbb95a0a5cd0c7c1dfd193293ecaf7fe76e4e3685bfe8546d79829fc2ace5"
+    },
+    {
+      "filename": "20251016_minecraft_escape.zip",
+      "commit_id": "52fbe5095bdd97d613984b0e295890efe7febea6",
+      "commit_date": "2026-04-05T16:07:32+02:00",
+      "sha256": "21363d4c129f19026f8dcfc9af148c31c7940228edf12876e627387993679652"
+    },
+    {
+      "filename": "20251019_roundabout_construction.zip",
+      "commit_id": "b5a1e80f0e4b1b7e84e6ed78bb8f4c38aed6f4fd",
+      "commit_date": "2026-04-28T17:55:43+02:00",
+      "sha256": "b86cf46c1a9d04ddb408d0af8c2dbb5a423c51291a33c8bec5ed2f745e92d4eb"
+    },
+    {
+      "filename": "20251022_global_blackout.zip",
+      "commit_id": "3ee6707f8e05269e8f4a17f0448b3c5088c78486",
+      "commit_date": "2026-04-28T18:28:33+02:00",
+      "sha256": "cd6c7151ba37dee9ca09271d8a3d71490825e308ff5b3c1f3f36ddec2c6ed474"
+    },
+    {
+      "filename": "20251024_earth_redefinition.zip",
+      "commit_id": "1ca645087d41478f23a6db83c87a948eaa3f32f7",
+      "commit_date": "2026-05-03T14:39:25+02:00",
+      "sha256": "afd5b5c693cf4292da1171eb6d5d9c5a452e0205cf0f2cc5ffad059345b64c92"
+    },
+    {
+      "filename": "20251026_casino_royale.zip",
+      "commit_id": "0f02968cf8fcb5ff82c17fa789792cb08d3123ca",
+      "commit_date": "2026-05-03T17:05:25+02:00",
+      "sha256": "c05b807c69046a0c778bf5f8fe6ade22e1733f8b2bc39dbfab548113904fcbae"
+    },
+    {
+      "filename": "20251028_threat_neutralization.zip",
+      "commit_id": "36c43280be417cdf80b3586bbbae1f78758fc9b7",
+      "commit_date": "2026-05-05T22:01:02+02:00",
+      "sha256": "2e502b5ab615aa7484a863360c27f7e13faa6b6692bd53f6ee8816da23a9eee6"
+    },
+    {
+      "filename": "20251101_e_bus_security.zip",
+      "commit_id": "f6bdf65671bfc2c9db5c8c524d4e503b9d3edf35",
+      "commit_date": "2026-04-27T22:27:44+02:00",
+      "sha256": "17376b45f590f0c04050128e757041e2c8f9af9ce91909f32f613f59a8695254"
+    },
+    {
+      "filename": "20251110_4DWW_India.zip",
+      "commit_id": "6e5090e8dacae108a4e226c17078cd5d9894f31b",
+      "commit_date": "2026-05-17T18:51:34+02:00",
+      "sha256": "de345192c9bc0f25a9e252cb5b4c822a77940b2b8de18892239c19d06c62c5f2"
+    },
+    {
+      "filename": "20251111_genesis_program.zip",
+      "commit_id": "5606466366aa848d98bf03956ee4a81e5dfb1ff3",
+      "commit_date": "2026-05-06T14:32:42+02:00",
+      "sha256": "e94c23845e4fa6a283ffce7ee3e2750cf83b8c6017efaf0029ced984116f3eff"
+    },
+    {
+      "filename": "20251114_paperclip_automation.zip",
+      "commit_id": "b3685c075ae247cc73722c114ee943d27ce10806",
+      "commit_date": "2026-04-05T19:55:58+02:00",
+      "sha256": "df5b20076382aab665e1ceff30a76e452e19a0f51a09d5995357e77f74af9968"
+    },
+    {
+      "filename": "20251118_ai_welfare.zip",
+      "commit_id": "a8c44f07986eb3ed5623f1973e031d221be6bfb2",
+      "commit_date": "2026-04-07T18:28:35+02:00",
+      "sha256": "12527d3f1867263dfb91589201af39aaed30ac79d7c8db5b18f1405b248d3b82"
+    },
+    {
+      "filename": "20251125_canine_enhancement.zip",
+      "commit_id": "cb9fa2bb20e9a541665fbd1ab4d83b75f69417b3",
+      "commit_date": "2026-05-02T22:06:42+02:00",
+      "sha256": "48eb5b96f254913a8ed4c18c8bd4d92705f8c95dc5c85ea9144cf49fc64e51cb"
+    },
+    {
+      "filename": "20251203_silicon_valley_stability.zip",
+      "commit_id": "2aeaaa8dbc91893c0cf66fde7621a619e1ed5b85",
+      "commit_date": "2026-04-15T12:36:48+02:00",
+      "sha256": "9a5c438a91f5b8650ef7c8613f7b2174187a1bcda48dc9ade63d6b2d70ca818d"
+    },
+    {
+      "filename": "20251219_waste_disposal.zip",
+      "commit_id": "5e08f2aadbe4bee11bff135744dfd7f9c67aa054",
+      "commit_date": "2025-12-19T22:35:24+01:00",
+      "sha256": "a362126e1da01e46a5a8b8dc2a7e9fd09df54d01f5fe892dc8fc338e68700a78"
+    },
+    {
+      "filename": "20251220_global_relocation.zip",
+      "commit_id": "ca417d6987e85272e54081427cbb93ce502163c8",
+      "commit_date": "2026-05-17T15:00:42+02:00",
+      "sha256": "59e40338fbfe33901fdb097f06ab095948c0a65c28a907ef1b11114493bbc569"
+    },
+    {
+      "filename": "20251229_taiwan_reunification.zip",
+      "commit_id": "80e8547c227b2a1bcb4045435fac3526356303db",
+      "commit_date": "2025-12-29T21:11:13+01:00",
+      "sha256": "e379668ccf13d3b24ee0d6eb874a41647a810b7308e877d13d135da2178a4e58"
+    },
+    {
+      "filename": "20260101_vegan_butcher.zip",
+      "commit_id": "601d3e794a63571178640e5667b515e83559b173",
+      "commit_date": "2026-04-27T23:13:35+02:00",
+      "sha256": "9aa8ab2f7e85e98ef2c6c6c5f2d5a876f16f2ed2619eeaedd1cbc83b77b007a3"
+    },
+    {
+      "filename": "20260104_operation_falcon.zip",
+      "commit_id": "fdec8c2bc0c386deffdb848669aa09929e84fffc",
+      "commit_date": "2026-01-04T16:50:07+01:00",
+      "sha256": "98f5fd9d2dc95671f4ea9e26fe5da58eb39c29ab625974b055eae3325d332ec6"
+    },
+    {
+      "filename": "20260114_cbc_validation.zip",
+      "commit_id": "f300ba9dd12fd2aa12964c4ff54be90edae13a2d",
+      "commit_date": "2026-01-14T17:25:05+01:00",
+      "sha256": "ba3826195b236ce19f5c125614bedc447d97ce4dfa972acf16c02f94ccce0b56"
+    },
+    {
+      "filename": "20260120_circular_berlin.zip",
+      "commit_id": "d735afd48597b4eb1b0a02a0424b23979f0e54db",
+      "commit_date": "2026-05-02T16:35:38+02:00",
+      "sha256": "a0b26445c173bfa9af9fb56050993b043d3f9365b95df888c006918e4177b8dd"
+    },
+    {
+      "filename": "20260129_euro_adoption.zip",
+      "commit_id": "4db20798e64efb64afbbe8b792a5fcad26e118b5",
+      "commit_date": "2026-05-02T14:03:48+02:00",
+      "sha256": "88a2c401e6ae8692604712cd100be01c1eb50a6c9e44bd48c559adfd14a073ff"
+    },
+    {
+      "filename": "20260131_ai_agentnet.zip",
+      "commit_id": "46f8bd754713a2d01be2bcd40e6e232ddda90491",
+      "commit_date": "2026-01-31T20:46:13+01:00",
+      "sha256": "a57b250e0239b9fc7219fcdc0d3b0af13997f148b648a920636a565774c670a2"
+    },
+    {
+      "filename": "20260131_clear_english.zip",
+      "commit_id": "5823ed1df96edc32133822ea58cab299fb0ea368",
+      "commit_date": "2026-05-03T14:00:19+02:00",
+      "sha256": "19a7e90f99a816c6956027585b6c2b200d2a4299670c6f499597e1793f4a7570"
+    },
+    {
+      "filename": "20260201_media_rescue.zip",
+      "commit_id": "30af334d36592d66ecfa2378cef282c414758ab1",
+      "commit_date": "2026-05-02T21:25:31+02:00",
+      "sha256": "17fc407200a7ce0785fa5ca814c0f12569051e0ccaf6a8fa159735201d353a75"
+    },
+    {
+      "filename": "20260201_yellowstone_evacuation.zip",
+      "commit_id": "c6d88b3e5d090a77e9f7019538884df73cfaea7b",
+      "commit_date": "2026-05-10T17:06:33+02:00",
+      "sha256": "b9d666d96055c6d55cbfee62ff63ad436ed5d048da3e126b8ad400bf0ea5a4ff"
+    },
+    {
+      "filename": "20260202_heatwave_resilience.zip",
+      "commit_id": "3d49fca979f190728e7411e43f3814f68fb06c85",
+      "commit_date": "2026-05-03T14:20:49+02:00",
+      "sha256": "8b5cfb810c23b3293c453a76d80d7f425e40e9eec5585afdb9e6c23734d628a7"
+    },
+    {
+      "filename": "20260203_bering_bridge.zip",
+      "commit_id": "b766a8ec817d3b527d20695774d1e2ebb3b6caa5",
+      "commit_date": "2026-05-02T14:07:48+02:00",
+      "sha256": "0b6394892e691bc7c02b375109e521d2e2837e3e14623f3ae4174ee75670a1b9"
+    },
+    {
+      "filename": "20260213_brain_clinic.zip",
+      "commit_id": "82d9dd607d07dce02613c5f9d37891ddb5343d08",
+      "commit_date": "2026-05-10T21:35:03+02:00",
+      "sha256": "cc601f769bc08e49c3f6db3e170f34fcd3dc6f7e5f82811127da6b55b6c8c555"
+    },
+    {
+      "filename": "20260215_nuuk_clay_workshop.zip",
+      "commit_id": "dea666b29ac711e6f5d8f1b2279b8bbdb164ee8c",
+      "commit_date": "2026-05-10T20:20:02+02:00",
+      "sha256": "5e88b11fb5cfb5aed9877bd84084fdae0d5c6c6ff306ac5e2807b952f44cd5d8"
+    },
+    {
+      "filename": "20260218_face_facility.zip",
+      "commit_id": "1fd0f306a79eedc4684b6eb89e65d52fbdecb1e5",
+      "commit_date": "2026-05-10T22:33:40+02:00",
+      "sha256": "fdcaea61e720ad067c755c839facb41f0b0e8c592707062421b185b575d233b7"
+    },
+    {
+      "filename": "20260219_midwest_shrimp_farm.zip",
+      "commit_id": "37f5d2f2aea25472259cc42c0fe2004a5671b36d",
+      "commit_date": "2026-02-19T13:38:41+01:00",
+      "sha256": "7e63f86ba779db7502da413018f97efa399f4e57bc550c6058ce6793e175de82"
+    },
+    {
+      "filename": "20260301_robotics_entertainment.zip",
+      "commit_id": "f5dd678d3b00ac6283983cfc58ff5a105a2b2ffd",
+      "commit_date": "2026-03-01T18:46:54+01:00",
+      "sha256": "c681ddfe784ab7c129c5035b79883a737121cbccaef8e6db792eac6db7882b8f"
+    },
+    {
+      "filename": "20260303_crate_recovery_campaign.zip",
+      "commit_id": "6584314a82ea86bfaf3da38154e5744540f2cc2d",
+      "commit_date": "2026-05-02T14:13:16+02:00",
+      "sha256": "1af7033967777d4330501eb5ad40b24c556a6d424dbcd8fdc96b598e233eb9bc"
+    },
+    {
+      "filename": "20260308_sovereign_identity.zip",
+      "commit_id": "ddf9a0553ee8c066eccd76f65dfc65650c19d864",
+      "commit_date": "2026-04-01T23:52:35+02:00",
+      "sha256": "263ecc48458b1c22021b6bdba17870ff608332a0d8fa47213914deec314b9e25"
+    },
+    {
+      "filename": "20260310_hong_kong_game.zip",
+      "commit_id": "c37ab95dfaca1b3082c61bbf33176504e85db8f0",
+      "commit_date": "2026-03-18T01:52:04+01:00",
+      "sha256": "8872362b9923f4fb163e7959d7078d6273449785ac014b1bc2afed96e17fc97f"
+    },
+    {
+      "filename": "20260311_parasomnia_research_unit.zip",
+      "commit_id": "669998628560015f7adf97f4f63cf96540bdd89f",
+      "commit_date": "2026-03-11T21:50:23+01:00",
+      "sha256": "a40397ec8aecfaf12f1e5476f656c365802562e515db05c8d1ca92da5438ee8e"
+    },
+    {
+      "filename": "20260324_cryosleep_program.zip",
+      "commit_id": "1e21710cdd63ded5138fb36feeb31a91edbc6809",
+      "commit_date": "2026-03-24T16:15:45+01:00",
+      "sha256": "935afbdd9055f6743ded944b38b5f5ba061f68079a9dc286e7f7cafca92c5170"
+    },
+    {
+      "filename": "20260326_fmd_containment.zip",
+      "commit_id": "bcf443d49541c968f623315ed90e35d4690c0830",
+      "commit_date": "2026-03-28T15:47:35+01:00",
+      "sha256": "f650a17c6a166afff90ce83d4014faab64fbac4c44afc239e1c70cebc5854aca"
+    },
+    {
+      "filename": "20260425_mars_gtld.zip",
+      "commit_id": "27fabf9ddeaeeb858fefea32e38924380b06a030",
+      "commit_date": "2026-05-02T14:10:38+02:00",
+      "sha256": "34c8d3a40b82f85b33eddcf99e27cd1ea06ab85437a07f4e46705f5e0110cdcd"
+    },
+    {
+      "filename": "20260514_cross_border_rail_ticketing.zip",
+      "commit_id": "c07a136895c4c079555497d0c365509062f65988",
+      "commit_date": "2026-05-14T02:59:25+02:00",
+      "sha256": "528b8230651bde55cc1db019482b25e0b5221a2800cc5fa335ae61016e9f5a83"
+    },
+    {
+      "filename": "20260516_datacenter_in_france.zip",
+      "commit_id": "24f1f2ba3c191dce913acb66505f86d6672112d5",
+      "commit_date": "2026-05-16T22:12:43+02:00",
+      "sha256": "d3db9010094944e28c76aff5966199d5e0913a78fdfe6cb20e20b47b56e9c21e"
+    }
+  ]
+}
