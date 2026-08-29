@@ -1,3 +1,41 @@
+- title: The Consortium
+  description: |
+    Inspired by the verification mechanism in [Plan A](https://ai-2040.com/), the best-case scenario for humanity.
+  prompt: |
+    "The Consortium", a jointly governed United States–China mechanism with one narrowly defined mission: verify material arrivals, installations, removals, transfers, maintenance changes, and decommissioning of frontier-relevant computing equipment at a small, matched set of declared datacenters.
+
+    Assume both countries’ leaders believe uncontrolled frontier AI threatens national security and their continued political control. They provide direct political backing and sufficient domestic authority to compel participation. Do not assume trust, legal symmetry, or willingness to expose sensitive technology.
+
+    Phase One is a 90-day operational test, but its clock begins only after both governments have signed the bilateral instrument, appropriated their contributions, enacted domestic access authority, selected participating sites, approved inspectors, secured necessary operator and vendor participation, and adopted the provisional covered-equipment schedule. Treat these as mandatory entry conditions, not work performed during the 90 days.
+
+    Budget is USD 5 billion, contributed exactly 50/50: USD 2.5 billion from each country. Use this provisional allocation: USD 1.25 billion for secure ledger, attestation, evidence and communications systems; USD 1 billion for participating-site preparation and operator compensation; USD 750 million for inspectors, technical personnel, training and translation; USD 750 million for secure facilities, cybersecurity and counterintelligence; USD 500 million for independent testing, challenge exercises and red teams; USD 250 million for bilateral legal implementation and independent auditing; and USD 500 million for contingency and surge capacity. Every expense must map to an envelope. Compensation to domestic operators and vendors is administered by their own government and charged against its contribution.
+
+    "The Consortium" is a sovereign public-sector national-security program, not a for-profit project, business, nonprofit corporation, investment, partnership opportunity, or revenue-generating institution. If the report format requires business purpose, pitches, investors, customers, revenue, sponsorship, fundraising, return on investment, market demand, profitability, or promotional calls to action, mark them “Not applicable” and substitute mission justification, public value, strategic necessity, appropriations governance, and fiscal accountability.
+
+    Address only declared-equipment change verification at participating sites. Do not estimate either country’s total computing capacity, verify workloads, inspect model weights, prove the absence of hidden facilities, cover foreign-hosted infrastructure, or create a comprehensive AI-governance regime. Do not permanently anchor covered equipment to a current manufacturer, product, architecture, or performance unit. Accountable specialists must maintain a confidential, versioned technical schedule.
+
+    Governance must use equal national co-chairs and double-key authorization for budgets, protocol changes, site findings, sanctions and suspension. No chair may have a casting vote, and no majority procedure may allow one country to overrule the other. Define deadlock, impaired-confidence and automatic-suspension procedures. Do not use a generic Project Sponsor, investor board, sponsorship coordinator or public stakeholder-satisfaction process.
+
+    Model staffing from participating-site count, shift coverage, mirrored national teams, separation of duties, leave coverage and surge requirements. This is not a small project team. Do not use single-person critical functions, part-time or temporary-agency inspectors, or fictional employee biographies. Include full-time mirrored inspection, technical, legal, cybersecurity, counterintelligence, translation, audit, logistics and adjudication units.
+
+    Create a replicated, tamper-evident ledger with independently verifiable national copies, immediate local event recording and bounded counterpart synchronization. Establish an Intake Protocol that verifies equipment identity in controlled staging areas before installation. Use layered evidence, potentially including independently validated cryptographic attestation, physical inspection, shipment and customs records, equipment identifiers, maintenance records, infrastructure changes and witnessed movement. No single source is decisive.
+
+    Protect workloads, customer data, model weights, network topology, security architecture, source code and unrelated infrastructure through bounded inspection zones and filtered evidence. Require operators to bind manufacturers, maintenance providers and logistics companies to reporting, confidentiality, escort and evidence-preservation requirements. When a critical vendor refuses, use vendor-supervised testing, filtered evidence, accredited independent examiners, secure clean-room procedures or validated attestations. If these cannot produce sufficient evidence, classify the equipment as unverifiable; if material, the site fails Phase One.
+
+    Define an Exit Protocol assigning every departure a disposition: witnessed destruction, verified permanent disablement, transfer to another participating site, documented release beyond the monitored system, or unresolved disposition. Never imply continued knowledge beyond the agreed boundary.
+
+    Run live exercises involving unreported arrival, substituted equipment, inaccurate records, delayed access, disputed identity, vendor refusal and a reluctant operator. Conduct tests in staging, spare-inventory, maintenance or expansion areas without interrupting active computational work.
+
+    Organize the work breakdown around these top-level workstreams: bilateral authority and reciprocity gate; site eligibility and matched selection; inspectorate deployment and information barriers; intake and identity verification; ledger recording and synchronization; installation, maintenance and third-party access; exit and disposition verification; live challenge exercises; discrepancy adjudication and suspension; and the final decision. Do not substitute generic project-initiation, stakeholder-engagement, requirements-gathering or project-closure phases.
+
+    The KPI dashboard must cover blind-challenge detection by event type, false negatives and positives, equipment-identity confidence, event-recording and synchronization latency, ledger divergence and reconciliation time, reciprocal-access parity, unresolved discrepancy age, unverifiable equipment, vendor-refusal outcomes, IP or cybersecurity incidents, production disruption, funding timeliness and audit exceptions. Justify thresholds. Mark unsupported figures provisional or TBD and specify how they will be validated.
+
+    Conclude **Go** only if exercises demonstrate reciprocal access and credible detection; **Modify** if correctable weaknesses remain; and **Stop** if access is asymmetric, material equipment remains unverifiable, a government shields an operator, evidence systems diverge without resolution, or either country withholds funding. State that success covers only monitored changes at participating declared sites.
+
+    Banned words: blockchain.
+  report_link: 20260829_the_consortium_report.html
+  thumbnail: 20260829_the_consortium-thumbnail.jpg
+
 - title: Crocodile Security
   description: |
     Inspired by Israel's NIS 21M crocodile moat at Ketziot Prison and Florida's "Alligator Alcatraz".
