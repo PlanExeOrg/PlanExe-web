@@ -1,6 +1,6 @@
 - title: The Consortium
   description: |
-    Inspired by the verification mechanism in [Plan A](https://ai-2040.com/), the best-case scenario for humanity.
+    Inspired by the verification mechanism in [AI 2040 - Plan A](https://ai-2040.com/), the best-case scenario for humanity.
   prompt: |
     "The Consortium", a jointly governed United States–China mechanism with one narrowly defined mission: verify material arrivals, installations, removals, transfers, maintenance changes, and decommissioning of frontier-relevant computing equipment at a small, matched set of declared datacenters.
 
