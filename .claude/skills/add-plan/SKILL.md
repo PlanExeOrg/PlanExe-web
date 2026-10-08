@@ -99,7 +99,8 @@ rm -rf .venv && python3 -m venv .venv && .venv/bin/pip install pillow
 6. Creates a modified zip in `output/` named `YYYYMMDD_name.zip` with a matching wrapper directory
 7. Copies the GA-injected report to `output/YYYYMMDD_name_report.html`
 8. Invokes `convert_images.py` to produce `output/YYYYMMDD_name-big.jpg` and `output/YYYYMMDD_name-thumbnail.jpg`
-9. Generates `output/example_item.yml` — a YAML snippet ready to prepend to `_data/examples.yml` (with `PLACEHOLDER_DESCRIPTION` for the user to fill in or remove)
+9. Detects the PlanExe version from `planexe_metadata.json` in the zip: `generator.name: PlanExe2` → version 2, anything else (missing file, or only `{"pipeline_version": 2}`) → version 1. Note that `pipeline_version` is **not** the PlanExe version — PlanExe 1 zips also say `pipeline_version: 2`.
+10. Generates `output/example_item.yml` — a YAML snippet ready to prepend to `_data/examples.yml` (with `PLACEHOLDER_DESCRIPTION` for the user to fill in or remove). For version 2 plans it ends with `planexe_version: 2`; for version 1 the field is omitted.
 
 **Output files in `output/`:**
 ```
@@ -114,6 +115,7 @@ example_item.yml                   # YAML snippet for examples.yml
 ```
 TITLE: EuroLens Platform
 PLAN_NAME: 20260318_eurolens_platform
+PLANEXE_VERSION: 2
 ```
 
 **Important:** The script never modifies or deletes files in `input/`. If something goes wrong, the original files are still there for re-running.
@@ -155,6 +157,8 @@ cd <repo_root>/upsert_plan
 
 This produces all files in `output/`: the modified zip, report HTML, both image variants, and `example_item.yml`.
 
+Tell the user the detected version from the `PLANEXE_VERSION:` line (e.g. "Detected PlanExe 2 → will show as `v2 · current`"). Never hand-edit `planexe_version` in `example_item.yml` — if the detection looks wrong, check the zip's `planexe_metadata.json` and ask the user.
+
 ### Step 2: Ask for a description
 
 The script generates `output/example_item.yml` with `PLACEHOLDER_DESCRIPTION`. Ask the user what description they want — suggest 2-3 options based on the plan content, plus "No description" to omit the field, but always allow free text input. Edit **only** `output/example_item.yml` to replace the placeholder — never touch `_data/examples.yml` directly at this stage.
@@ -178,7 +182,7 @@ python3 stop_jekyll.py
 
 **IMPORTANT:** Never use `lsof -ti:4000 | xargs kill` — it kills ALL processes connected to that port, including the user's browser. Always use `stop_jekyll.py` instead.
 
-This temporarily stages output files into the repo and opens the examples page. It always prepends from a clean `_data/examples.yml` (backed up and restored on exit). The new plan should appear as the first card.
+This temporarily stages output files into the repo and opens the examples page. It always prepends from a clean `_data/examples.yml` (backed up and restored on exit). The new plan should appear as the first card, with a `v2 · current` or `v1 · legacy` badge matching the detected version (badges are only visible with the "All plans" filter selected).
 
 Wait a few seconds for the server to start, then verify it's running:
 ```bash

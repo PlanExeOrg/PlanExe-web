@@ -13,6 +13,7 @@ This skill handles replacing an existing plan's zip and report on the PlanExe-we
 - **Prompt**: replaced with whatever is in the new zip (`process_plan.py` extracts it).
 - **Plan name**: preserved (e.g. `20260201_media_rescue`) so URLs keep working.
 - **Images** (`-big.jpg`, `-thumbnail.jpg`): preserved.
+- **PlanExe version** (`planexe_version`): taken from the **new** zip, never from the old entry. `process_plan.py` detects it (`generator.name: PlanExe2` in `planexe_metadata.json` → `planexe_version: 2`; otherwise the field is omitted = version 1). Replacing a v1 plan with a PlanExe 2 run therefore upgrades the card from `v1 · legacy` to `v2 · current`.
 - **Branch**: all commits land on `main` in the main worktree. Even if invoked from a feature worktree, run every command against the main worktree path — do not switch branches in the current worktree, do not ask the user to start a new session.
 
 ## Files
@@ -45,7 +46,9 @@ cd "$MAIN_REPO/upsert_plan"
 Produces in `output/`:
 - `EXISTING_NAME.zip` — GA-injected
 - `EXISTING_NAME_report.html` — GA-injected
-- `example_item.yml` — has new title (from report), `PLACEHOLDER_DESCRIPTION`, new prompt (from zip), `report_link`, `thumbnail`
+- `example_item.yml` — has new title (from report), `PLACEHOLDER_DESCRIPTION`, new prompt (from zip), `report_link`, `thumbnail`, and `planexe_version: 2` if the new zip is from PlanExe 2
+
+Read the `PLANEXE_VERSION:` line on stdout and compare it with the old entry (old entry has `planexe_version: 2` → v2, no field → v1). Tell the user the outcome, e.g. "v1 → v2 (upgrade)" or "v1 → v1". If it is a **downgrade** (old entry v2, new zip v1), stop and ask the user before continuing — that is probably the wrong zip.
 
 If the venv is broken: `rm -rf .venv && python3 -m venv .venv && .venv/bin/pip install pillow`.
 
@@ -55,7 +58,7 @@ Use the `Edit` tool on `$MAIN_REPO/upsert_plan/output/example_item.yml`:
 1. Replace the new `- title: …` line with the old title line copied verbatim from `_data/examples.yml`.
 2. Replace the placeholder description block with the old description block copied verbatim from `_data/examples.yml`. If the old entry had no `description:` field, delete the entire `description: |` block (the `description:` line plus the indented block underneath it) from `example_item.yml`.
 
-Leave `prompt:`, `report_link:`, `thumbnail:` as generated.
+Leave `prompt:`, `report_link:`, `thumbnail:`, and `planexe_version:` (if present) as generated.
 
 ### Step 4: Copy files into the repo root, upsert YAML
 
