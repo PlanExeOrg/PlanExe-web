@@ -604,6 +604,150 @@ a:hover {
   z-index: 2;
 }
 
+/* ---------- Examples: PlanExe version picker ---------- */
+.examples-version-picker {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0 0 18px;
+  padding: 4px;
+  border: 1px solid var(--px-border);
+  border-radius: var(--px-radius-sm);
+  background: var(--px-surface);
+  box-shadow: var(--px-shadow-sm);
+}
+
+.examples-version-picker-legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.examples-version-picker input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.examples-version-picker label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: calc(var(--px-radius-sm) - 4px);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--px-text-2);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.examples-version-picker label:hover {
+  background: var(--px-surface-2);
+  color: var(--px-text);
+}
+
+.examples-version-picker input:checked + label {
+  background: var(--px-primary);
+  color: #fff;
+}
+
+.examples-version-picker input:focus-visible + label {
+  outline: 3px solid var(--px-focus);
+  outline-offset: 2px;
+}
+
+.examples-version-count {
+  min-width: 1.6em;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-family: var(--px-font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  background: var(--px-surface-2);
+  border: 1px solid var(--px-border);
+  color: var(--px-text-3);
+}
+
+.examples-version-picker input:checked + label .examples-version-count {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* Filtering. Uses a box-shadow instead of border-top for the card divider,
+   so whichever card ends up first has its divider clipped by the wrapper. */
+.examples-card + .examples-card {
+  border-top: 0;
+}
+
+.examples-card {
+  box-shadow: 0 -1px 0 var(--px-border);
+}
+
+.examples-page:has(#planexe-version-1:checked) .examples-card:not([data-planexe-version="1"]),
+.examples-page:has(#planexe-version-2:checked) .examples-card:not([data-planexe-version="2"]) {
+  display: none;
+}
+
+.examples-empty {
+  display: none;
+  color: var(--px-text-3);
+}
+
+.examples-page:has(#planexe-version-1:checked):not(:has(.examples-card[data-planexe-version="1"])) .examples-empty,
+.examples-page:has(#planexe-version-2:checked):not(:has(.examples-card[data-planexe-version="2"])) .examples-empty {
+  display: block;
+}
+
+.examples-page:has(#planexe-version-1:checked):not(:has(.examples-card[data-planexe-version="1"])) .examples-card-wrapper,
+.examples-page:has(#planexe-version-2:checked):not(:has(.examples-card[data-planexe-version="2"])) .examples-card-wrapper {
+  display: none;
+}
+
+/* Version badge, top-right of each card; only shown when "All versions" is selected. */
+.examples-version-badge {
+  display: none;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.examples-page:has(#planexe-version-all:checked) .examples-version-badge {
+  display: inline-block;
+}
+
+/* Keep the title clear of the badge. */
+.examples-page:has(#planexe-version-all:checked) .examples-card-title {
+  padding-right: 110px;
+}
+
+.examples-version-badge-current {
+  background: color-mix(in srgb, var(--px-primary) 14%, transparent);
+  border-color: color-mix(in srgb, var(--px-primary) 35%, transparent);
+  color: var(--px-primary-2);
+}
+
+.examples-version-badge-legacy {
+  background: var(--px-surface-2);
+  border-color: var(--px-border);
+  color: var(--px-text-3);
+}
+
 /* ---------- Hero CTA ---------- */
 .planexe-hero-cta {
   margin-top: 20px;
@@ -1049,5 +1193,12 @@ html[data-theme="dark"] .px-difficulty-expert {
   .examples-card-description,
   .examples-card-prompt {
     display: none;
+  }
+  .examples-version-badge {
+    position: static;
+    margin-bottom: 6px;
+  }
+  .examples-page:has(#planexe-version-all:checked) .examples-card-title {
+    padding-right: 0;
   }
 }

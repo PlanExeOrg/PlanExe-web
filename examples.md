@@ -4,6 +4,11 @@ title: Examples
 permalink: /examples/
 ---
 
+{% assign examples_v2 = site.data.examples | where: "planexe_version", 2 %}
+{% assign examples_v1_count = site.data.examples.size | minus: examples_v2.size %}
+
+<div class="examples-page">
+
 <header class="post-header planexe-examples-header">
 <h1 class="post-title">Example Plans</h1>
 <div class="header-description">
@@ -11,15 +16,33 @@ permalink: /examples/
 </div>
 </header>
 
+<fieldset class="examples-version-picker">
+<legend class="examples-version-picker-legend">Filter by PlanExe version</legend>
+<input type="radio" name="planexe-version" id="planexe-version-all" value="all" checked>
+<label for="planexe-version-all">All plans <span class="examples-version-count">{{ site.data.examples.size }}</span></label>
+<input type="radio" name="planexe-version" id="planexe-version-2" value="2">
+<label for="planexe-version-2">PlanExe version 2 <span class="examples-version-count">{{ examples_v2.size }}</span></label>
+<input type="radio" name="planexe-version" id="planexe-version-1" value="1">
+<label for="planexe-version-1">PlanExe version 1 <span class="examples-version-count">{{ examples_v1_count }}</span></label>
+</fieldset>
+
+<p class="examples-empty">No plans made with this version yet.</p>
+
 <div class="examples-card-wrapper">
 {% for item in site.data.examples %}
-<div class="examples-card">
+{% assign planexe_version = item.planexe_version | default: 1 %}
+<div class="examples-card" data-planexe-version="{{ planexe_version }}">
 {% if item.thumbnail %}
 <div class="examples-card-image-wrapper">
 <img src="../{{ item.thumbnail }}" alt="{{ item.title }}" class="examples-card-thumbnail">
 </div>
 {% endif %}
 <div class="examples-card-content">
+{% if planexe_version == 2 %}
+<span class="examples-version-badge examples-version-badge-current">v2 · current</span>
+{% else %}
+<span class="examples-version-badge examples-version-badge-legacy">v1 · legacy</span>
+{% endif %}
 <h2 class="examples-card-title">{{ item.title }}</h2>
 {% if item.description %}
 <div class="examples-card-description">
@@ -32,3 +55,7 @@ permalink: /examples/
 </div>
 {% endfor %}
 </div>
+
+</div>
+
+<script defer src="{{ '/assets/js/planexe-examples.js' | relative_url }}"></script>

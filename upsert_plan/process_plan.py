@@ -7,6 +7,7 @@ Reads a single .zip from the input directory and performs these steps:
   2. Injects Google Analytics into report.html (replaces if already present)
   3. Extracts the title from the <title> tag of report.html
   4. Creates a new zip in the output directory with the modified report
+  5. Detects the PlanExe version from planexe_metadata.json
 
 The extracted TITLE and PROMPT are printed to stdout in a parseable format.
 """
@@ -259,8 +260,32 @@ def yaml_quote_title(title: str) -> str:
     return title
 
 
-def generate_example_yml(title: str, prompt: str, canonical_name: str) -> str:
-    """Generate a YAML snippet for ``_data/examples.yml``."""
+def detect_planexe_version(metadata_json: str | None) -> int:
+    """Return 2 if ``planexe_metadata.json`` says the plan was made by PlanExe2, else 1.
+
+    PlanExe 1 zips either lack the file or only contain ``{"pipeline_version": 2}``.
+    PlanExe 2 zips have ``"generator": {"name": "PlanExe2", ...}``.
+    """
+    if not metadata_json:
+        return 1
+    try:
+        data = json.loads(metadata_json)
+    except json.JSONDecodeError:
+        return 1
+    generator = data.get("generator") if isinstance(data, dict) else None
+    if isinstance(generator, dict) and generator.get("name") == "PlanExe2":
+        return 2
+    return 1
+
+
+def generate_example_yml(
+    title: str, prompt: str, canonical_name: str, planexe_version: int = 1
+) -> str:
+    """Generate a YAML snippet for ``_data/examples.yml``.
+
+    ``planexe_version`` is only written for version 2; entries without it are
+    treated as version 1 by the examples page.
+    """
     # Indent every line of the prompt by 4 spaces for the YAML block scalar.
     indented_prompt = "\n".join(
         f"    {line}" if line.strip() else "" for line in prompt.splitlines()
@@ -274,6 +299,7 @@ def generate_example_yml(title: str, prompt: str, canonical_name: str) -> str:
         f"{indented_prompt}\n"
         f"  report_link: {canonical_name}_report.html\n"
         f"  thumbnail: {canonical_name}-thumbnail.jpg\n"
+        + (f"  planexe_version: {planexe_version}\n" if planexe_version >= 2 else "")
     )
 
 
@@ -377,6 +403,12 @@ def main() -> int:
         plan_path = tmp_dir / resolve_member(prefix, "plan.txt")
         report_path = tmp_dir / resolve_member(prefix, "report.html")
         start_time_path = tmp_dir / resolve_member(prefix, "start_time.json")
+        metadata_path = tmp_dir / resolve_member(prefix, "planexe_metadata.json")
+
+        # --- Detect the PlanExe version ---
+        planexe_version = detect_planexe_version(
+            metadata_path.read_text(encoding="utf-8") if metadata_path.is_file() else None
+        )
 
         # --- Extract the prompt ---
         if not plan_path.is_file():
@@ -443,7 +475,7 @@ def main() -> int:
 
     # --- Generate example_item.yml ---
     out_yml_path = output_dir / "example_item.yml"
-    yml_content = generate_example_yml(title, prompt, canonical_name)
+    yml_content = generate_example_yml(title, prompt, canonical_name, planexe_version)
     out_yml_path.write_text(yml_content, encoding="utf-8")
 
     # --- Print results ---
@@ -453,6 +485,7 @@ def main() -> int:
 
     print(f"TITLE: {title}")
     print(f"PLAN_NAME: {canonical_name}")
+    print(f"PLANEXE_VERSION: {planexe_version}")
 
     return 0
 

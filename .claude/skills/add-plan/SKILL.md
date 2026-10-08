@@ -42,6 +42,7 @@ Fields:
 - **prompt** (required): The original prompt fed to PlanExe. Use `|` for multiline YAML.
 - **report_link** (required): Filename of the HTML report in the repo root
 - **thumbnail** (required): Filename of the thumbnail image in the repo root
+- **planexe_version** (optional): `2` for plans made with PlanExe 2. Omitted means PlanExe 1 (legacy). `process_plan.py` sets it automatically when the zip's `planexe_metadata.json` has `generator.name: PlanExe2`. The examples page uses it for the version picker and the `v1 · legacy` / `v2 · current` badges.
 
 ### Inside the zip file
 
