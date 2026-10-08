@@ -587,6 +587,12 @@ a:hover {
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  /* Cap at exactly 4 lines; otherwise paragraph margins reveal part of line 5. */
+  max-height: calc(4 * 1.6em);
+}
+
+.examples-card .examples-card-prompt > * {
+  margin: 0;
 }
 
 /* Stretched overlay link */
