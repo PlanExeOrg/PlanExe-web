@@ -28,6 +28,7 @@
 
         <nav class="px-nav" aria-label="Primary">
           {% assign nav_left = "" | split: "" %}
+          {% assign nav_left = nav_left | push: "/get-started/|Get started" %}
           {% assign nav_left = nav_left | push: "/examples/|Examples" %}
 
           {% assign nav_right = "" | split: "" %}

@@ -9,7 +9,7 @@ title: PlanExe - Agentic Planning Engine
     <p class="subtitle">Executive summary, gantt, risks, swot, budget, premortem, and more.</p>
 </div>
 <div class="planexe-hero-cta">
-    <a class="px-button px-button-primary px-button-hero" href="https://app.mach-ai.com/planexe_early_access">Create your first plan free &nbsp;&rarr;</a>
+    <a class="px-button px-button-primary px-button-hero" href="{{ '/get-started/' | relative_url }}">Get started &nbsp;&rarr;</a>
 </div>
 </header>
 
@@ -37,7 +37,7 @@ title: PlanExe - Agentic Planning Engine
 
 - **Founders** — Stress-test ideas early and avoid expensive mistakes.
 - **Project Managers** — Standardize project kickoffs with structured, exportable plans.
-- **Developers** — Connect PlanExe via MCP to tools like Claude, Cursor, and Codex.
+- **Developers** — Run PlanExe from Claude Code or Codex. Every stage is a plain folder of prompts and Python you can read and change.
 
 ## AI that pushes back
 
@@ -58,36 +58,24 @@ Most AI tools just agree with you. PlanExe red-teams your plan to find flaws bef
   </div>
 </div>
 
-## Your plans stay yours
+## Your plans live on your machine
 
-Unlike cloud-based alternatives, PlanExe can run fully offline on your own hardware. That means you can work on sensitive plans without sending them to external services.
+PlanExe runs on your own computer. Every plan is a folder of plain files that you own: you can read them, edit them and re-run, and PlanExe regenerates whatever depends on your changes.
 
 ## Get started
 
-<div class="px-paths-grid">
-  <div class="planexe-split-panel">
-    <div class="px-difficulty-badge px-difficulty-beginner">Beginner</div>
-    <h3>PlanExe Cloud</h3>
-    <p>Recommended way to try PlanExe. No setup. Type in your idea and read the generated plan.</p>
-    <div class="planexe-cta-block">
-      <a class="px-button px-button-primary" href="https://app.mach-ai.com/planexe_early_access">Try PlanExe</a>
-      <div class="planexe-cta-helper">Create 1 plan for free. Additional plans are paid.</div>
-    </div>
-  </div>
-  <div class="planexe-split-panel">
-    <div class="px-difficulty-badge px-difficulty-medium">Medium</div>
-    <h3>PlanExe Account</h3>
-    <p>Get your API keys to connect PlanExe's MCP server to Claude, Codex, Cursor, or Windsurf. Manage credits and view your generated plans.</p>
-    <div class="planexe-cta-block">
-      <a class="px-button px-button-primary" href="https://home.planexe.org/">Manage Account</a>
-    </div>
-  </div>
-  <div class="planexe-split-panel">
-    <div class="px-difficulty-badge px-difficulty-expert">Expert</div>
-    <h3>PlanExe Local</h3>
-    <p>100% private. Install and run PlanExe locally on your own hardware. Open source, MIT license.</p>
-    <p><a href="https://github.com/PlanExeOrg/PlanExe">github.com/PlanExeOrg/PlanExe</a></p>
-  </div>
+PlanExe runs on your computer and uses your Claude subscription through Claude Code. Clone the repo, start Claude Code, and ask for a plan:
+
+```bash
+git clone https://github.com/PlanExeOrg/PlanExe2.git
+cd PlanExe2
+claude
+```
+
+Then type something like *"make a plan for a bakery in Lyon"*. PlanExe asks a few questions, shows you the project description it will use, and starts once you confirm. One to two hours later, you have a full report.
+
+<div class="planexe-cta-block">
+  <a class="px-button px-button-primary" href="{{ '/get-started/' | relative_url }}">Read the getting started guide</a>
 </div>
 
 ## Example plans
@@ -115,12 +103,3 @@ Unlike cloud-based alternatives, PlanExe can run fully offline on your own hardw
 {% endif %}
 {% endfor %}
 </div>
-
-## Get involved
-
-Introduce yourself on the [PlanExe Discord]({{ '/discord/' | relative_url }}) and ask how you can help.
-
-- **Python Developer:** Tweak the core engine, DAG pipelines, and agent prompts.
-- **Prompt Engineer:** Refine the system prompts for better expert responses and red-teaming.
-- **Project Manager:** Provide feedback on missing project methodologies or export formats.
-- **Designer:** Enhance the HTML report UI and interactive data visualizations.

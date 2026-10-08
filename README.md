@@ -5,7 +5,7 @@ Github pages is used for the [planexe.org](https://planexe.org/) static website.
 Links:
 
 - [https://planexe.org/](https://planexe.org/)
-- [https://github.com/PlanExeOrg/PlanExe](https://github.com/PlanExeOrg/PlanExe)
+- [https://github.com/PlanExeOrg/PlanExe2](https://github.com/PlanExeOrg/PlanExe2)
 - [PlanExe Discord](https://planexe.org/discord)
 
 
