@@ -1142,10 +1142,6 @@ html[data-theme="dark"] .px-difficulty-expert {
   }
 }
 
-.px-cta-label-short {
-  display: none;
-}
-
 @media (max-width: 640px) {
   .px-brand-mark {
     display: none;
@@ -1156,12 +1152,6 @@ html[data-theme="dark"] .px-difficulty-expert {
   }
   .px-nav-spacer {
     display: none;
-  }
-  .px-cta-label-long {
-    display: none;
-  }
-  .px-cta-label-short {
-    display: inline;
   }
 }
 
