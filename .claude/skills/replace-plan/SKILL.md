@@ -13,6 +13,7 @@ This skill handles replacing an existing plan's zip and report on the PlanExe-we
 - **Prompt**: replaced with whatever is in the new zip (`process_plan.py` extracts it).
 - **Plan name**: preserved (e.g. `20260201_media_rescue`) so URLs keep working.
 - **Images** (`-big.jpg`, `-thumbnail.jpg`): preserved.
+- **Curation flags** (`featured: true`, and any other field `process_plan.py` does not generate): preserved from the old entry. `upsert_examples_yml.py` replaces the whole entry, so any such field missing from `example_item.yml` is silently dropped (dropping `featured: true` removes the plan from the homepage).
 - **PlanExe version** (`planexe_version`): taken from the **new** zip, never from the old entry. `process_plan.py` detects it (`generator.name: PlanExe2` in `planexe_metadata.json` → `planexe_version: 2`; otherwise the field is omitted = version 1). Replacing a v1 plan with a PlanExe 2 run therefore upgrades the card from `v1 · legacy` to `v2 · current`.
 - **Branch**: all commits land on `main` in the main worktree. Even if invoked from a feature worktree, run every command against the main worktree path — do not switch branches in the current worktree, do not ask the user to start a new session.
 
@@ -34,7 +35,7 @@ Use `$MAIN_REPO` (not the current cwd) wherever the steps below say `<repo_root>
 
 ### Step 1: Identify the existing entry
 
-User tells you the plan name (e.g. "replace 20260201_media_rescue"). Read its current entry in `$MAIN_REPO/_data/examples.yml`. Capture the **exact** `title:` line and the full `description:` block (or note that there is no description).
+User tells you the plan name (e.g. "replace 20260201_media_rescue"), or just the new zip's filename (e.g. "replace with 20261008_the_consortium.zip") — in that case the zip's basename is the existing plan name. Read its current entry in `$MAIN_REPO/_data/examples.yml`. Capture the **exact** `title:` line, the full `description:` block (or note that there is no description), and every field after `planexe_version:`/`thumbnail:` that `process_plan.py` does not generate — most commonly `featured: true`.
 
 ### Step 2: Process the new zip
 
@@ -52,11 +53,12 @@ Read the `PLANEXE_VERSION:` line on stdout and compare it with the old entry (ol
 
 If the venv is broken: `rm -rf .venv && python3 -m venv .venv && .venv/bin/pip install pillow`.
 
-### Step 3: Patch example_item.yml — restore old title + old description
+### Step 3: Patch example_item.yml — restore old title, description, and curation flags
 
 Use the `Edit` tool on `$MAIN_REPO/upsert_plan/output/example_item.yml`:
 1. Replace the new `- title: …` line with the old title line copied verbatim from `_data/examples.yml`.
 2. Replace the placeholder description block with the old description block copied verbatim from `_data/examples.yml`. If the old entry had no `description:` field, delete the entire `description: |` block (the `description:` line plus the indented block underneath it) from `example_item.yml`.
+3. Append any curation fields captured in Step 1 (e.g. `  featured: true`) at the end of the entry, in the same order as the old entry.
 
 Leave `prompt:`, `report_link:`, `thumbnail:`, and `planexe_version:` (if present) as generated.
 
@@ -79,6 +81,8 @@ git -C "$MAIN_REPO" add EXISTING_NAME.zip EXISTING_NAME_report.html _data/exampl
 git -C "$MAIN_REPO" commit -m "improved plan EXISTING_NAME"
 git -C "$MAIN_REPO" push
 ```
+
+If the prompt in the new zip is unchanged, `_data/examples.yml` will have no diff — that's expected; the commit then contains only the zip and report. Before committing, confirm `git diff _data/examples.yml` shows no unintended removals (title, description, `featured`).
 
 If `process_plan.py` or other scripts in the repo also changed, make a separate descriptive commit for those first.
 
