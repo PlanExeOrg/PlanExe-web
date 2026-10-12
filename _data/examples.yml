@@ -1,3 +1,10 @@
+- title: "High-speed rail tunnel: Europe to Africa"
+  prompt: |
+    20-year, €40 billion infrastructure initiative to construct a pillar-supported transoceanic submerged tunnel connecting Spain and Morocco. This project will deploy a system of submerged, buoyant concrete tunnels engineered for high-speed rail traffic, which will be securely anchored at a controlled depth of 100 meters below sea level.
+  report_link: 20261012_gibraltar_tunnel_report.html
+  thumbnail: 20261012_gibraltar_tunnel-thumbnail.jpg
+  planexe_version: 2
+
 - title: Save the Exabytes Before They Rot
   description: |
     Between 1950 and 2000 we wrote exabytes of history onto magnetic tape, film reels, and punch cards—and most of it is sitting in basements and vaults, quietly degrading. Within 10–30 years much of that [digital preservation](https://en.wikipedia.org/wiki/Digital_preservation) window will close for good. This plan deploys mobile, containerized digitization units that bring the factory to the archive: no shipping fragile media, no single bottleneck—just fleets of climate-controlled rigs parking at institutions worldwide, running vintage tape decks and film scanners with robotic loaders and AI signal cleanup, then moving on. The goal isn’t nostalgia; it’s a last-chance salvage of the 20th century before the media turns to dust.
