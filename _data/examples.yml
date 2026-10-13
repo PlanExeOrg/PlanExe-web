@@ -1,3 +1,10 @@
+- title: 500 health tests from one blood drop
+  prompt: |
+    build a startup that can run 500 complex health tests from a single drop of blood. The mass production of blood-testing devices will be in Newark, California.
+  report_link: 20261013_bloodtest_startup_report.html
+  thumbnail: 20261013_bloodtest_startup-thumbnail.jpg
+  planexe_version: 2
+
 - title: English v2.0 that fixes the worst inconsistencies
   description: |
     No more 1st/2nd/3rd/11th quirks, see [ordinal numerals](https://en.wikipedia.org/wiki/Ordinal_numeral).
