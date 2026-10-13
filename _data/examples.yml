@@ -1,4 +1,6 @@
 - title: 500 health tests from one blood drop
+  description: |
+    What if [Theranos](https://en.wikipedia.org/wiki/Theranos) had been run honestly?
   prompt: |
     build a startup that can run 500 complex health tests from a single drop of blood. The mass production of blood-testing devices will be in Newark, California.
   report_link: 20261013_bloodtest_startup_report.html
