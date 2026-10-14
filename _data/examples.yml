@@ -1,3 +1,10 @@
+- title: Build next-gen super battery
+  prompt: |
+    Invent a next-generation rechargeable battery that meets or beats these goals. Primary goal: Gravimetric ≥ 500 Wh/kg, Secondary goal: Volumetric ≥ 1000 Wh/L. The goal is NOT to become a major market-dominant industrial player. The goal is to invent a better battery. Budget: USD 300 M over 7 years. Location is near Tesla in Austin, Texas.
+  report_link: 20261014_battery_breakthrough_report.html
+  thumbnail: 20261014_battery_breakthrough-thumbnail.jpg
+  planexe_version: 2
+
 - title: Yellowstone volcano evacuation
   description: |
     Inspired by the [Supervulcano](https://en.wikipedia.org/wiki/Supervolcano_(film)) 2005 movie.
